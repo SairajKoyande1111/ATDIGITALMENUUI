@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowLeft, Menu as MenuIcon, X } from "lucide-react";
+import { ArrowLeft, Menu as MenuIcon, X, Tag, ChevronLeft, ChevronRight, Copy, Check } from "lucide-react";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { mainCategories } from "@/lib/menu-categories";
@@ -57,6 +57,124 @@ const categoryImages: Record<string, string> = {
   mocktails: premiumMocktailsImg,
 };
 
+const coupons = [
+  {
+    id: 1,
+    code: "BARREL20",
+    title: "20% OFF",
+    subtitle: "On your total bill",
+    description: "Valid on dine-in orders above ₹1000",
+    validity: "Valid till 31 Mar 2026",
+    gradient: ["#B8986A", "#7C5C30"],
+    tag: "LIMITED",
+  },
+  {
+    id: 2,
+    code: "HAPPYHOUR",
+    title: "Buy 1 Get 1",
+    subtitle: "On all cocktails",
+    description: "Every weekday between 5 PM – 8 PM",
+    validity: "Valid till 30 Apr 2026",
+    gradient: ["#5B7FA6", "#2C4A6E"],
+    tag: "HAPPY HOUR",
+  },
+  {
+    id: 3,
+    code: "CRAFT15",
+    title: "15% OFF",
+    subtitle: "On craft beers",
+    description: "All draught & craft beer on tap",
+    validity: "Valid till 15 Apr 2026",
+    gradient: ["#7A5C3C", "#4A3020"],
+    tag: "BEER LOVERS",
+  },
+  {
+    id: 4,
+    code: "WELCOME50",
+    title: "₹50 OFF",
+    subtitle: "First visit discount",
+    description: "On your very first order at Barrelborn",
+    validity: "Single use only",
+    gradient: ["#5C7A5C", "#3A5A3A"],
+    tag: "NEW GUEST",
+  },
+  {
+    id: 5,
+    code: "WEEKEND25",
+    title: "25% OFF",
+    subtitle: "Weekend special",
+    description: "On food orders — Saturday & Sunday",
+    validity: "Every weekend",
+    gradient: ["#7A3C5C", "#4A2038"],
+    tag: "WEEKEND",
+  },
+];
+
+function CouponCard({ coupon }: { coupon: typeof coupons[0] }) {
+  const [copied, setCopied] = useState(false);
+  const handleCopy = () => {
+    navigator.clipboard.writeText(coupon.code).catch(() => {});
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+  return (
+    <div
+      className="relative flex-shrink-0 w-72 rounded-2xl overflow-hidden select-none"
+      style={{
+        background: `linear-gradient(135deg, ${coupon.gradient[0]}, ${coupon.gradient[1]})`,
+        minHeight: "160px",
+      }}
+      data-testid={`coupon-card-${coupon.id}`}
+    >
+      {/* Decorative circles */}
+      <div className="absolute -right-8 -top-8 w-32 h-32 rounded-full bg-white/10" />
+      <div className="absolute -right-4 -bottom-8 w-24 h-24 rounded-full bg-white/10" />
+
+      {/* Tag badge */}
+      <div className="absolute top-3 right-3 px-2 py-0.5 rounded-full text-[10px] font-bold tracking-wider bg-white/20 text-white backdrop-blur-sm">
+        {coupon.tag}
+      </div>
+
+      <div className="relative p-4 flex flex-col h-full justify-between" style={{ minHeight: "160px" }}>
+        <div>
+          <div className="flex items-start gap-2 mb-1">
+            <Tag className="w-4 h-4 text-white/80 mt-0.5 flex-shrink-0" />
+            <div>
+              <p className="text-2xl font-black text-white leading-none" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                {coupon.title}
+              </p>
+              <p className="text-sm text-white/90 font-medium">{coupon.subtitle}</p>
+            </div>
+          </div>
+          <p className="text-xs text-white/70 mt-1 leading-relaxed">{coupon.description}</p>
+        </div>
+
+        {/* Dashed divider */}
+        <div className="my-3 border-t border-dashed border-white/30" />
+
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-[10px] text-white/60 uppercase tracking-wider mb-0.5">Coupon Code</p>
+            <p className="text-base font-black text-white tracking-widest" style={{ fontFamily: "monospace" }}>
+              {coupon.code}
+            </p>
+            <p className="text-[10px] text-white/50 mt-0.5">{coupon.validity}</p>
+          </div>
+          <button
+            onClick={handleCopy}
+            className="flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-bold transition-all duration-200 active:scale-95"
+            style={{ backgroundColor: "rgba(255,255,255,0.25)", color: "white" }}
+            data-testid={`button-copy-coupon-${coupon.id}`}
+          >
+            {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+            {copied ? "Copied!" : "Copy"}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function MenuLanding() {
   const [, setLocation] = useLocation();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -68,6 +186,14 @@ export default function MenuLanding() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
   const { t } = useLanguage();
+  const couponScrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollCoupons = (dir: "left" | "right") => {
+    if (couponScrollRef.current) {
+      const amount = 288;
+      couponScrollRef.current.scrollBy({ left: dir === "right" ? amount : -amount, behavior: "smooth" });
+    }
+  };
 
   useEffect(() => {
     const savedCustomer = localStorage.getItem("customer_info");
@@ -280,7 +406,7 @@ export default function MenuLanding() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 sm:gap-4 pb-4">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4">
           {mainCategories
             .filter((cat) => cat.id !== "wine" && !cat.hidden)
             .map((category, index) => {
@@ -328,6 +454,58 @@ export default function MenuLanding() {
                 </motion.button>
               );
             })}
+        </div>
+
+        {/* Coupon Carousel Section */}
+        <div className="pt-6 pb-6">
+          <div className="flex items-center justify-between mb-3">
+            <div>
+              <h2
+                className="text-lg font-bold tracking-wider"
+                style={{ color: "#C9A55C", fontFamily: "'Cormorant Garamond', serif" }}
+              >
+                Exclusive Offers
+              </h2>
+              <p className="text-xs" style={{ color: "#888", fontFamily: "'Lato', sans-serif" }}>
+                Tap the code to copy &amp; redeem
+              </p>
+            </div>
+            <div className="flex items-center gap-1">
+              <button
+                onClick={() => scrollCoupons("left")}
+                className="w-7 h-7 rounded-full flex items-center justify-center transition-colors"
+                style={{ backgroundColor: "#242424", color: "#C9A55C" }}
+                data-testid="button-coupon-prev"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => scrollCoupons("right")}
+                className="w-7 h-7 rounded-full flex items-center justify-center transition-colors"
+                style={{ backgroundColor: "#242424", color: "#C9A55C" }}
+                data-testid="button-coupon-next"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+          <div
+            ref={couponScrollRef}
+            className="flex gap-3 overflow-x-auto pb-3"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
+            {coupons.map((coupon, index) => (
+              <motion.div
+                key={coupon.id}
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.08 }}
+              >
+                <CouponCard coupon={coupon} />
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

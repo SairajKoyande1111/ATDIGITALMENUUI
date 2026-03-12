@@ -5,24 +5,29 @@ import fallbackImg from "@assets/coming_soon_imagev2_1766811809828.jpg";
 
 interface ProductCardProps {
   item: MenuItem;
+  onClick?: (item: MenuItem) => void;
 }
 
-export default function ProductCard({ item }: ProductCardProps) {
+export default function ProductCard({ item, onClick }: ProductCardProps) {
   const [imgError, setImgError] = useState(false);
   const isBrokenImage = imgError || !item.image || 
     item.image.includes("example.com") || 
-    item.image.includes("unsplash.com") ||
     item.image.includes("via.placeholder.com") ||
     item.image.includes("placeholder.com");
   const imageUrl = isBrokenImage ? fallbackImg : item.image;
 
   return (
-    <div className="flex flex-col overflow-hidden h-full" style={{ borderRadius: 0 }}>
+    <div
+      className="flex flex-col overflow-hidden h-full cursor-pointer group"
+      style={{ borderRadius: 0 }}
+      onClick={() => onClick?.(item)}
+      data-testid={`card-dish-${item._id?.toString()}`}
+    >
       <div className="relative aspect-[4/3] w-full overflow-hidden mb-1">
         <img
           src={imageUrl}
           alt={item.name}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
           style={{ borderRadius: 0 }}
           onError={() => setImgError(true)}
         />

@@ -12,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import ProductCard from "@/components/product-card";
+import DishDetailModal from "@/components/dish-detail-modal";
 import LanguageDropdown from "@/components/language-dropdown";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { categoryTranslationMap } from "@/lib/translations";
@@ -76,6 +77,7 @@ export default function SubcategoryProducts() {
   const [speechRecognition, setSpeechRecognition] = useState<ISpeechRecognition | null>(null);
   const [voiceSearchSupported, setVoiceSearchSupported] = useState(false);
   const [vegFilter, setVegFilter] = useState<"all" | "veg" | "non-veg">(getInitialFilter);
+  const [selectedDish, setSelectedDish] = useState<MenuItem | null>(null);
 
   const itemsQuery = useQuery<MenuItem[]>({
     queryKey: ["/api/menu-items", subcategoryId],
@@ -328,12 +330,14 @@ export default function SubcategoryProducts() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.05, duration: 0.3 }}
               >
-                <ProductCard item={item} />
+                <ProductCard item={item} onClick={(dish) => setSelectedDish(dish)} />
               </motion.div>
             ))}
           </div>
         )}
       </div>
+
+      <DishDetailModal item={selectedDish} onClose={() => setSelectedDish(null)} />
     </div>
   );
 }
