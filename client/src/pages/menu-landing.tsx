@@ -311,6 +311,7 @@ export default function MenuLanding() {
   const { toast } = useToast();
   const { t } = useLanguage();
   const [selectedCoupon, setSelectedCoupon] = useState<typeof coupons[0] | null>(null);
+  const [lightboxImage, setLightboxImage] = useState<{ src: string; alt: string } | null>(null);
 
   useEffect(() => {
     const savedCustomer = localStorage.getItem("customer_info");
@@ -492,7 +493,12 @@ export default function MenuLanding() {
       </Dialog>
 
       <div className="container mx-auto px-3 sm:px-4 py-2">
-        <div className="relative h-40 sm:h-48 md:h-56 rounded-xl overflow-hidden mb-4">
+        <div
+          className="relative rounded-xl overflow-hidden mb-4 cursor-pointer group"
+          style={{ height: "220px" }}
+          onClick={() => setLightboxImage(promotionalImages[currentImageIndex])}
+          data-testid="banner-image-carousel"
+        >
           {promotionalImages.map((image, index) => (
             <motion.div
               key={image.id}
@@ -504,18 +510,31 @@ export default function MenuLanding() {
               <img
                 src={image.src}
                 alt={image.alt}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </motion.div>
           ))}
 
-          <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1.5">
+          {/* Tap-to-expand hint */}
+          <div className="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+            </svg>
+            <span className="text-[10px] text-white font-medium">View</span>
+          </div>
+
+          <div
+            className="absolute bottom-0 left-0 right-0 h-12 pointer-events-none"
+            style={{ background: "linear-gradient(to top, rgba(21,21,21,0.6), transparent)" }}
+          />
+
+          <div className="absolute bottom-2.5 left-1/2 transform -translate-x-1/2 flex space-x-1.5">
             {promotionalImages.map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentImageIndex(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === currentImageIndex ? "bg-white w-4" : "bg-white/50"
+                onClick={(e) => { e.stopPropagation(); setCurrentImageIndex(index); }}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  index === currentImageIndex ? "bg-white w-5" : "bg-white/50 w-1.5"
                 }`}
                 data-testid={`carousel-dot-${index}`}
               />
@@ -592,6 +611,94 @@ export default function MenuLanding() {
         coupon={selectedCoupon}
         onClose={() => setSelectedCoupon(null)}
       />
+
+      {/* Image Lightbox */}
+      <AnimatePresence>
+        {lightboxImage && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setLightboxImage(null)}
+          >
+            <div className="absolute inset-0 bg-black/90 backdrop-blur-md" />
+
+            {/* Close button */}
+            <button
+              className="absolute top-4 right-4 z-10 w-9 h-9 rounded-full flex items-center justify-center"
+              style={{ backgroundColor: "rgba(255,255,255,0.15)" }}
+              onClick={() => setLightboxImage(null)}
+              data-testid="button-close-lightbox"
+            >
+              <X className="w-5 h-5 text-white" />
+            </button>
+
+            {/* Navigation arrows */}
+            <button
+              className="absolute left-3 z-10 w-10 h-10 rounded-full flex items-center justify-center"
+              style={{ backgroundColor: "rgba(255,255,255,0.15)" }}
+              onClick={(e) => {
+                e.stopPropagation();
+                const prev = (currentImageIndex - 1 + promotionalImages.length) % promotionalImages.length;
+                setCurrentImageIndex(prev);
+                setLightboxImage(promotionalImages[prev]);
+              }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              className="absolute right-3 z-10 w-10 h-10 rounded-full flex items-center justify-center"
+              style={{ backgroundColor: "rgba(255,255,255,0.15)" }}
+              onClick={(e) => {
+                e.stopPropagation();
+                const next = (currentImageIndex + 1) % promotionalImages.length;
+                setCurrentImageIndex(next);
+                setLightboxImage(promotionalImages[next]);
+              }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            {/* Image */}
+            <motion.div
+              className="relative z-[1] w-full mx-4"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", damping: 24, stiffness: 260 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={lightboxImage.src}
+                alt={lightboxImage.alt}
+                className="w-full rounded-xl object-contain"
+                style={{ maxHeight: "80vh" }}
+              />
+              {/* Dot indicators */}
+              <div className="flex justify-center gap-1.5 mt-4">
+                {promotionalImages.map((_, idx) => (
+                  <button
+                    key={idx}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setCurrentImageIndex(idx);
+                      setLightboxImage(promotionalImages[idx]);
+                    }}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      idx === currentImageIndex ? "bg-white w-5" : "bg-white/40 w-1.5"
+                    }`}
+                  />
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
