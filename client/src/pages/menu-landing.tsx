@@ -311,7 +311,7 @@ export default function MenuLanding() {
   const { toast } = useToast();
   const { t } = useLanguage();
   const [selectedCoupon, setSelectedCoupon] = useState<typeof coupons[0] | null>(null);
-  const [showLightbox, setShowLightbox] = useState(false);
+  const [lightboxImage, setLightboxImage] = useState<typeof promotionalImages[0] | null>(null);
   const lightboxPaused = useRef(false);
   const swipeTouchX = useRef<number | null>(null);
 
