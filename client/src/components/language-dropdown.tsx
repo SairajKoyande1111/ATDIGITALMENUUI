@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from "react";
-import { Globe, ChevronDown, Loader2, Search } from "lucide-react";
+import { ChevronDown, Loader2, Search } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { supportedLanguages } from "@/lib/translationService";
+import googleTranslateImg from "@assets/google_(1)_1773394431689.png";
 
 interface LanguageDropdownProps {
   className?: string;
@@ -37,27 +38,21 @@ export default function LanguageDropdown({ className = "" }: LanguageDropdownPro
       <button
         onClick={() => { setOpen((o) => !o); setSearch(""); }}
         disabled={isTranslating}
-        className="flex items-center gap-1 px-2 py-1.5 rounded-full border transition-all duration-200 hover:opacity-80 disabled:opacity-50"
-        style={{
-          borderColor: "#B8986A",
-          backgroundColor: "rgba(184,152,106,0.12)",
-          color: "#dcd4c8",
-          minWidth: "60px",
-        }}
+        className="flex items-center gap-1.5 transition-all duration-200 hover:opacity-70 disabled:opacity-50"
         data-testid="button-language-toggle"
         aria-label="Select language"
       >
         {isTranslating ? (
-          <Loader2 className="w-3.5 h-3.5 animate-spin" style={{ color: "#B8986A" }} />
+          <Loader2 className="w-5 h-5 animate-spin" style={{ color: "#000000" }} />
         ) : (
-          <Globe className="w-3.5 h-3.5" style={{ color: "#B8986A" }} />
+          <img src={googleTranslateImg} alt="Translate" className="w-5 h-5 object-contain" />
         )}
-        <span className="text-xs font-semibold tracking-wide" style={{ color: "#dcd4c8" }}>
+        <span className="text-xs font-semibold tracking-wide" style={{ color: "#000000" }}>
           {current.native}
         </span>
         <ChevronDown
-          className="w-3 h-3 transition-transform duration-200"
-          style={{ color: "#B8986A", transform: open ? "rotate(180deg)" : "rotate(0deg)" }}
+          className="w-3.5 h-3.5 transition-transform duration-200"
+          style={{ color: "#000000", transform: open ? "rotate(180deg)" : "rotate(0deg)" }}
         />
       </button>
 

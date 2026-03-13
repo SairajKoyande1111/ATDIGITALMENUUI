@@ -55,7 +55,7 @@ export default function Welcome() {
         <img
           src={digitalMenuImg}
           alt="Digital Menu"
-          className="w-72 h-auto object-contain"
+          className="w-full max-w-sm h-auto object-contain -mb-12"
         />
 
         {/* Stay Connected Always — Social Icons */}
