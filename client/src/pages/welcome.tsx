@@ -49,7 +49,7 @@ export default function Welcome() {
       </div>
 
       {/* Main content — every element is a direct sibling, no wrappers, no padding */}
-      <div className="flex flex-col items-center w-full flex-1 px-0 pt-0 pb-0 gap-0 justify-start">
+      <div className="flex flex-col items-center w-full flex-1 px-0 pt-0 pb-0 gap-3 justify-start">
 
         {/* Logo — clip wrapper only to remove internal image whitespace */}
         <div className="w-full overflow-hidden flex justify-center" style={{ height: "130px" }}>
