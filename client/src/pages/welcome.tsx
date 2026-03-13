@@ -11,6 +11,9 @@ import bgPattern from "@assets/dark_bg_pattern.png";
 import instaImg from "@assets/instagram_(2)_1773345405292.png";
 import fbImg from "@assets/facebook_(2)_1773345408410.png";
 import ytImg from "@assets/youtube_1773345412112.png";
+import mapsImg from "@assets/logo_(1)_1773390711534.png";
+import callImg from "@assets/call_1773390891033.png";
+import mailImg from "@assets/communication_1773390476300.png";
 
 export default function Welcome() {
   const [, setLocation] = useLocation();
@@ -114,45 +117,34 @@ export default function Welcome() {
         </div>
 
         {/* Address Section */}
-        <div className="text-center mt-5">
-          <div
-            className="border-2 rounded-full inline-block px-5 py-1 mb-2"
-            style={{ borderColor: "#B8986A" }}
+        <div className="mt-5">
+          <button
+            className="flex items-center gap-3 cursor-pointer transition-opacity hover:opacity-80"
+            onClick={() => window.open("https://maps.app.goo.gl/C7K6BijrGrvWTXyBA", "_blank")}
           >
-            <span className="font-semibold text-sm" style={{ color: "#dcd4c8" }}>
-              {t.address}
+            <img src={mapsImg} alt="Google Maps" className="w-9 h-9 rounded-lg object-cover flex-shrink-0" />
+            <span className="text-sm font-medium" style={{ color: "#E8DFD1" }}>
+              📍 Click to View Our Location
             </span>
-          </div>
-          <div
-            className="leading-snug text-sm cursor-pointer transition-opacity hover:opacity-80"
-            style={{ color: "#E8DFD1" }}
-            onClick={() =>
-              window.open(
-                "https://www.google.com/maps/place/Barrelborn+%7C+Dine+%26+Draft+%7C+Thane/@19.1935267,72.9666575,17z",
-                "_blank"
-              )
-            }
-          >
-            <p>{t.addressLine1}</p>
-            <p>{t.addressLine2}</p>
-            <p>{t.addressLine3}</p>
-          </div>
+          </button>
         </div>
 
         {/* Contact Section */}
-        <div className="text-center mt-4">
-          <div
-            className="border-2 rounded-full inline-block px-5 py-1 mb-2"
-            style={{ borderColor: "#B8986A" }}
+        <div className="mt-4 flex flex-col gap-3">
+          <button
+            className="flex items-center gap-3 cursor-pointer transition-opacity hover:opacity-80"
+            onClick={() => window.open("tel:+918278251111")}
           >
-            <span className="font-semibold text-sm" style={{ color: "#dcd4c8" }}>
-              {t.contact}
-            </span>
-          </div>
-          <div className="text-sm" style={{ color: "#E8DFD1" }}>
-            <p>+91 8278251111</p>
-            <p>info@barrelborn.in</p>
-          </div>
+            <img src={callImg} alt="Call" className="w-9 h-9 rounded-full object-cover flex-shrink-0" />
+            <span className="text-sm font-medium" style={{ color: "#E8DFD1" }}>+91 8278251111</span>
+          </button>
+          <button
+            className="flex items-center gap-3 cursor-pointer transition-opacity hover:opacity-80"
+            onClick={() => window.open("mailto:info@barrelborn.in")}
+          >
+            <img src={mailImg} alt="Email" className="w-9 h-9 rounded-lg object-cover flex-shrink-0" />
+            <span className="text-sm font-medium" style={{ color: "#E8DFD1" }}>info@barrelborn.in</span>
+          </button>
         </div>
 
         {/* Website URL */}
