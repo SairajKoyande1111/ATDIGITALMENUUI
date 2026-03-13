@@ -53,12 +53,14 @@ export default function Welcome() {
 
         {/* Logo + Button — tightly grouped, no gap between them */}
         <div className="flex flex-col items-center w-full gap-1">
-          <img
-            src={digitalMenuImg}
-            alt="Digital Menu"
-            className="w-full max-w-xs h-auto object-contain"
-            style={{ marginBottom: "-6%" }}
-          />
+          {/* Clip wrapper removes the huge internal whitespace from the square image */}
+          <div className="w-full overflow-hidden flex justify-center" style={{ height: "130px" }}>
+            <img
+              src={digitalMenuImg}
+              alt="Digital Menu"
+              style={{ width: "320px", height: "320px", objectFit: "contain", flexShrink: 0, marginTop: "-65px" }}
+            />
+          </div>
           <button
             onClick={handleExploreMenu}
             className="w-full max-w-xs py-3 font-semibold border-2 rounded-full transition-colors flex items-center justify-center gap-2 text-sm"
