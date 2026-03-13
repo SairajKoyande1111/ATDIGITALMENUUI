@@ -48,58 +48,57 @@ export default function Welcome() {
         <LanguageDropdown />
       </div>
 
-      {/* Main content */}
-      <div className="flex flex-col items-center w-full flex-1 px-5 pt-0 pb-4 gap-4 justify-start">
+      {/* Main content — every element is a direct sibling, no wrappers, no padding */}
+      <div className="flex flex-col items-center w-full flex-1 px-0 pt-0 pb-0 gap-2 justify-start">
 
-        {/* Logo + Button — tightly grouped, no gap between them */}
-        <div className="flex flex-col items-center w-full gap-1">
-          {/* Clip wrapper removes the huge internal whitespace from the square image */}
-          <div className="w-full overflow-hidden flex justify-center" style={{ height: "130px" }}>
-            <img
-              src={digitalMenuImg}
-              alt="Digital Menu"
-              style={{ width: "320px", height: "320px", objectFit: "contain", flexShrink: 0, marginTop: "-65px" }}
-            />
-          </div>
+        {/* Logo — clip wrapper only to remove internal image whitespace */}
+        <div className="w-full overflow-hidden flex justify-center" style={{ height: "130px" }}>
+          <img
+            src={digitalMenuImg}
+            alt="Digital Menu"
+            style={{ width: "320px", height: "320px", objectFit: "contain", flexShrink: 0, marginTop: "-65px" }}
+          />
+        </div>
+
+        {/* Explore button */}
+        <button
+          onClick={handleExploreMenu}
+          className="w-full max-w-xs py-3 font-semibold border-2 rounded-full transition-colors flex items-center justify-center gap-2 text-sm"
+          style={{ borderColor: "#FFF500", color: "#FFFFFF", backgroundColor: "#FFF500", outline: "2px solid #FFF500", outlineOffset: "2px" }}
+          data-testid="button-explore-menu"
+        >
+          <Utensils className="w-4 h-4" style={{ color: "#FFFFFF" }} />
+          <span style={{ color: "#FFFFFF" }}>{t.exploreMenu}</span>
+        </button>
+
+        {/* Follow Our Socials label */}
+        <p className="text-xs font-bold tracking-widest uppercase" style={{ color: "#000000" }}>
+          Follow Our Socials
+        </p>
+
+        {/* Social icons row */}
+        <div className="flex items-center gap-5">
           <button
-            onClick={handleExploreMenu}
-            className="w-full max-w-xs py-3 font-semibold border-2 rounded-full transition-colors flex items-center justify-center gap-2 text-sm"
-            style={{ borderColor: "#FFF500", color: "#FFFFFF", backgroundColor: "#FFF500", outline: "2px solid #FFF500", outlineOffset: "2px" }}
-            data-testid="button-explore-menu"
+            onClick={() => handleSocialClick("https://www.instagram.com/barrelborn_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==")}
+            className="transition-opacity hover:opacity-80"
           >
-            <Utensils className="w-4 h-4" style={{ color: "#FFFFFF" }} />
-            <span style={{ color: "#FFFFFF" }}>{t.exploreMenu}</span>
+            <img src={instaImg} alt="Instagram" className="w-12 h-12 rounded-xl object-cover" />
+          </button>
+          <button
+            onClick={() => handleSocialClick("https://facebook.com")}
+            className="transition-opacity hover:opacity-80"
+          >
+            <img src={fbImg} alt="Facebook" className="w-12 h-12 rounded-xl object-cover" />
+          </button>
+          <button
+            onClick={() => handleSocialClick("https://youtube.com")}
+            className="transition-opacity hover:opacity-80"
+          >
+            <img src={ytImg} alt="YouTube" className="w-12 h-12 rounded-xl object-cover" />
           </button>
         </div>
 
-        {/* Follow Our Socials — Social Icons */}
-        <div className="flex flex-col items-center gap-1.5 w-full">
-          <p className="text-xs font-bold tracking-widest uppercase" style={{ color: "#000000" }}>
-            Follow Our Socials
-          </p>
-          <div className="flex items-center gap-5">
-            <button
-              onClick={() => handleSocialClick("https://www.instagram.com/barrelborn_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==")}
-              className="transition-opacity hover:opacity-80"
-            >
-              <img src={instaImg} alt="Instagram" className="w-12 h-12 rounded-xl object-cover" />
-            </button>
-            <button
-              onClick={() => handleSocialClick("https://facebook.com")}
-              className="transition-opacity hover:opacity-80"
-            >
-              <img src={fbImg} alt="Facebook" className="w-12 h-12 rounded-xl object-cover" />
-            </button>
-            <button
-              onClick={() => handleSocialClick("https://youtube.com")}
-              className="transition-opacity hover:opacity-80"
-            >
-              <img src={ytImg} alt="YouTube" className="w-12 h-12 rounded-xl object-cover" />
-            </button>
-          </div>
-        </div>
-
-        {/* Google Review badge — no label text */}
+        {/* Google Review badge */}
         <button onClick={handleReviewClick} className="hover:opacity-80 transition-opacity">
           <img
             src={googleReviewImg}
@@ -108,46 +107,44 @@ export default function Welcome() {
           />
         </button>
 
-        {/* Connect With Us — Maps, Call, Mail */}
-        <div className="flex flex-col items-center gap-1.5 w-full">
-          <p className="text-xs font-bold tracking-widest uppercase" style={{ color: "#000000" }}>
-            Connect With Us
-          </p>
-          <div className="flex items-start justify-center gap-6">
-            <button
-              className="flex flex-col items-center gap-0.5 transition-opacity hover:opacity-80"
-              onClick={() => window.open("https://maps.app.goo.gl/C7K6BijrGrvWTXyBA", "_blank")}
-            >
-              <img src={mapsImg} alt="Google Maps" className="w-12 h-12 rounded-lg object-cover" />
-              <span className="text-xs font-medium" style={{ color: "#000000" }}>Location</span>
-            </button>
-            <button
-              className="flex flex-col items-center gap-0.5 transition-opacity hover:opacity-80"
-              onClick={() => window.open("tel:+918278251111")}
-            >
-              <img src={callImg} alt="Call" className="w-12 h-12 rounded-full object-cover" />
-              <span className="text-xs font-medium" style={{ color: "#000000" }}>Call Us</span>
-            </button>
-            <button
-              className="flex flex-col items-center gap-0.5 transition-opacity hover:opacity-80"
-              onClick={() => window.open("mailto:info@barrelborn.in")}
-            >
-              <img src={mailImg} alt="Email" className="w-12 h-12 rounded-lg object-cover" />
-              <span className="text-xs font-medium" style={{ color: "#000000" }}>Email Us</span>
-            </button>
-          </div>
+        {/* Connect With Us label */}
+        <p className="text-xs font-bold tracking-widest uppercase" style={{ color: "#000000" }}>
+          Connect With Us
+        </p>
+
+        {/* Connect icons row */}
+        <div className="flex items-start justify-center gap-6">
+          <button
+            className="flex flex-col items-center gap-0.5 transition-opacity hover:opacity-80"
+            onClick={() => window.open("https://maps.app.goo.gl/C7K6BijrGrvWTXyBA", "_blank")}
+          >
+            <img src={mapsImg} alt="Google Maps" className="w-12 h-12 rounded-lg object-cover" />
+            <span className="text-xs font-medium" style={{ color: "#000000" }}>Location</span>
+          </button>
+          <button
+            className="flex flex-col items-center gap-0.5 transition-opacity hover:opacity-80"
+            onClick={() => window.open("tel:+918278251111")}
+          >
+            <img src={callImg} alt="Call" className="w-12 h-12 rounded-full object-cover" />
+            <span className="text-xs font-medium" style={{ color: "#000000" }}>Call Us</span>
+          </button>
+          <button
+            className="flex flex-col items-center gap-0.5 transition-opacity hover:opacity-80"
+            onClick={() => window.open("mailto:info@barrelborn.in")}
+          >
+            <img src={mailImg} alt="Email" className="w-12 h-12 rounded-lg object-cover" />
+            <span className="text-xs font-medium" style={{ color: "#000000" }}>Email Us</span>
+          </button>
         </div>
 
         {/* Footer */}
-        <div className="flex flex-col items-center gap-0.5">
-          <p
-            className="cursor-pointer text-xs font-medium"
-            style={{ color: "#000000" }}
-            onClick={() => window.open("https://www.atdigitalmenu.com", "_blank")}
-          >
-            www.atdigitalmenu.com
-          </p>
-        </div>
+        <p
+          className="cursor-pointer text-xs font-medium"
+          style={{ color: "#000000" }}
+          onClick={() => window.open("https://www.atdigitalmenu.com", "_blank")}
+        >
+          www.atdigitalmenu.com
+        </p>
 
       </div>
     </div>
