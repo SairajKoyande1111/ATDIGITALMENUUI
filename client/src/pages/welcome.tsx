@@ -48,27 +48,27 @@ export default function Welcome() {
         <LanguageDropdown />
       </div>
 
-      {/* Main content — tightly packed towards the top */}
-      <div className="flex flex-col items-center w-full flex-1 px-5 pt-2 pb-4 gap-4 justify-start">
+      {/* Main content */}
+      <div className="flex flex-col items-center w-full flex-1 px-5 pt-0 pb-4 gap-4 justify-start">
 
-        {/* Digital Menu Logo — negative margins trim internal whitespace */}
-        <img
-          src={digitalMenuImg}
-          alt="Digital Menu"
-          className="w-full max-w-xs h-auto object-contain"
-          style={{ marginBottom: "-6%" }}
-        />
-
-        {/* Explore Menu Button */}
-        <button
-          onClick={handleExploreMenu}
-          className="w-full max-w-xs py-3 font-semibold border-2 rounded-full transition-colors flex items-center justify-center gap-2 text-sm"
-          style={{ borderColor: "#FFF500", color: "#FFFFFF", backgroundColor: "#FFF500", outline: "2px solid #FFF500", outlineOffset: "2px" }}
-          data-testid="button-explore-menu"
-        >
-          <Utensils className="w-4 h-4" style={{ color: "#FFFFFF" }} />
-          <span style={{ color: "#FFFFFF" }}>{t.exploreMenu}</span>
-        </button>
+        {/* Logo + Button — tightly grouped, no gap between them */}
+        <div className="flex flex-col items-center w-full gap-1">
+          <img
+            src={digitalMenuImg}
+            alt="Digital Menu"
+            className="w-full max-w-xs h-auto object-contain"
+            style={{ marginBottom: "-6%" }}
+          />
+          <button
+            onClick={handleExploreMenu}
+            className="w-full max-w-xs py-3 font-semibold border-2 rounded-full transition-colors flex items-center justify-center gap-2 text-sm"
+            style={{ borderColor: "#FFF500", color: "#FFFFFF", backgroundColor: "#FFF500", outline: "2px solid #FFF500", outlineOffset: "2px" }}
+            data-testid="button-explore-menu"
+          >
+            <Utensils className="w-4 h-4" style={{ color: "#FFFFFF" }} />
+            <span style={{ color: "#FFFFFF" }}>{t.exploreMenu}</span>
+          </button>
+        </div>
 
         {/* Follow Our Socials — Social Icons */}
         <div className="flex flex-col items-center gap-1.5 w-full">
