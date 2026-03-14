@@ -48,40 +48,35 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-          {/* Backdrop */}
           <motion.div
-            className="absolute inset-0 bg-black/75 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
             onClick={onClose}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           />
 
-          {/* Modal Sheet */}
           <motion.div
             className="relative w-full sm:max-w-md max-h-[92vh] sm:max-h-[88vh] overflow-y-auto rounded-t-3xl sm:rounded-2xl"
-            style={{ backgroundColor: "#1a1a1a", border: "1px solid #B8986A33" }}
+            style={{ backgroundColor: "#1A1408", border: "1px solid rgba(212,175,55,0.3)" }}
             initial={{ y: "100%", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: "100%", opacity: 0 }}
             transition={{ type: "spring", damping: 28, stiffness: 300 }}
           >
-            {/* Drag handle */}
             <div className="flex justify-center pt-3 pb-1 sm:hidden">
-              <div className="w-10 h-1 rounded-full bg-white/20" />
+              <div className="w-10 h-1 rounded-full" style={{ backgroundColor: "rgba(212,175,55,0.3)" }} />
             </div>
 
-            {/* Close button */}
             <button
               onClick={onClose}
               className="absolute top-4 right-4 z-10 w-8 h-8 rounded-full flex items-center justify-center transition-colors"
-              style={{ backgroundColor: "rgba(0,0,0,0.5)", color: "#DCD4C8" }}
+              style={{ backgroundColor: "rgba(0,0,0,0.6)", color: "#DCD4C8" }}
               data-testid="button-close-dish-modal"
             >
               <X className="w-4 h-4" />
             </button>
 
-            {/* Dish Image */}
             <div className="relative w-full aspect-video overflow-hidden">
               <img
                 src={imageUrl}
@@ -89,9 +84,8 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
                 className="w-full h-full object-cover"
                 onError={() => setImgError(true)}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1A1408] via-transparent to-transparent" />
 
-              {/* Veg badge */}
               <div
                 className={`absolute top-4 left-4 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold ${
                   item.isVeg ? "bg-green-600 text-white" : "bg-red-600 text-white"
@@ -102,69 +96,61 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
               </div>
             </div>
 
-            {/* Content */}
             <div className="px-5 pb-8 -mt-4 space-y-5">
-              {/* Name & Price */}
               <div>
                 <h2
-                  className="text-2xl font-bold leading-tight mb-1"
-                  style={{ color: "#C9A55C", fontFamily: "'Cormorant Garamond', serif" }}
+                  className="text-xl font-bold leading-tight mb-1 uppercase tracking-widest"
+                  style={{ color: "#D4AF37", fontFamily: "'DM Sans', sans-serif" }}
                   data-testid="text-dish-name"
                 >
                   {item.name}
                 </h2>
                 <p
-                  className="text-lg font-bold"
-                  style={{ color: "#FFFFFF", fontFamily: "'Lato', sans-serif" }}
+                  className="text-lg font-bold tracking-wide"
+                  style={{ color: "#E6C55A", fontFamily: "'DM Sans', sans-serif" }}
                   data-testid="text-dish-price"
                 >
                   {priceDisplay}
                 </p>
               </div>
 
-              {/* Divider */}
-              <div className="h-px w-full" style={{ backgroundColor: "#B8986A33" }} />
+              <div className="h-px w-full" style={{ backgroundColor: "rgba(212,175,55,0.2)" }} />
 
-              {/* Description */}
               <div>
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "#DCD4C8", fontFamily: "'Lato', sans-serif" }}
+                  style={{ color: "#DCD4C8", fontFamily: "'DM Sans', sans-serif" }}
                   data-testid="text-dish-description"
                 >
                   {item.description || "No description available."}
                 </p>
               </div>
 
-              {/* Divider */}
-              <div className="h-px w-full" style={{ backgroundColor: "#B8986A33" }} />
+              <div className="h-px w-full" style={{ backgroundColor: "rgba(212,175,55,0.2)" }} />
 
-              {/* Preparation Time */}
               <div className="flex items-center gap-3">
                 <div
                   className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0"
-                  style={{ backgroundColor: "#B8986A22" }}
+                  style={{ backgroundColor: "rgba(212,175,55,0.15)" }}
                 >
-                  <Clock className="w-4 h-4" style={{ color: "#C9A55C" }} />
+                  <Clock className="w-4 h-4" style={{ color: "#D4AF37" }} />
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-wider mb-0.5" style={{ color: "#B8986A", fontFamily: "'Lato', sans-serif" }}>
+                  <p className="text-xs uppercase tracking-widest mb-0.5" style={{ color: "#D4AF37", fontFamily: "'DM Sans', sans-serif" }}>
                     Preparation Time
                   </p>
-                  <p className="text-sm font-medium" style={{ color: "#DCD4C8", fontFamily: "'Lato', sans-serif" }}>
+                  <p className="text-sm font-medium" style={{ color: "#DCD4C8", fontFamily: "'DM Sans', sans-serif" }}>
                     {PREP_TIME_PLACEHOLDER}
                   </p>
                 </div>
               </div>
 
-              {/* Divider */}
-              <div className="h-px w-full" style={{ backgroundColor: "#B8986A33" }} />
+              <div className="h-px w-full" style={{ backgroundColor: "rgba(212,175,55,0.2)" }} />
 
-              {/* Nutritional Contents */}
               <div>
                 <div className="flex items-center gap-2 mb-3">
-                  <Sparkles className="w-4 h-4" style={{ color: "#C9A55C" }} />
-                  <h3 className="text-sm font-bold uppercase tracking-wider" style={{ color: "#C9A55C", fontFamily: "'Cormorant Garamond', serif" }}>
+                  <Sparkles className="w-4 h-4" style={{ color: "#D4AF37" }} />
+                  <h3 className="text-xs font-bold uppercase tracking-widest" style={{ color: "#D4AF37", fontFamily: "'DM Sans', sans-serif" }}>
                     Nutritional Contents
                   </h3>
                 </div>
@@ -173,70 +159,64 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
                     <div
                       key={n.label}
                       className="rounded-xl p-2.5 text-center"
-                      style={{ backgroundColor: "#242424" }}
+                      style={{ backgroundColor: "rgba(212,175,55,0.08)", border: "1px solid rgba(212,175,55,0.15)" }}
                     >
-                      <p className="text-xs mb-0.5" style={{ color: "#888" }}>{n.label}</p>
+                      <p className="text-xs mb-0.5" style={{ color: "#DCD4C8", opacity: 0.6 }}>{n.label}</p>
                       <p className="text-sm font-bold" style={{ color: "#DCD4C8" }}>{n.value}</p>
                     </div>
                   ))}
                 </div>
-                <p className="text-xs mt-2 text-center" style={{ color: "#666", fontFamily: "'Lato', sans-serif" }}>
+                <p className="text-xs mt-2 text-center" style={{ color: "#DCD4C8", opacity: 0.4, fontFamily: "'DM Sans', sans-serif" }}>
                   Nutritional info will be available soon
                 </p>
               </div>
 
-              {/* Divider */}
-              <div className="h-px w-full" style={{ backgroundColor: "#B8986A33" }} />
+              <div className="h-px w-full" style={{ backgroundColor: "rgba(212,175,55,0.2)" }} />
 
-              {/* Allergens */}
               <div>
                 <div className="flex items-center gap-2 mb-3">
-                  <AlertTriangle className="w-4 h-4" style={{ color: "#C9A55C" }} />
-                  <h3 className="text-sm font-bold uppercase tracking-wider" style={{ color: "#C9A55C", fontFamily: "'Cormorant Garamond', serif" }}>
+                  <AlertTriangle className="w-4 h-4" style={{ color: "#D4AF37" }} />
+                  <h3 className="text-xs font-bold uppercase tracking-widest" style={{ color: "#D4AF37", fontFamily: "'DM Sans', sans-serif" }}>
                     Allergens
                   </h3>
                 </div>
                 <div
                   className="rounded-xl p-3"
-                  style={{ backgroundColor: "#242424" }}
+                  style={{ backgroundColor: "rgba(212,175,55,0.08)", border: "1px solid rgba(212,175,55,0.15)" }}
                 >
                   {ALLERGEN_PLACEHOLDER.map((a, i) => (
-                    <p key={i} className="text-sm" style={{ color: "#DCD4C8", fontFamily: "'Lato', sans-serif" }}>
+                    <p key={i} className="text-sm" style={{ color: "#DCD4C8", fontFamily: "'DM Sans', sans-serif" }}>
                       {a}
                     </p>
                   ))}
                 </div>
               </div>
 
-              {/* Divider */}
-              <div className="h-px w-full" style={{ backgroundColor: "#B8986A33" }} />
+              <div className="h-px w-full" style={{ backgroundColor: "rgba(212,175,55,0.2)" }} />
 
-              {/* Ingredients */}
               <div>
                 <div className="flex items-center gap-2 mb-3">
-                  <ChefHat className="w-4 h-4" style={{ color: "#C9A55C" }} />
-                  <h3 className="text-sm font-bold uppercase tracking-wider" style={{ color: "#C9A55C", fontFamily: "'Cormorant Garamond', serif" }}>
+                  <ChefHat className="w-4 h-4" style={{ color: "#D4AF37" }} />
+                  <h3 className="text-xs font-bold uppercase tracking-widest" style={{ color: "#D4AF37", fontFamily: "'DM Sans', sans-serif" }}>
                     Ingredients
                   </h3>
                 </div>
                 <div
                   className="rounded-xl p-3"
-                  style={{ backgroundColor: "#242424" }}
+                  style={{ backgroundColor: "rgba(212,175,55,0.08)", border: "1px solid rgba(212,175,55,0.15)" }}
                 >
-                  <p className="text-sm" style={{ color: "#DCD4C8", fontFamily: "'Lato', sans-serif" }}>
+                  <p className="text-sm" style={{ color: "#DCD4C8", fontFamily: "'DM Sans', sans-serif" }}>
                     {INGREDIENTS_PLACEHOLDER}
                   </p>
                 </div>
               </div>
 
-              {/* Divider */}
-              <div className="h-px w-full" style={{ backgroundColor: "#B8986A33" }} />
+              <div className="h-px w-full" style={{ backgroundColor: "rgba(212,175,55,0.2)" }} />
 
-              {/* Customization */}
               <div>
                 <div className="flex items-center gap-2 mb-3">
-                  <SlidersHorizontal className="w-4 h-4" style={{ color: "#C9A55C" }} />
-                  <h3 className="text-sm font-bold uppercase tracking-wider" style={{ color: "#C9A55C", fontFamily: "'Cormorant Garamond', serif" }}>
+                  <SlidersHorizontal className="w-4 h-4" style={{ color: "#D4AF37" }} />
+                  <h3 className="text-xs font-bold uppercase tracking-widest" style={{ color: "#D4AF37", fontFamily: "'DM Sans', sans-serif" }}>
                     Customization
                   </h3>
                 </div>
@@ -245,10 +225,10 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
                     <div
                       key={i}
                       className="flex items-center gap-2 rounded-xl px-3 py-2.5"
-                      style={{ backgroundColor: "#242424" }}
+                      style={{ backgroundColor: "rgba(212,175,55,0.08)", border: "1px solid rgba(212,175,55,0.15)" }}
                     >
-                      <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: "#C9A55C" }} />
-                      <p className="text-sm" style={{ color: "#DCD4C8", fontFamily: "'Lato', sans-serif" }}>
+                      <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: "#D4AF37" }} />
+                      <p className="text-sm" style={{ color: "#DCD4C8", fontFamily: "'DM Sans', sans-serif" }}>
                         {c}
                       </p>
                     </div>

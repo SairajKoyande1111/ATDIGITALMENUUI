@@ -9,8 +9,8 @@ interface DishCardProps {
 
 export default function DishCard({ item }: DishCardProps) {
   const [imgError, setImgError] = useState(false);
-  const imageUrl = imgError || !item.image || 
-    item.image.includes("example.com") || 
+  const imageUrl = imgError || !item.image ||
+    item.image.includes("example.com") ||
     item.image.includes("unsplash.com") ||
     item.image.includes("placeholder.com") ||
     item.image.includes("via.placeholder.com")
@@ -19,49 +19,51 @@ export default function DishCard({ item }: DishCardProps) {
   return (
     <motion.div
       whileHover={{ y: -2, scale: 1.01 }}
-      className="dish-card bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 elegant-shadow h-full flex flex-col"
+      className="overflow-hidden h-full flex flex-col transition-all duration-300"
+      style={{
+        borderRadius: "10px",
+        backgroundColor: "#1A1408",
+        border: "1px solid rgba(212,175,55,0.25)",
+      }}
     >
       <div className="flex flex-col h-full">
-        {/* Image Section */}
-        <div className="relative aspect-[4/3] overflow-hidden">
+        <div className="relative aspect-[4/3] overflow-hidden" style={{ borderRadius: "10px 10px 0 0" }}>
           <img
             src={imageUrl}
             alt={item.name}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
             onError={() => setImgError(true)}
           />
           <div
-            className={`absolute top-3 right-3 w-5 h-5 rounded-full border-2 border-white shadow-sm ${
-              item.isVeg ? 'bg-green-500' : 'bg-red-500'
+            className={`absolute top-2 right-2 w-4 h-4 rounded-full border-2 shadow-sm ${
+              item.isVeg ? 'bg-green-500 border-green-300' : 'bg-red-500 border-red-300'
             }`}
           />
         </div>
 
-        {/* Content Section */}
         <div className="p-2 md:p-3 flex-1 flex flex-col">
           <div className="flex-1 space-y-1">
             <h3
-              className="text-sm md:text-base font-bold leading-tight line-clamp-2"
-              style={{ color: 'var(--mings-orange)', fontFamily: 'Open Sans, sans-serif' }}
+              className="text-sm md:text-base font-semibold leading-tight line-clamp-2 tracking-wide uppercase"
+              style={{ color: "#D4AF37", fontFamily: "'DM Sans', sans-serif" }}
             >
               {item.name}
             </h3>
             <p
-              className="font-sans text-xs md:text-sm leading-tight line-clamp-2"
-              style={{ color: 'var(--mings-black)' }}
+              className="text-xs md:text-sm leading-tight line-clamp-2"
+              style={{ color: "#DCD4C8", fontFamily: "'DM Sans', sans-serif", opacity: 0.8 }}
             >
               {item.description}
             </p>
           </div>
 
-          {/* Price Section */}
-          <div className="mt-2 pt-2 border-t border-gray-100">
+          <div className="mt-2 pt-2" style={{ borderTop: "1px solid rgba(212,175,55,0.2)" }}>
             <div className="flex justify-center">
               <span
-                className="font-serif font-bold text-sm md:text-base"
-                style={{ color: 'var(--mings-orange)' }}
+                className="font-bold text-sm md:text-base tracking-wide"
+                style={{ color: "#E6C55A", fontFamily: "'DM Sans', sans-serif" }}
               >
-                {typeof item.price === "string" && item.price.includes("|") 
+                {typeof item.price === "string" && item.price.includes("|")
                   ? item.price.split("|").map(p => `₹${p.trim()}`).join(" | ")
                   : `₹${item.price}`}
               </span>

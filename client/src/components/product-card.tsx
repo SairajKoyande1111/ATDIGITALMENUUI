@@ -10,41 +10,43 @@ interface ProductCardProps {
 
 export default function ProductCard({ item, onClick }: ProductCardProps) {
   const [imgError, setImgError] = useState(false);
-  const isBrokenImage = imgError || !item.image || 
-    item.image.includes("example.com") || 
+  const isBrokenImage = imgError || !item.image ||
+    item.image.includes("example.com") ||
     item.image.includes("via.placeholder.com") ||
     item.image.includes("placeholder.com");
   const imageUrl = isBrokenImage ? fallbackImg : item.image;
 
   return (
     <div
-      className="flex flex-col overflow-hidden h-full cursor-pointer group"
-      style={{ borderRadius: 0 }}
+      className="flex flex-col overflow-hidden h-full cursor-pointer group transition-all duration-300"
+      style={{
+        borderRadius: "10px",
+        backgroundColor: "#1A1408",
+        border: "1px solid rgba(212,175,55,0.25)",
+      }}
       onClick={() => onClick?.(item)}
       data-testid={`card-dish-${item._id?.toString()}`}
     >
-      <div className="relative aspect-[4/3] w-full overflow-hidden mb-1">
+      <div className="relative aspect-[4/3] w-full overflow-hidden" style={{ borderRadius: "10px 10px 0 0" }}>
         <img
           src={imageUrl}
           alt={item.name}
           className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-          style={{ borderRadius: 0 }}
           onError={() => setImgError(true)}
         />
         <div
-          className={`absolute top-2 right-2 w-3 h-3 rounded-full border border-white shadow-sm ${
-            item.isVeg ? 'bg-green-500' : 'bg-red-500'
+          className={`absolute top-2 right-2 w-4 h-4 rounded-full border-2 shadow-sm ${
+            item.isVeg ? 'bg-green-500 border-green-300' : 'bg-red-500 border-red-300'
           }`}
         />
       </div>
 
-      <div className="flex flex-col flex-1">
+      <div className="flex flex-col flex-1 p-2 md:p-3">
         <h3
-          className="text-base sm:text-lg font-bold leading-tight mb-0 line-clamp-2"
-          style={{ 
-            color: '#C9A55C', 
-            fontFamily: "'Cormorant Garamond', serif",
-            letterSpacing: "0.5px",
+          className="text-sm sm:text-base font-semibold leading-tight mb-1 line-clamp-2 tracking-wide uppercase"
+          style={{
+            color: "#D4AF37",
+            fontFamily: "'DM Sans', sans-serif",
             minHeight: "2.8em",
             display: "-webkit-box",
             WebkitLineClamp: 2,
@@ -55,9 +57,10 @@ export default function ProductCard({ item, onClick }: ProductCardProps) {
         </h3>
         <p
           className="text-xs sm:text-sm leading-relaxed mb-1 line-clamp-2"
-          style={{ 
-            color: '#FFFFFF',
-            fontFamily: "'Lato', sans-serif",
+          style={{
+            color: "#DCD4C8",
+            fontFamily: "'DM Sans', sans-serif",
+            opacity: 0.8,
             minHeight: "3em",
             display: "-webkit-box",
             WebkitLineClamp: 2,
@@ -66,18 +69,17 @@ export default function ProductCard({ item, onClick }: ProductCardProps) {
         >
           {item.description || "No description available"}
         </p>
-        <div className="mt-auto">
+        <div className="mt-auto pt-2" style={{ borderTop: "1px solid rgba(212,175,55,0.2)" }}>
           <span
-            className="text-sm sm:text-base font-bold block"
-            style={{ 
-              color: '#FFFFFF',
-              fontFamily: "'Lato', sans-serif",
-              letterSpacing: "0.5px",
+            className="text-sm sm:text-base font-bold block tracking-wide"
+            style={{
+              color: "#E6C55A",
+              fontFamily: "'DM Sans', sans-serif",
               lineHeight: "1.2",
-              minHeight: "1.2em"
+              minHeight: "1.2em",
             }}
           >
-            {typeof item.price === "string" && item.price.includes("|") 
+            {typeof item.price === "string" && item.price.includes("|")
               ? item.price.split("|").map(p => `₹${p.trim()}`).join(" | ")
               : `₹${item.price}`}
           </span>

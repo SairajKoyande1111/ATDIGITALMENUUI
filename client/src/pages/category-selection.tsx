@@ -40,7 +40,7 @@ declare global {
   }
 }
 
-import logoImg from "@assets/Untitled_design_(20)_1765720426678.png";
+import logoImg from "@assets/ATDIGITALMENUNOBG_1773511851120.png";
 import sangriaImg from "@assets/image_1767545808245.png";
 import classicCocktailsImg from "@assets/image_1767545845465.png";
 import signatureCocktailsImg from "@assets/image_1767546048894.png";
@@ -275,15 +275,15 @@ export default function CategorySelection() {
 
   if (!mainCategory) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: "#151515" }}>
-        <p className="text-white">Category not found</p>
+      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: "#3D3100" }}>
+        <p style={{ color: "#DCD4C8" }}>Category not found</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#151515" }}>
-      <header className="sticky top-0 z-30 elegant-shadow" style={{ backgroundColor: "#151515" }}>
+    <div className="min-h-screen" style={{ backgroundColor: "#3D3100" }}>
+      <header className="sticky top-0 z-30 elegant-shadow" style={{ backgroundColor: "#3D3100" }}>
         <div className="container mx-auto px-2 sm:px-4 py-3 sm:py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1">
@@ -337,11 +337,10 @@ export default function CategorySelection() {
 
       <div className="container mx-auto px-4 py-4">
         <h1
-          className="text-2xl sm:text-3xl font-bold tracking-wider text-center mb-2"
+          className="text-xl sm:text-2xl font-semibold tracking-widest uppercase text-center mb-2"
           style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            color: "#C9A55C",
-            letterSpacing: "3px",
+            fontFamily: "'DM Sans', sans-serif",
+            color: "#D4AF37",
           }}
         >
           {mainCategory.displayLabel}
@@ -433,11 +432,11 @@ export default function CategorySelection() {
           <div className="flex flex-col gap-6">
             {filteredItems.length === 0 ? (
               <div className="flex flex-col items-center justify-center min-h-[200px] text-center">
-                <Search className="h-12 w-12 text-gray-500 mb-4" />
-                <h3 className="text-lg font-semibold text-gray-300 mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                <Search className="h-12 w-12 mb-4" style={{ color: "rgba(212,175,55,0.4)" }} />
+                <h3 className="text-lg font-semibold mb-2 tracking-widest uppercase" style={{ fontFamily: "'DM Sans', sans-serif", color: "#D4AF37" }}>
                   {t.noItemsFound}
                 </h3>
-                <p className="text-sm text-gray-500" style={{ fontFamily: "'Lato', sans-serif" }}>
+                <p className="text-sm" style={{ fontFamily: "'DM Sans', sans-serif", color: "#DCD4C8", opacity: 0.6 }}>
                   {t.noResultsFor} "{foodSearchQuery}"
                 </p>
               </div>
@@ -455,46 +454,60 @@ export default function CategorySelection() {
             )}
           </div>
         ) : (
-          <div className="grid grid-cols-2 gap-4 sm:gap-6">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4">
             {filteredSubcategories.map((subcat, index) => {
               const translationKey = categoryTranslationMap[subcat.id];
               const subcatLabel = translationKey ? t[translationKey] : subcat.displayLabel;
               return (
-                <motion.button
+                <motion.div
                   key={subcat.id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  onClick={() => handleSubcategoryClick(subcat.id)}
-                  className="relative rounded-xl overflow-hidden group"
-                  style={{ aspectRatio: "1/1.1" }}
-                  data-testid={`tile-${subcat.id}`}
+                  style={{
+                    background: "linear-gradient(90deg, #D4AF37, #E6C55A)",
+                    padding: "2px",
+                    borderRadius: "10px",
+                  }}
                 >
-                  <img
-                    src={failedImages.has(subcat.id) ? fallbackImg : (subcategoryImages[subcat.id] || signatureMocktailsImg)}
-                    alt={subcatLabel as string}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    onError={() => {
-                      setFailedImages(prev => new Set(prev).add(subcat.id));
+                  <button
+                    onClick={() => handleSubcategoryClick(subcat.id)}
+                    className="group overflow-hidden relative"
+                    style={{
+                      borderRadius: "8px",
+                      display: "block",
+                      width: "100%",
+                      aspectRatio: "1 / 1.1",
+                      position: "relative",
                     }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                  <div className="absolute inset-0 flex flex-col items-center justify-end p-2 pb-3 sm:pb-4">
-                    <h3
-                      className="text-base sm:text-lg font-bold tracking-wider uppercase text-center leading-tight"
-                      style={{
-                        fontFamily: "'Cormorant Garamond', serif",
-                        color: "#FFFFFF",
-                        textShadow: "0 4px 12px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.9)",
-                        letterSpacing: "1px",
+                    data-testid={`tile-${subcat.id}`}
+                  >
+                    <img
+                      src={failedImages.has(subcat.id) ? fallbackImg : (subcategoryImages[subcat.id] || signatureMocktailsImg)}
+                      alt={subcatLabel as string}
+                      style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+                      className="transition-transform duration-500 group-hover:scale-110"
+                      onError={() => {
+                        setFailedImages(prev => new Set(prev).add(subcat.id));
                       }}
-                    >
-                      {subcatLabel}
-                    </h3>
-                  </div>
-                </motion.button>
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                    <div className="absolute inset-0 flex flex-col items-center justify-end p-2 pb-3 sm:pb-4">
+                      <h3
+                        className="text-sm sm:text-base font-semibold tracking-widest uppercase text-center leading-tight"
+                        style={{
+                          fontFamily: "'DM Sans', sans-serif",
+                          color: "#FFFFFF",
+                          textShadow: "0 4px 12px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.9)",
+                        }}
+                      >
+                        {subcatLabel}
+                      </h3>
+                    </div>
+                  </button>
+                </motion.div>
               );
             })}
           </div>

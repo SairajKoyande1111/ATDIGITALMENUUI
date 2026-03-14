@@ -180,15 +180,15 @@ export default function SubcategoryProducts() {
 
   if (!mainCategory || !currentSubcategory) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: "#151515" }}>
-        <p className="text-white">Category not found</p>
+      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: "#3D3100" }}>
+        <p style={{ color: "#DCD4C8" }}>Category not found</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#151515" }}>
-      <header className="sticky top-0 z-30" style={{ backgroundColor: "#151515" }}>
+    <div className="min-h-screen" style={{ backgroundColor: "#3D3100" }}>
+      <header className="sticky top-0 z-30" style={{ backgroundColor: "#3D3100" }}>
         <div className="container mx-auto px-2 sm:px-4 py-3 sm:py-4">
           <div className="flex items-center justify-between gap-2">
             <Button
@@ -204,12 +204,11 @@ export default function SubcategoryProducts() {
 
             <div className="flex-1 flex items-center justify-center relative">
               <h1
-                className="font-bold text-center"
+                className="font-semibold text-center tracking-widest uppercase"
                 style={{
-                  fontSize: "clamp(16px, 4vw, 24px)",
-                  color: "#C9A55C",
-                  fontFamily: "'Cormorant Garamond', serif",
-                  letterSpacing: "2px",
+                  fontSize: "clamp(13px, 3.5vw, 19px)",
+                  color: "#D4AF37",
+                  fontFamily: "'DM Sans', sans-serif",
                 }}
               >
                 {(categoryTranslationMap[currentSubcategory.id]
@@ -313,11 +312,11 @@ export default function SubcategoryProducts() {
           </div>
         ) : filteredItems.length === 0 ? (
           <div className="flex flex-col items-center justify-center min-h-[300px] text-center px-4">
-            <Search className="h-12 w-12 text-gray-500 mb-4" />
-            <h3 className="text-lg font-semibold text-gray-300 mb-2" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <Search className="h-12 w-12 mb-4" style={{ color: "rgba(212,175,55,0.4)" }} />
+            <h3 className="text-lg font-semibold mb-2 tracking-widest uppercase" style={{ fontFamily: "'DM Sans', sans-serif", color: "#D4AF37" }}>
               {t.noItemsFound}
             </h3>
-            <p className="text-sm text-gray-500" style={{ fontFamily: "'Lato', sans-serif" }}>
+            <p className="text-sm" style={{ fontFamily: "'DM Sans', sans-serif", color: "#DCD4C8", opacity: 0.6 }}>
               {searchQuery ? `${t.noResultsFor} "${searchQuery}"` : t.noItemsFound}
             </p>
           </div>

@@ -124,7 +124,7 @@ export default function CategoryDetail() {
   const [, setLocation] = useLocation();
   const params = useParams<{ category: string }>();
   const categoryId = params.category || "food";
-  
+
   const mainCategory = getMainCategory(categoryId);
   const subcategories = mainCategory?.subcategories || [];
   const validSubcategoryIds = getSubcategoryIds(categoryId);
@@ -137,7 +137,7 @@ export default function CategoryDetail() {
   const [speechRecognition, setSpeechRecognition] = useState<ISpeechRecognition | null>(null);
   const [voiceSearchSupported, setVoiceSearchSupported] = useState(false);
   const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
-  
+
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const { data: menuItems = [], isLoading } = useQuery<MenuItem[]>({
@@ -177,15 +177,15 @@ export default function CategoryDetail() {
   const filteredItems = useMemo(() => {
     return menuItems.filter((item) => {
       if (!item.isAvailable) return false;
-      
+
       if (searchQuery.trim()) {
-        const matchesSearch = 
+        const matchesSearch =
           item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
           item.description.toLowerCase().includes(searchQuery.toLowerCase());
         const matchesCategory = validSubcategoryIds.includes(item.category);
         return matchesSearch && matchesCategory;
       }
-      
+
       const activeSubcat = subcategories.find(s => s.id === activeSubcategory);
       return item.category === activeSubcat?.dbCategory;
     });
@@ -203,9 +203,8 @@ export default function CategoryDetail() {
 
   const scrollSubcategories = (direction: "left" | "right") => {
     if (scrollContainerRef.current) {
-      const scrollAmount = 200;
       scrollContainerRef.current.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
+        left: direction === "left" ? -200 : 200,
         behavior: "smooth",
       });
     }
@@ -213,15 +212,15 @@ export default function CategoryDetail() {
 
   if (!mainCategory) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: "var(--elegant-cream)" }}>
-        <p>Category not found</p>
+      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: "#3D3100" }}>
+        <p style={{ color: "#DCD4C8" }}>Category not found</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "var(--elegant-cream)" }}>
-      <header className="sticky top-0 z-30 bg-white elegant-shadow">
+    <div className="min-h-screen" style={{ backgroundColor: "#3D3100" }}>
+      <header className="sticky top-0 z-30 elegant-shadow" style={{ backgroundColor: "#3D3100" }}>
         <div className="container mx-auto px-2 sm:px-4 py-3 sm:py-4">
           <div className="flex items-center justify-between gap-2">
             <Button
@@ -229,19 +228,18 @@ export default function CategoryDetail() {
               size="icon"
               onClick={() => setLocation("/menu")}
               className="hover:bg-transparent flex-shrink-0"
-              style={{ color: "var(--elegant-gold)" }}
+              style={{ color: "#D4AF37" }}
               data-testid="button-back"
             >
               <ArrowLeft className="h-5 w-5 sm:h-6 sm:w-6" />
             </Button>
 
             <h1
-              className="font-bold text-center flex-1"
+              className="font-semibold tracking-widest uppercase text-center flex-1"
               style={{
-                fontSize: "clamp(16px, 4vw, 24px)",
-                color: "#D97706",
-                fontFamily: "'Playfair Display', serif",
-                letterSpacing: "1px",
+                fontSize: "clamp(14px, 4vw, 20px)",
+                color: "#D4AF37",
+                fontFamily: "'DM Sans', sans-serif",
               }}
             >
               {mainCategory.displayLabel}
@@ -254,13 +252,14 @@ export default function CategoryDetail() {
 
       <div className="container mx-auto px-3 sm:px-4 py-4">
         <div className="relative mb-4">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4" style={{ color: "#D4AF37" }} />
           <Input
             type="text"
             placeholder={`Search ${mainCategory.displayLabel.toLowerCase()}...`}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 pr-12 h-11 rounded-full border-2 border-gray-200 focus-visible:ring-2 focus-visible:ring-yellow-400/50"
+            className="pl-10 pr-12 h-11 rounded-full border-2 text-white placeholder:text-white/50 focus-visible:ring-2 focus-visible:ring-[#D4AF37]/40 bg-transparent"
+            style={{ borderColor: "#D4AF37" }}
             data-testid="input-search"
           />
           {voiceSearchSupported && (
@@ -268,13 +267,13 @@ export default function CategoryDetail() {
               variant="ghost"
               size="icon"
               onClick={isListening ? undefined : startVoiceSearch}
-              className="absolute right-1 top-1/2 transform -translate-y-1/2 h-9 w-9"
+              className="absolute right-1 top-1/2 transform -translate-y-1/2 h-9 w-9 hover:bg-transparent"
               data-testid="button-voice-search"
             >
               {isListening ? (
                 <MicOff className="h-4 w-4 text-red-500 animate-pulse" />
               ) : (
-                <Mic className="h-4 w-4 text-gray-400" />
+                <Mic className="h-4 w-4" style={{ color: "#D4AF37" }} />
               )}
             </Button>
           )}
@@ -285,7 +284,8 @@ export default function CategoryDetail() {
             variant="ghost"
             size="icon"
             onClick={() => scrollSubcategories("left")}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 shadow-md rounded-full h-8 w-8"
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 rounded-full h-8 w-8 hover:bg-transparent"
+            style={{ backgroundColor: "rgba(212,175,55,0.15)", color: "#D4AF37" }}
             data-testid="button-scroll-left"
           >
             <ChevronLeft className="h-4 w-4" />
@@ -293,7 +293,7 @@ export default function CategoryDetail() {
 
           <div
             ref={scrollContainerRef}
-            className="flex overflow-x-auto scrollbar-hide gap-3 px-8 py-2"
+            className="flex overflow-x-auto gap-3 px-8 py-2"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {subcategories.map((subcat) => (
@@ -305,11 +305,11 @@ export default function CategoryDetail() {
                   setActiveSubcategory(subcat.id);
                   setSearchQuery("");
                 }}
-                className={`flex-shrink-0 flex flex-col items-center p-2 rounded-xl transition-all duration-200 min-w-[80px] ${
-                  activeSubcategory === subcat.id
-                    ? "bg-yellow-100 border-2 border-yellow-400"
-                    : "bg-white border-2 border-gray-100 hover:border-yellow-200"
-                }`}
+                className="flex-shrink-0 flex flex-col items-center p-2 rounded-xl transition-all duration-200 min-w-[80px]"
+                style={{
+                  backgroundColor: activeSubcategory === subcat.id ? "rgba(212,175,55,0.2)" : "rgba(255,255,255,0.05)",
+                  border: activeSubcategory === subcat.id ? "2px solid #D4AF37" : "2px solid rgba(212,175,55,0.2)",
+                }}
                 data-testid={`subcategory-${subcat.id}`}
               >
                 <div className="w-14 h-14 rounded-lg overflow-hidden mb-1">
@@ -323,10 +323,11 @@ export default function CategoryDetail() {
                   />
                 </div>
                 <span
-                  className={`text-xs font-medium text-center leading-tight ${
-                    activeSubcategory === subcat.id ? "text-yellow-700" : "text-gray-700"
-                  }`}
-                  style={{ fontFamily: "Open Sans, sans-serif" }}
+                  className="text-[10px] font-medium text-center leading-tight tracking-widest uppercase"
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    color: activeSubcategory === subcat.id ? "#D4AF37" : "#DCD4C8",
+                  }}
                 >
                   {subcat.displayLabel}
                 </span>
@@ -338,7 +339,8 @@ export default function CategoryDetail() {
             variant="ghost"
             size="icon"
             onClick={() => scrollSubcategories("right")}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 shadow-md rounded-full h-8 w-8"
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 rounded-full h-8 w-8 hover:bg-transparent"
+            style={{ backgroundColor: "rgba(212,175,55,0.15)", color: "#D4AF37" }}
             data-testid="button-scroll-right"
           >
             <ChevronRight className="h-4 w-4" />
@@ -356,12 +358,12 @@ export default function CategoryDetail() {
           </div>
         ) : filteredItems.length === 0 ? (
           <div className="flex flex-col items-center justify-center min-h-[300px] text-center px-4">
-            <Search className="h-12 w-12 text-gray-300 mb-4" />
-            <h3 className="text-lg font-semibold text-gray-600 mb-2">No items found</h3>
-            <p className="text-sm text-gray-500">
-              {searchQuery
-                ? `No results for "${searchQuery}"`
-                : "No items available in this category"}
+            <Search className="h-12 w-12 mb-4" style={{ color: "rgba(212,175,55,0.4)" }} />
+            <h3 className="text-lg font-semibold mb-2 tracking-widest uppercase" style={{ color: "#D4AF37", fontFamily: "'DM Sans', sans-serif" }}>
+              No items found
+            </h3>
+            <p className="text-sm" style={{ color: "#DCD4C8", opacity: 0.6 }}>
+              {searchQuery ? `No results for "${searchQuery}"` : "No items available in this category"}
             </p>
           </div>
         ) : (
