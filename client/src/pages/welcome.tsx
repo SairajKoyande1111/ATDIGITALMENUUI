@@ -52,7 +52,7 @@ export default function Welcome() {
       <div className="flex flex-col items-center w-full flex-1 px-0 pt-0 pb-0 gap-3 justify-start">
 
         {/* Logo */}
-        <div className="w-full flex justify-center" style={{ paddingTop: "16px" }}>
+        <div className="w-full flex justify-center" style={{ paddingTop: "6px" }}>
           <img
             src={atDigitalMenuLogo}
             alt="AT Digital Menu"
