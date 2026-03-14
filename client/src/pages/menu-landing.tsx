@@ -117,54 +117,65 @@ function CouponCard({ coupon, onClick }: { coupon: typeof coupons[0]; onClick: (
       style={{ width: "78vw", maxWidth: "340px", minWidth: "260px" }}
       data-testid={`coupon-card-${coupon.id}`}
     >
-      {/* Left notch */}
+      {/* Notch cutouts */}
       <div
         className="absolute left-[36%] top-1/2 -translate-y-1/2 -translate-x-1/2 w-5 h-5 rounded-full z-10 pointer-events-none"
-        style={{ backgroundColor: "#151515" }}
+        style={{ backgroundColor: "#3D3100" }}
+      />
+      <div
+        className="absolute left-[36%] top-0 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full z-10 pointer-events-none"
+        style={{ backgroundColor: "#3D3100" }}
+      />
+      <div
+        className="absolute left-[36%] bottom-0 -translate-x-1/2 translate-y-1/2 w-4 h-4 rounded-full z-10 pointer-events-none"
+        style={{ backgroundColor: "#3D3100" }}
       />
 
       {/* Card body — two-section horizontal layout */}
       <div
-        className="flex rounded-2xl overflow-hidden border border-dashed"
-        style={{ borderColor: "#C9A55C55", backgroundColor: "#1A1A1A", minHeight: "90px" }}
+        className="flex rounded-2xl overflow-hidden"
+        style={{ border: "1.5px solid #D4AF37", minHeight: "96px", boxShadow: "0 4px 20px rgba(212,175,55,0.18)" }}
       >
-        {/* LEFT — discount panel */}
+        {/* LEFT — gold gradient discount panel */}
         <div
           className="flex flex-col items-center justify-center px-4 py-3 flex-shrink-0"
           style={{
             width: "37%",
-            background: "linear-gradient(160deg, #2A2018 0%, #1A1408 100%)",
-            borderRight: "1.5px dashed #C9A55C55",
+            background: "linear-gradient(90deg, #D4AF37, #E6C55A)",
+            borderRight: "1.5px dashed rgba(61,49,0,0.35)",
           }}
         >
-          <Tag className="w-4 h-4 mb-1 opacity-70" style={{ color: "#C9A55C" }} />
+          <Tag className="w-4 h-4 mb-1" style={{ color: "#3D3100", opacity: 0.8 }} />
           <p
             className="text-xl font-black leading-none text-center"
             style={{
-              color: "#C9A55C",
-              fontFamily: "'Cormorant Garamond', serif",
+              color: "#3D3100",
+              fontFamily: "'DM Sans', sans-serif",
               letterSpacing: "-0.5px",
             }}
           >
             {coupon.title}
           </p>
-          <p className="text-[9px] uppercase tracking-widest mt-1 opacity-60 text-center" style={{ color: "#DCD4C8" }}>
+          <p className="text-[9px] uppercase tracking-widest mt-1.5 text-center font-semibold" style={{ color: "#3D3100", opacity: 0.75 }}>
             {coupon.tag}
           </p>
         </div>
 
-        {/* RIGHT — code + condition */}
-        <div className="flex flex-col justify-center px-4 py-3 text-left flex-1 min-w-0">
+        {/* RIGHT — code + condition on dark background */}
+        <div
+          className="flex flex-col justify-center px-4 py-3 text-left flex-1 min-w-0"
+          style={{ background: "#1A1408" }}
+        >
           <p
-            className="text-base font-black tracking-widest leading-none"
-            style={{ color: "#FFFFFF", fontFamily: "monospace" }}
+            className="text-sm font-black tracking-widest leading-none uppercase"
+            style={{ color: "#D4AF37", fontFamily: "'DM Sans', sans-serif" }}
           >
             {coupon.code}
           </p>
-          <p className="text-[11px] mt-1.5 leading-snug" style={{ color: "#B8986A" }}>
+          <p className="text-[11px] mt-1.5 leading-snug tracking-wide" style={{ color: "#E6C55A", opacity: 0.9 }}>
             {coupon.subtitle}
           </p>
-          <p className="text-[10px] mt-1 leading-snug opacity-60" style={{ color: "#DCD4C8" }}>
+          <p className="text-[10px] mt-1 leading-snug tracking-wide" style={{ color: "#DCD4C8", opacity: 0.55 }}>
             {coupon.description}
           </p>
         </div>
@@ -489,8 +500,8 @@ export default function MenuLanding() {
 
       <div className="container mx-auto px-3 sm:px-4 py-2">
         <div
-          className="relative rounded-xl overflow-hidden mb-4 cursor-pointer group"
-          style={{ height: "220px" }}
+          className="relative rounded-xl overflow-hidden mb-3 cursor-pointer group"
+          style={{ height: "280px" }}
           onClick={() => setLightboxImage(promotionalImages[currentImageIndex])}
           data-testid="banner-image-carousel"
         >
@@ -538,7 +549,7 @@ export default function MenuLanding() {
         </div>
 
         {/* Coupon Auto-Scroll Carousel — directly below image banner */}
-        <div className="py-3 overflow-hidden">
+        <div className="py-3 mb-3 overflow-hidden">
           <div className="coupon-track flex gap-4" style={{ width: "max-content" }}>
             {[...coupons, ...coupons].map((coupon, index) => (
               <CouponCard
@@ -584,12 +595,12 @@ export default function MenuLanding() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   <div className="absolute inset-0 flex flex-col items-center justify-end p-2 pb-3">
                     <h3
-                      className="text-base sm:text-lg md:text-xl font-bold tracking-wider uppercase text-center"
+                      className="text-sm sm:text-base md:text-lg font-semibold tracking-widest uppercase text-center"
                       style={{
-                        fontFamily: "'Playfair Display', serif",
+                        fontFamily: "'DM Sans', sans-serif",
                         color: "#FFFFFF",
                         textShadow: "0 2px 8px rgba(0,0,0,0.8)",
-                        letterSpacing: "0.5px",
+                        letterSpacing: "0.15em",
                       }}
                     >
                       {label}
