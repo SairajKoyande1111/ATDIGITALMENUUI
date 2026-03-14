@@ -77,7 +77,7 @@ export default function Welcome() {
         </p>
 
         {/* Social icons row */}
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-6">
           <button
             onClick={() => handleSocialClick("https://www.instagram.com/barrelborn_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==")}
             className="transition-opacity hover:opacity-80"
@@ -115,7 +115,7 @@ export default function Welcome() {
         </div>
 
         {/* Connect With Us label */}
-        <p className="text-xs font-normal tracking-widest" style={{ color: "#FFFFFF" }}>
+        <p className="text-xs font-normal tracking-widest" style={{ color: "#FFFFFF", marginTop: "14px" }}>
           Connect With Us
         </p>
 
