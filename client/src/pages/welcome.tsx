@@ -49,14 +49,14 @@ export default function Welcome() {
       </div>
 
       {/* Main content — every element is a direct sibling, no wrappers, no padding */}
-      <div className="flex flex-col items-center w-full flex-1 px-0 pt-0 pb-0 gap-2 justify-start">
+      <div className="flex flex-col items-center w-full flex-1 px-0 pt-0 pb-0 gap-3 justify-start">
 
-        {/* Logo — clipped to remove transparent padding from the square image */}
-        <div className="w-full flex justify-center overflow-hidden" style={{ height: "195px", paddingTop: "8px" }}>
+        {/* Logo */}
+        <div className="w-full flex justify-center" style={{ paddingTop: "16px" }}>
           <img
             src={atDigitalMenuLogo}
             alt="AT Digital Menu"
-            style={{ width: "340px", objectFit: "contain", marginTop: "-35px", flexShrink: 0 }}
+            style={{ width: "360px", objectFit: "contain" }}
           />
         </div>
 
@@ -64,7 +64,7 @@ export default function Welcome() {
         <button
           onClick={handleExploreMenu}
           className="w-full max-w-xs py-3 font-semibold rounded-full transition-opacity hover:opacity-90 flex items-center justify-center gap-2 text-sm"
-          style={{ background: "linear-gradient(90deg, #d4af37, #e6c55a)", border: "none", color: "#3D3100" }}
+          style={{ background: "linear-gradient(90deg, #d4af37, #e6c55a)", border: "none", color: "#3D3100", marginTop: "-30px" }}
           data-testid="button-explore-menu"
         >
           <img src={spoonForkImg} alt="" className="w-5 h-5 object-contain" style={{ mixBlendMode: "multiply" }} />
@@ -72,7 +72,7 @@ export default function Welcome() {
         </button>
 
         {/* Follow Our Socials label */}
-        <p className="text-xs font-normal tracking-widest" style={{ color: "#FFFFFF", marginTop: "14px" }}>
+        <p className="text-xs font-normal tracking-widest" style={{ color: "#FFFFFF", marginTop: "28px" }}>
           Follow Our Socials
         </p>
 
@@ -99,7 +99,7 @@ export default function Welcome() {
         </div>
 
         {/* Click to Rate Us + Google Review — grouped together with clear separation from socials */}
-        <div className="flex flex-col items-center gap-2" style={{ marginTop: "12px" }}>
+        <div className="flex flex-col items-center gap-2" style={{ marginTop: "20px" }}>
           <p className="text-xs font-normal tracking-widest" style={{ color: "#FFFFFF" }}>
             Click To Rate Us
           </p>
