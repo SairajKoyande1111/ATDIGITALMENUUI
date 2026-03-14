@@ -126,28 +126,28 @@ export default function Welcome() {
             onClick={() => window.open("https://maps.app.goo.gl/C7K6BijrGrvWTXyBA", "_blank")}
           >
             <img src={mapsImg} alt="Google Maps" className="w-12 h-12 rounded-lg object-cover" />
-            <span className="text-xs font-medium" style={{ color: "#FFFFFF" }}>Location</span>
+            <span className="text-xs font-medium" style={{ color: "#FFFFFF" }}>LOCATE US</span>
           </button>
           <button
             className="flex flex-col items-center gap-0.5 transition-opacity hover:opacity-80"
             onClick={() => window.open("tel:+918278251111")}
           >
             <img src={callImg} alt="Call" className="w-12 h-12 rounded-full object-cover" />
-            <span className="text-xs font-medium" style={{ color: "#FFFFFF" }}>Call Us</span>
+            <span className="text-xs font-medium" style={{ color: "#FFFFFF" }}>CALL US</span>
           </button>
           <button
             className="flex flex-col items-center gap-0.5 transition-opacity hover:opacity-80"
             onClick={() => window.open("mailto:info@barrelborn.in")}
           >
             <img src={mailImg} alt="Email" className="w-12 h-12 rounded-lg object-cover" />
-            <span className="text-xs font-medium" style={{ color: "#FFFFFF" }}>Email Us</span>
+            <span className="text-xs font-medium" style={{ color: "#FFFFFF" }}>EMAIL US</span>
           </button>
         </div>
 
         {/* Footer */}
         <p
-          className="cursor-pointer text-xs font-medium"
-          style={{ color: "#FFFFFF" }}
+          className="cursor-pointer font-medium"
+          style={{ color: "#FFFFFF", fontSize: "10px" }}
           onClick={() => window.open("https://www.atdigitalmenu.com", "_blank")}
         >
           www.atdigitalmenu.com
