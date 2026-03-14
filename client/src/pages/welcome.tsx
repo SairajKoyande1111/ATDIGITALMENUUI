@@ -6,7 +6,7 @@ import { MediaPreloader } from "../components/media-preloader";
 import { useState, useCallback } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import LanguageDropdown from "@/components/language-dropdown";
-import digitalMenuImg from "@assets/Untitled_design_(2)_1773391381521.png";
+import atDigitalMenuLogo from "@assets/ATDIGITALMENUNOBG_1773511851120.png";
 import instaImg from "@assets/instagram_(2)_1773345405292.png";
 import fbImg from "@assets/facebook_(2)_1773345408410.png";
 import ytImg from "@assets/youtube_1773345412112.png";
@@ -39,7 +39,7 @@ export default function Welcome() {
   return (
     <div
       className="h-screen w-full overflow-hidden relative flex flex-col"
-      style={{ backgroundColor: "#FFFFFF" }}
+      style={{ backgroundColor: "#3D3100" }}
     >
       <MediaPreloader onComplete={() => setMediaReady(true)} />
 
@@ -51,12 +51,12 @@ export default function Welcome() {
       {/* Main content — every element is a direct sibling, no wrappers, no padding */}
       <div className="flex flex-col items-center w-full flex-1 px-0 pt-0 pb-0 gap-3 justify-start">
 
-        {/* Logo — clip wrapper only to remove internal image whitespace */}
-        <div className="w-full overflow-hidden flex justify-center" style={{ height: "130px" }}>
+        {/* Logo */}
+        <div className="w-full flex justify-center" style={{ paddingTop: "16px" }}>
           <img
-            src={digitalMenuImg}
-            alt="Digital Menu"
-            style={{ width: "320px", height: "320px", objectFit: "contain", flexShrink: 0, marginTop: "-65px" }}
+            src={atDigitalMenuLogo}
+            alt="AT Digital Menu"
+            style={{ width: "280px", objectFit: "contain" }}
           />
         </div>
 
@@ -72,7 +72,7 @@ export default function Welcome() {
         </button>
 
         {/* Follow Our Socials label */}
-        <p className="text-xs font-normal tracking-widest" style={{ color: "#000000" }}>
+        <p className="text-xs font-normal tracking-widest" style={{ color: "#FFFFFF" }}>
           Follow Our Socials
         </p>
 
@@ -110,7 +110,7 @@ export default function Welcome() {
         </div>
 
         {/* Connect With Us label */}
-        <p className="text-xs font-normal tracking-widest" style={{ color: "#000000" }}>
+        <p className="text-xs font-normal tracking-widest" style={{ color: "#FFFFFF" }}>
           Connect With Us
         </p>
 
@@ -121,28 +121,28 @@ export default function Welcome() {
             onClick={() => window.open("https://maps.app.goo.gl/C7K6BijrGrvWTXyBA", "_blank")}
           >
             <img src={mapsImg} alt="Google Maps" className="w-12 h-12 rounded-lg object-cover" />
-            <span className="text-xs font-medium" style={{ color: "#000000" }}>Location</span>
+            <span className="text-xs font-medium" style={{ color: "#FFFFFF" }}>Location</span>
           </button>
           <button
             className="flex flex-col items-center gap-0.5 transition-opacity hover:opacity-80"
             onClick={() => window.open("tel:+918278251111")}
           >
             <img src={callImg} alt="Call" className="w-12 h-12 rounded-full object-cover" />
-            <span className="text-xs font-medium" style={{ color: "#000000" }}>Call Us</span>
+            <span className="text-xs font-medium" style={{ color: "#FFFFFF" }}>Call Us</span>
           </button>
           <button
             className="flex flex-col items-center gap-0.5 transition-opacity hover:opacity-80"
             onClick={() => window.open("mailto:info@barrelborn.in")}
           >
             <img src={mailImg} alt="Email" className="w-12 h-12 rounded-lg object-cover" />
-            <span className="text-xs font-medium" style={{ color: "#000000" }}>Email Us</span>
+            <span className="text-xs font-medium" style={{ color: "#FFFFFF" }}>Email Us</span>
           </button>
         </div>
 
         {/* Footer */}
         <p
           className="cursor-pointer text-xs font-medium"
-          style={{ color: "#000000" }}
+          style={{ color: "#FFFFFF" }}
           onClick={() => window.open("https://www.atdigitalmenu.com", "_blank")}
         >
           www.atdigitalmenu.com
