@@ -72,7 +72,7 @@ export default function Welcome() {
         </button>
 
         {/* Follow Our Socials label */}
-        <p className="text-xs font-normal tracking-widest" style={{ color: "#FFFFFF", marginTop: "16px" }}>
+        <p className="text-xs font-normal tracking-widest" style={{ color: "#FFFFFF", marginTop: "28px" }}>
           Follow Our Socials
         </p>
 
@@ -98,19 +98,19 @@ export default function Welcome() {
           </button>
         </div>
 
-        {/* Click to Rate Us label */}
-        <p className="text-xs font-normal tracking-widest" style={{ color: "#FFFFFF", marginTop: "16px" }}>
-          Click To Rate Us
-        </p>
-
-        {/* Google Review badge */}
-        <button onClick={handleReviewClick} className="hover:opacity-80 transition-opacity flex-shrink-0">
-          <img
-            src={googleReviewImg}
-            alt="Rate us on Google"
-            style={{ width: "180px", objectFit: "contain", display: "block" }}
-          />
-        </button>
+        {/* Click to Rate Us + Google Review — grouped together with clear separation from socials */}
+        <div className="flex flex-col items-center gap-2" style={{ marginTop: "20px" }}>
+          <p className="text-xs font-normal tracking-widest" style={{ color: "#FFFFFF" }}>
+            Click To Rate Us
+          </p>
+          <button onClick={handleReviewClick} className="hover:opacity-80 transition-opacity flex-shrink-0">
+            <img
+              src={googleReviewImg}
+              alt="Rate us on Google"
+              style={{ width: "180px", objectFit: "contain", display: "block" }}
+            />
+          </button>
+        </div>
 
         {/* Connect With Us label */}
         <p className="text-xs font-normal tracking-widest" style={{ color: "#FFFFFF" }}>
