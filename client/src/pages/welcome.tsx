@@ -103,12 +103,12 @@ export default function Welcome() {
           <p className="text-xs font-normal tracking-widest" style={{ color: "#FFFFFF" }}>
             Click To Rate Us
           </p>
-          <div style={{ overflow: "hidden", height: "52px" }}>
+          <div style={{ overflow: "hidden", height: "62px" }}>
             <button onClick={handleReviewClick} className="hover:opacity-80 transition-opacity">
               <img
                 src={googleReviewImg}
                 alt="Rate us on Google"
-                style={{ width: "210px", display: "block", marginTop: "-80px" }}
+                style={{ width: "210px", display: "block", marginTop: "-74px" }}
               />
             </button>
           </div>
