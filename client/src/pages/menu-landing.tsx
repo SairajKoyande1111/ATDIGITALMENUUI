@@ -26,7 +26,7 @@ import premiumDessertsImg from "@assets/image_1765866710467.png";
 import premiumMocktailsImg from "@assets/stock_images/premium_colorful_moc_1a15dee9.jpg";
 import cocktailsImg from "@assets/COCKTAILS_1766751289781.jpg";
 import craftedBeerImg from "@assets/CRAFTED_BEER_1766750491358.jpg";
-import logoImg from "@assets/Untitled_design_(20)_1765720426678.png";
+import logoImg from "@assets/ATDIGITALMENUNOBG_1773511851120.png";
 import fallbackImg from "@assets/coming_soon_imagev2_1766811809828.jpg";
 
 // @ts-ignore
@@ -341,11 +341,6 @@ export default function MenuLanding() {
       const data = await res.json();
       localStorage.setItem("customer_info", JSON.stringify(data.customer));
       setShowPopup(false);
-
-      toast({
-        title: data.isNew ? t.welcomeNew : `${t.welcomeBack}, ${data.customer.name}!`,
-        description: data.isNew ? t.thanksForJoining : t.greatToSeeYou,
-      });
     } catch (error) {
       toast({
         variant: "destructive",
@@ -369,8 +364,8 @@ export default function MenuLanding() {
   };
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: "#151515" }}>
-      <header className="sticky top-0 z-30 elegant-shadow" style={{ backgroundColor: "#151515" }}>
+    <div className="min-h-screen" style={{ backgroundColor: "#3D3100" }}>
+      <header className="sticky top-0 z-30 elegant-shadow" style={{ backgroundColor: "#3D3100" }}>
         <div className="container mx-auto px-2 sm:px-4 py-3 sm:py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2 sm:space-x-3 min-w-0 flex-1">
