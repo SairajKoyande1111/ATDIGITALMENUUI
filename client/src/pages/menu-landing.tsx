@@ -716,7 +716,7 @@ export default function MenuLanding() {
         )}
       </AnimatePresence>
 
-      <div className="container mx-auto px-3 sm:px-4 pt-5 pb-2">
+      <div className="container mx-auto px-3 sm:px-4 pt-5 pb-28">
         {/* Gold gradient border wrapper for carousel */}
         <div
           className="rounded-xl p-[2px] mb-3"
