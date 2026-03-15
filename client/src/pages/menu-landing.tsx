@@ -142,29 +142,55 @@ function CouponCard({
       style={{ width: "78vw", maxWidth: "340px", minWidth: "260px" }}
       data-testid={`coupon-card-${coupon.id}`}
     >
-      {/* Notch cutouts */}
-      <div
-        className="absolute left-[36%] top-1/2 -translate-y-1/2 -translate-x-1/2 w-5 h-5 rounded-full z-10 pointer-events-none"
-        style={{ backgroundColor: "#3D3100" }}
-      />
-      <div
-        className="absolute left-[36%] top-0 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full z-10 pointer-events-none"
-        style={{ backgroundColor: "#3D3100" }}
-      />
-      <div
-        className="absolute left-[36%] bottom-0 -translate-x-1/2 translate-y-1/2 w-4 h-4 rounded-full z-10 pointer-events-none"
-        style={{ backgroundColor: "#3D3100" }}
-      />
-
       {/* Card body — two-section horizontal layout */}
       <div
-        className="flex rounded-2xl overflow-hidden"
+        className="flex rounded-2xl overflow-hidden relative"
         style={{
           border: "1.5px solid #D4AF37",
           minHeight: "96px",
           boxShadow: "0 4px 20px rgba(212,175,55,0.18)",
         }}
       >
+        {/* Notch top — half-circle cut at top of divider */}
+        <div
+          className="absolute z-10 pointer-events-none rounded-full"
+          style={{
+            left: "37%",
+            top: -9,
+            width: 18,
+            height: 18,
+            backgroundColor: "#3D3100",
+            border: "1.5px solid #D4AF37",
+            transform: "translateX(-50%)",
+          }}
+        />
+        {/* Notch middle — full punch hole */}
+        <div
+          className="absolute z-10 pointer-events-none rounded-full"
+          style={{
+            left: "37%",
+            top: "50%",
+            width: 20,
+            height: 20,
+            backgroundColor: "#3D3100",
+            border: "1.5px solid #D4AF37",
+            transform: "translate(-50%, -50%)",
+          }}
+        />
+        {/* Notch bottom — half-circle cut at bottom of divider */}
+        <div
+          className="absolute z-10 pointer-events-none rounded-full"
+          style={{
+            left: "37%",
+            bottom: -9,
+            width: 18,
+            height: 18,
+            backgroundColor: "#3D3100",
+            border: "1.5px solid #D4AF37",
+            transform: "translateX(-50%)",
+          }}
+        />
+
         {/* LEFT — gold gradient discount panel */}
         <div
           className="flex flex-col items-center justify-center px-4 py-3 flex-shrink-0"
