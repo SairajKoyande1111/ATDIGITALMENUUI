@@ -24,14 +24,16 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+} from "@/components/ui/input-otp";
 
 import waiterImg from "@assets/waiter_1773555177013.png";
 import chefsHatImg from "@assets/chefs-hat_1773556627617.png";
@@ -434,10 +436,16 @@ export default function MenuLanding() {
 
   useEffect(() => {
     const savedCustomer = localStorage.getItem("customer_info");
-    if (!savedCustomer) {
+    const skipped = localStorage.getItem("customer_skipped");
+    if (!savedCustomer && !skipped) {
       setShowPopup(true);
     }
   }, []);
+
+  const handleSkip = () => {
+    localStorage.setItem("customer_skipped", "true");
+    setShowPopup(false);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -538,77 +546,175 @@ export default function MenuLanding() {
         />
       </header>
 
-      <Dialog
-        open={showPopup}
-        onOpenChange={(open) => {
-          if (localStorage.getItem("customer_info")) {
-            setShowPopup(open);
-          }
-        }}
-      >
-        <DialogContent
-          className="sm:max-w-[425px] bg-[#1a1a1a] border-[#B8986A] text-[#dcd4c8]"
-          onPointerDownOutside={(e) => e.preventDefault()}
-          onEscapeKeyDown={(e) => e.preventDefault()}
-        >
-          <DialogHeader>
-            <DialogTitle className="text-[#B8986A] text-2xl font-bold text-center">
-              {t.welcomeToBarrelborn}
-            </DialogTitle>
-            <DialogDescription className="text-[#dcd4c8] text-center">
-              {t.enterDetailsPrompt}
-            </DialogDescription>
-          </DialogHeader>
-          <form onSubmit={handleSubmit} className="space-y-6 pt-4">
-            <div className="space-y-2">
-              <Label htmlFor="name" className="text-[#dcd4c8]">
-                {t.name}
-              </Label>
-              <Input
-                id="name"
-                value={customerName}
-                onChange={(e) => setCustomerName(e.target.value)}
-                placeholder={t.enterYourName}
-                className="bg-transparent border-[#B8986A] text-[#dcd4c8] focus:ring-[#B8986A]"
-                required
-                data-testid="input-customer-name"
-              />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="phone" className="text-[#dcd4c8]">
-                {t.contactNumber}
-              </Label>
-              <Input
-                id="phone"
-                type="text"
-                inputMode="numeric"
-                value={customerPhone}
-                onChange={(e) => {
-                  const val = e.target.value.replace(/\D/g, "");
-                  if (val.length <= 10) {
-                    setCustomerPhone(val);
-                  }
-                }}
-                placeholder={t.enter10Digit}
-                className="bg-transparent border-[#B8986A] text-[#dcd4c8] focus:ring-[#B8986A]"
-                required
-                data-testid="input-customer-phone"
-              />
-              {customerPhone && customerPhone.length !== 10 && (
-                <p className="text-xs text-[#B8986A]">{t.enterExactly10}</p>
-              )}
-            </div>
-            <Button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full bg-[#B8986A] hover:bg-[#a6895f] text-white font-bold py-6 rounded-full"
-              data-testid="button-submit-customer"
+      <AnimatePresence>
+        {showPopup && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center px-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            {/* Backdrop */}
+            <motion.div
+              className="absolute inset-0"
+              style={{ background: "rgba(10,8,0,0.82)", backdropFilter: "blur(6px)" }}
+              onClick={handleSkip}
+            />
+
+            {/* Card */}
+            <motion.div
+              className="relative w-full max-w-sm rounded-3xl overflow-hidden"
+              style={{
+                background: "linear-gradient(160deg, #1C1500 0%, #0F0C00 100%)",
+                border: "1.5px solid #D4AF37",
+                boxShadow: "0 0 60px rgba(212,175,55,0.18), 0 24px 64px rgba(0,0,0,0.7)",
+              }}
+              initial={{ scale: 0.88, y: 40, opacity: 0 }}
+              animate={{ scale: 1, y: 0, opacity: 1 }}
+              exit={{ scale: 0.88, y: 40, opacity: 0 }}
+              transition={{ type: "spring", damping: 24, stiffness: 280 }}
             >
-              {isSubmitting ? t.submitting : t.submit}
-            </Button>
-          </form>
-        </DialogContent>
-      </Dialog>
+              {/* Gold shimmer top bar */}
+              <div
+                className="h-[3px] w-full"
+                style={{ background: "linear-gradient(90deg, transparent, #D4AF37, #F0CC60, #D4AF37, transparent)" }}
+              />
+
+              {/* Close button */}
+              <button
+                onClick={handleSkip}
+                className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center transition-all hover:scale-110"
+                style={{ background: "rgba(212,175,55,0.12)", color: "#D4AF37", border: "1px solid rgba(212,175,55,0.3)" }}
+                data-testid="button-close-popup"
+              >
+                <X className="w-4 h-4" />
+              </button>
+
+              <div className="px-7 pt-6 pb-7 flex flex-col items-center">
+                {/* Logo */}
+                <img
+                  src={logoImg}
+                  alt="AT Digital Menu"
+                  className="w-40 object-contain mb-1"
+                  style={{ filter: "drop-shadow(0 0 12px rgba(212,175,55,0.35))" }}
+                />
+
+                {/* Ornamental divider */}
+                <div className="flex items-center gap-3 w-full mb-4">
+                  <div className="flex-1 h-px" style={{ background: "linear-gradient(to right, transparent, #D4AF37)" }} />
+                  <span className="text-[10px] tracking-[0.3em] font-light" style={{ color: "#D4AF37" }}>WELCOME</span>
+                  <div className="flex-1 h-px" style={{ background: "linear-gradient(to left, transparent, #D4AF37)" }} />
+                </div>
+
+                {/* Headline */}
+                <h2
+                  className="text-center font-bold mb-1 leading-tight"
+                  style={{ color: "#D4AF37", fontFamily: "'Cormorant Garamond', serif", fontSize: "22px", letterSpacing: "0.02em" }}
+                >
+                  Tell Us Who You Are
+                </h2>
+                <p className="text-center text-xs mb-5 font-light" style={{ color: "#8A7A5A", letterSpacing: "0.05em" }}>
+                  Enter your details to personalise your experience
+                </p>
+
+                <form onSubmit={handleSubmit} className="w-full space-y-4">
+                  {/* Name field */}
+                  <div className="space-y-1.5">
+                    <label className="text-[10px] tracking-[0.2em] font-medium uppercase" style={{ color: "#B8986A" }}>
+                      Your Name
+                    </label>
+                    <div
+                      className="flex items-center rounded-xl px-4 py-0 h-12 transition-all"
+                      style={{ background: "rgba(212,175,55,0.06)", border: "1px solid rgba(212,175,55,0.35)" }}
+                    >
+                      <input
+                        value={customerName}
+                        onChange={(e) => setCustomerName(e.target.value)}
+                        placeholder="Enter your name"
+                        className="w-full bg-transparent outline-none text-sm font-light placeholder:opacity-40"
+                        style={{ color: "#E8D8B4", caretColor: "#D4AF37" }}
+                        data-testid="input-customer-name"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Phone — 10 OTP digit boxes */}
+                  <div className="space-y-2">
+                    <label className="text-[10px] tracking-[0.2em] font-medium uppercase" style={{ color: "#B8986A" }}>
+                      Contact Number
+                    </label>
+                    <div className="flex justify-center">
+                      <InputOTP
+                        maxLength={10}
+                        value={customerPhone}
+                        onChange={(val) => setCustomerPhone(val)}
+                        inputMode="numeric"
+                        pattern="[0-9]*"
+                        data-testid="input-customer-phone"
+                      >
+                        <InputOTPGroup className="gap-[5px]">
+                          {Array.from({ length: 10 }).map((_, i) => (
+                            <InputOTPSlot
+                              key={i}
+                              index={i}
+                              className="h-9 w-[26px] rounded-lg text-sm font-semibold first:rounded-l-lg first:border-l last:rounded-r-lg transition-all"
+                              style={{
+                                background: "rgba(212,175,55,0.08)",
+                                border: "1px solid rgba(212,175,55,0.35)",
+                                color: "#E8D8B4",
+                                borderRadius: "8px",
+                              }}
+                            />
+                          ))}
+                        </InputOTPGroup>
+                      </InputOTP>
+                    </div>
+                    {customerPhone.length > 0 && customerPhone.length < 10 && (
+                      <p className="text-center text-[10px]" style={{ color: "#B8986A" }}>
+                        {10 - customerPhone.length} digit{10 - customerPhone.length !== 1 ? "s" : ""} remaining
+                      </p>
+                    )}
+                  </div>
+
+                  {/* Submit button */}
+                  <button
+                    type="submit"
+                    disabled={isSubmitting || customerName.length === 0 || customerPhone.length !== 10}
+                    className="w-full h-12 rounded-full font-bold tracking-widest text-sm transition-all active:scale-95 disabled:opacity-40 mt-2"
+                    style={{
+                      background: "linear-gradient(90deg, #B8986A, #D4AF37, #E6C55A, #D4AF37, #B8986A)",
+                      backgroundSize: "200% 100%",
+                      color: "#1C1500",
+                      letterSpacing: "0.15em",
+                      boxShadow: "0 4px 20px rgba(212,175,55,0.35)",
+                    }}
+                    data-testid="button-submit-customer"
+                  >
+                    {isSubmitting ? "SAVING..." : "CONFIRM & PROCEED"}
+                  </button>
+
+                  {/* Skip option */}
+                  <button
+                    type="button"
+                    onClick={handleSkip}
+                    className="w-full text-center text-xs py-1 transition-opacity hover:opacity-70"
+                    style={{ color: "#6A5A3A", letterSpacing: "0.08em" }}
+                    data-testid="button-skip-popup"
+                  >
+                    Continue without entering details →
+                  </button>
+                </form>
+              </div>
+
+              {/* Gold shimmer bottom bar */}
+              <div
+                className="h-[2px] w-full"
+                style={{ background: "linear-gradient(90deg, transparent, #D4AF37, transparent)" }}
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="container mx-auto px-3 sm:px-4 pt-5 pb-2">
         {/* Gold gradient border wrapper for carousel */}
