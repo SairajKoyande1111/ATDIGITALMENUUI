@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowLeft, Star, ChefHat } from "lucide-react";
+import { X, Star, ChefHat } from "lucide-react";
 import type { MenuItem } from "@shared/schema";
 import chefsHatImg from "@assets/chefs-hat_1773556627617.png";
 import waiterImg from "@assets/waiter_1773555177013.png";
@@ -50,26 +50,6 @@ export default function FloatingButtons() {
               className="flex items-center justify-between px-5 pt-12 pb-4 flex-shrink-0"
               style={{ borderBottom: "1px solid rgba(212,175,55,0.15)" }}
             >
-              {/* Golden back button */}
-              <button
-                onClick={() => setShowSmartMenu(false)}
-                className="flex items-center gap-2 px-3 py-2 rounded-full transition-all active:scale-95"
-                style={{
-                  background: "linear-gradient(135deg, #D4AF37, #E6C55A)",
-                  border: "none",
-                  boxShadow: "0 2px 12px rgba(212,175,55,0.4)",
-                }}
-                data-testid="button-close-smart-menu"
-              >
-                <ArrowLeft className="w-4 h-4" style={{ color: "#1A1408" }} />
-                <span
-                  className="text-xs font-bold uppercase tracking-widest"
-                  style={{ color: "#1A1408", fontFamily: "'DM Sans', sans-serif" }}
-                >
-                  Back
-                </span>
-              </button>
-
               {/* Title */}
               <div className="flex items-center gap-2">
                 <div
@@ -94,8 +74,19 @@ export default function FloatingButtons() {
                 </div>
               </div>
 
-              {/* Spacer to balance layout */}
-              <div className="w-20" />
+              {/* Gold X close button — top right */}
+              <button
+                onClick={() => setShowSmartMenu(false)}
+                className="flex items-center justify-center w-9 h-9 rounded-full transition-all active:scale-90"
+                style={{
+                  background: "linear-gradient(135deg, #D4AF37, #E6C55A)",
+                  border: "none",
+                  boxShadow: "0 2px 12px rgba(212,175,55,0.4)",
+                }}
+                data-testid="button-close-smart-menu"
+              >
+                <X className="w-4 h-4" style={{ color: "#1A1408" }} strokeWidth={2.5} />
+              </button>
             </div>
 
             {/* Section Tabs */}
@@ -208,7 +199,7 @@ export default function FloatingButtons() {
         )}
       </AnimatePresence>
 
-      {/* Dish Detail — opens on top of Smart Picks */}
+      {/* Dish Detail — opens on top of Smart Picks (z-[60] > z-50) */}
       <DishDetailModal item={selectedItem} onClose={() => setSelectedItem(null)} />
 
       {/* Smart Picks floating button — bottom left */}
