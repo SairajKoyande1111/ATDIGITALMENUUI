@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, Clock } from "lucide-react";
+import { X, Clock } from "lucide-react";
 import type { MenuItem } from "@shared/schema";
 import fallbackImg from "@assets/coming_soon_imagev2_1766811809828.jpg";
 import { useState } from "react";
@@ -63,29 +63,9 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
               }}
             />
 
-            {/* Golden back / close button — top left */}
-            <button
-              onClick={onClose}
-              className="absolute top-4 left-4 z-10 flex items-center gap-2 px-3 py-2 rounded-full transition-all active:scale-95"
-              style={{
-                background: "linear-gradient(135deg, #D4AF37, #E6C55A)",
-                border: "none",
-                boxShadow: "0 2px 12px rgba(212,175,55,0.4)",
-              }}
-              data-testid="button-close-dish-modal"
-            >
-              <ArrowLeft className="w-4 h-4" style={{ color: "#1A1408" }} />
-              <span
-                className="text-xs font-bold uppercase tracking-widest"
-                style={{ color: "#1A1408", fontFamily: "'DM Sans', sans-serif" }}
-              >
-                Back
-              </span>
-            </button>
-
-            {/* Veg / Non-Veg badge — top right */}
+            {/* Veg / Non-Veg badge — top left */}
             <div
-              className="absolute top-4 right-4 px-3 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase"
+              className="absolute top-4 left-4 px-3 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase"
               style={{
                 backgroundColor: item.isVeg ? "rgba(22,163,74,0.92)" : "rgba(220,38,38,0.92)",
                 color: "#fff",
@@ -96,6 +76,20 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
             >
               {item.isVeg ? "Veg" : "Non-Veg"}
             </div>
+
+            {/* Gold X close button — top right */}
+            <button
+              onClick={onClose}
+              className="absolute top-4 right-4 z-10 flex items-center justify-center w-9 h-9 rounded-full transition-all active:scale-90"
+              style={{
+                background: "linear-gradient(135deg, #D4AF37, #E6C55A)",
+                border: "none",
+                boxShadow: "0 2px 12px rgba(212,175,55,0.4)",
+              }}
+              data-testid="button-close-dish-modal"
+            >
+              <X className="w-4 h-4" style={{ color: "#1A1408" }} strokeWidth={2.5} />
+            </button>
           </div>
 
           {/* Gold accent line */}
