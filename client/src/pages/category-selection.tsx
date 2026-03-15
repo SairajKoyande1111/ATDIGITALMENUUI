@@ -334,7 +334,7 @@ export default function CategorySelection() {
         />
       </header>
 
-      <div className="container mx-auto px-4 py-4 pb-20">
+      <div className="container mx-auto px-4 py-4 pb-24">
         <h1
           className="text-xl sm:text-2xl font-semibold tracking-widest uppercase text-center mb-2"
           style={{

@@ -251,7 +251,7 @@ export default function CategoryDetail() {
         </div>
       </header>
 
-      <div className="container mx-auto px-3 sm:px-4 py-4 pb-20">
+      <div className="container mx-auto px-3 sm:px-4 py-4 pb-24">
         <div className="relative mb-4">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4" style={{ color: "#D4AF37" }} />
           <Input
