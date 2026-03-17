@@ -2,9 +2,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import type { MenuItem } from "@shared/schema";
 import fallbackImg from "@assets/coming_soon_imagev2_1766811809828.jpg";
-import Lottie from "lottie-react";
-// @ts-ignore
-import panAnimation from "@assets/Animaed_pan_1773736045253.json";
 
 interface DishCardProps {
   item: MenuItem;
@@ -12,8 +9,6 @@ interface DishCardProps {
 
 export default function DishCard({ item }: DishCardProps) {
   const [imgError, setImgError] = useState(false);
-  const [imgLoaded, setImgLoaded] = useState(false);
-
   const imageUrl = imgError || !item.image ||
     item.image.includes("example.com") ||
     item.image.includes("unsplash.com") ||
@@ -33,34 +28,17 @@ export default function DishCard({ item }: DishCardProps) {
     >
       <div className="flex flex-col h-full">
         {/* Image */}
-        <div className="relative aspect-[4/3] overflow-hidden" style={{ borderRadius: "10px 10px 0 0", backgroundColor: "var(--bb-card)" }}>
-          {/* Pan animation shown while image is loading */}
-          {!imgLoaded && (
-            <div
-              className="absolute inset-0 flex items-center justify-center"
-              style={{ backgroundColor: "var(--bb-card)", zIndex: 1 }}
-            >
-              <Lottie
-                animationData={panAnimation}
-                loop
-                autoplay
-                style={{ width: 80, height: 80 }}
-              />
-            </div>
-          )}
+        <div className="relative aspect-[4/3] overflow-hidden" style={{ borderRadius: "10px 10px 0 0" }}>
           <img
             src={imageUrl}
             alt={item.name}
-            className="w-full h-full object-cover transition-all duration-500"
-            style={{ opacity: imgLoaded ? 1 : 0 }}
-            onLoad={() => setImgLoaded(true)}
-            onError={() => { setImgError(true); setImgLoaded(true); }}
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            onError={() => setImgError(true)}
           />
           <div
             className={`absolute top-2 right-2 w-4 h-4 rounded-full border-2 shadow-sm ${
               item.isVeg ? 'bg-green-500 border-green-300' : 'bg-red-500 border-red-300'
             }`}
-            style={{ zIndex: 2 }}
           />
         </div>
 
