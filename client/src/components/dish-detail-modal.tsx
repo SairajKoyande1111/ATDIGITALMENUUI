@@ -3,6 +3,7 @@ import { X, Clock } from "lucide-react";
 import type { MenuItem } from "@shared/schema";
 import fallbackImg from "@assets/coming_soon_imagev2_1766811809828.jpg";
 import { useState } from "react";
+import { useTheme } from "@/contexts/ThemeContext";
 
 interface DishDetailModalProps {
   item: MenuItem | null;
@@ -23,9 +24,15 @@ const INGREDIENTS_PLACEHOLDER = "Detailed ingredient list not available.";
 const PREP_TIME_PLACEHOLDER = "15–25 mins";
 
 export default function DishDetailModal({ item, onClose }: DishDetailModalProps) {
+  const { isDark } = useTheme();
   const [imgError, setImgError] = useState(false);
 
   if (!item) return null;
+
+  const textPrimary = isDark ? "#FFFFFF" : "#000000";
+  const textSecondary = isDark ? "rgba(220,212,200,0.5)" : "rgba(0,0,0,0.45)";
+  const cardBg = isDark ? "rgba(212,175,55,0.06)" : "#FFFFFF";
+  const cardBorder = isDark ? "1px solid rgba(212,175,55,0.15)" : "1px solid rgba(0,0,0,0.08)";
 
   const isBroken = imgError || !item.image || item.image.includes("placeholder.com") || item.image.includes("example.com");
   const imageUrl = isBroken ? fallbackImg : item.image;
@@ -40,7 +47,7 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
       {item && (
         <motion.div
           className="fixed inset-0 z-[60] overflow-y-auto"
-          style={{ backgroundColor: "var(--bb-card)" }}
+          style={{ backgroundColor: isDark ? "var(--bb-card)" : "#FFFFFF" }}
           initial={{ y: "100%" }}
           animate={{ y: 0 }}
           exit={{ y: "100%" }}
@@ -103,7 +110,7 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
             <h2
               className="font-bold leading-tight uppercase flex-1"
               style={{
-                color: "#FFFFFF",
+                color: textPrimary,
                 fontFamily: "'DM Sans', sans-serif",
                 fontSize: "clamp(17px, 5vw, 24px)",
                 letterSpacing: "0.08em",
@@ -135,13 +142,13 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
               <div
                 className="rounded-2xl px-4 py-3"
                 style={{
-                  background: "rgba(212,175,55,0.07)",
+                  background: isDark ? "rgba(212,175,55,0.07)" : "#F5F5F5",
                   borderLeft: "3px solid #D4AF37",
                 }}
               >
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "var(--bb-text)", fontFamily: "'DM Sans', sans-serif", lineHeight: 1.75 }}
+                  style={{ color: textPrimary, fontFamily: "'DM Sans', sans-serif", lineHeight: 1.75 }}
                   data-testid="text-dish-description"
                 >
                   {item.description}
@@ -161,7 +168,7 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
                 </p>
                 <p
                   className="text-sm font-semibold"
-                  style={{ color: "var(--bb-text)", fontFamily: "'DM Sans', sans-serif" }}
+                  style={{ color: textPrimary, fontFamily: "'DM Sans', sans-serif" }}
                 >
                   {PREP_TIME_PLACEHOLDER}
                 </p>
@@ -169,7 +176,7 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
             </div>
 
             {/* Divider */}
-            <div className="h-px" style={{ background: "rgba(212,175,55,0.15)" }} />
+            <div className="h-px" style={{ background: isDark ? "rgba(212,175,55,0.15)" : "rgba(0,0,0,0.08)" }} />
 
             {/* Nutritional Contents */}
             <div>
@@ -184,20 +191,17 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
                   <div
                     key={n.label}
                     className="rounded-xl p-3 text-center"
-                    style={{
-                      background: "rgba(212,175,55,0.06)",
-                      border: "1px solid rgba(212,175,55,0.15)",
-                    }}
+                    style={{ background: cardBg, border: cardBorder }}
                   >
                     <p
                       className="text-[10px] uppercase tracking-wider mb-1"
-                      style={{ color: "rgba(220,212,200,0.5)", fontFamily: "'DM Sans', sans-serif" }}
+                      style={{ color: textSecondary, fontFamily: "'DM Sans', sans-serif" }}
                     >
                       {n.label}
                     </p>
                     <p
                       className="text-base font-bold"
-                      style={{ color: "var(--bb-text)", fontFamily: "'DM Sans', sans-serif" }}
+                      style={{ color: textPrimary, fontFamily: "'DM Sans', sans-serif" }}
                     >
                       {n.value}
                     </p>
@@ -225,14 +229,11 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
               </h3>
               <div
                 className="rounded-xl px-4 py-3"
-                style={{
-                  background: "rgba(212,175,55,0.06)",
-                  border: "1px solid rgba(212,175,55,0.15)",
-                }}
+                style={{ background: cardBg, border: cardBorder }}
               >
                 <p
                   className="text-sm"
-                  style={{ color: "var(--bb-text)", fontFamily: "'DM Sans', sans-serif", opacity: 0.7 }}
+                  style={{ color: textPrimary, fontFamily: "'DM Sans', sans-serif", opacity: 0.75 }}
                 >
                   {ALLERGEN_PLACEHOLDER}
                 </p>
@@ -240,7 +241,7 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
             </div>
 
             {/* Divider */}
-            <div className="h-px" style={{ background: "rgba(212,175,55,0.15)" }} />
+            <div className="h-px" style={{ background: isDark ? "rgba(212,175,55,0.15)" : "rgba(0,0,0,0.08)" }} />
 
             {/* Ingredients */}
             <div>
@@ -252,14 +253,11 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
               </h3>
               <div
                 className="rounded-xl px-4 py-3"
-                style={{
-                  background: "rgba(212,175,55,0.06)",
-                  border: "1px solid rgba(212,175,55,0.15)",
-                }}
+                style={{ background: cardBg, border: cardBorder }}
               >
                 <p
                   className="text-sm"
-                  style={{ color: "var(--bb-text)", fontFamily: "'DM Sans', sans-serif", opacity: 0.7 }}
+                  style={{ color: textPrimary, fontFamily: "'DM Sans', sans-serif", opacity: 0.75 }}
                 >
                   {INGREDIENTS_PLACEHOLDER}
                 </p>
