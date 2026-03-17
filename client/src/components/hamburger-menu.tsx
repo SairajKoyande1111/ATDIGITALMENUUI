@@ -115,16 +115,16 @@ function ReservationModal({ onClose }: { onClose: () => void }) {
             <form onSubmit={handleSubmit} className="space-y-3">
               {/* Name */}
               <div className="space-y-1">
-                <label className="text-[10px] tracking-[0.2em] uppercase font-medium" style={{ color: "#B8986A" }}>
+                <label className="text-[10px] tracking-[0.2em] uppercase font-medium" style={{ color: isDark ? "#B8986A" : "#8B6200" }}>
                   Your Name *
                 </label>
-                <div className="flex items-center rounded-xl px-4 h-11" style={{ background: "rgba(212,175,55,0.07)", border: "1px solid rgba(212,175,55,0.3)" }}>
+                <div className="flex items-center rounded-xl px-4 h-11" style={{ background: isDark ? "rgba(212,175,55,0.07)" : "#FFFFFF", border: isDark ? "1px solid rgba(212,175,55,0.3)" : "1px solid rgba(0,0,0,0.15)" }}>
                   <input
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Enter your name"
                     required
-                    className="w-full bg-transparent outline-none text-sm font-light placeholder:opacity-35"
+                    className="w-full bg-transparent outline-none text-sm font-light"
                     style={{ color: isDark ? "#E8D8B4" : "#1a1a1a", caretColor: "#D4AF37" }}
                     data-testid="input-reservation-name"
                   />
@@ -133,10 +133,10 @@ function ReservationModal({ onClose }: { onClose: () => void }) {
 
               {/* Phone */}
               <div className="space-y-1">
-                <label className="text-[10px] tracking-[0.2em] uppercase font-medium" style={{ color: "#B8986A" }}>
+                <label className="text-[10px] tracking-[0.2em] uppercase font-medium" style={{ color: isDark ? "#B8986A" : "#8B6200" }}>
                   Contact Number *
                 </label>
-                <div className="flex items-center rounded-xl px-4 h-11" style={{ background: "rgba(212,175,55,0.07)", border: "1px solid rgba(212,175,55,0.3)" }}>
+                <div className="flex items-center rounded-xl px-4 h-11" style={{ background: isDark ? "rgba(212,175,55,0.07)" : "#FFFFFF", border: isDark ? "1px solid rgba(212,175,55,0.3)" : "1px solid rgba(0,0,0,0.15)" }}>
                   <input
                     value={phone}
                     onChange={(e) => setPhone(e.target.value.replace(/\D/, ""))}
@@ -144,7 +144,7 @@ function ReservationModal({ onClose }: { onClose: () => void }) {
                     maxLength={10}
                     inputMode="numeric"
                     required
-                    className="w-full bg-transparent outline-none text-sm font-light placeholder:opacity-35"
+                    className="w-full bg-transparent outline-none text-sm font-light"
                     style={{ color: isDark ? "#E8D8B4" : "#1a1a1a", caretColor: "#D4AF37" }}
                     data-testid="input-reservation-phone"
                   />
@@ -154,10 +154,10 @@ function ReservationModal({ onClose }: { onClose: () => void }) {
               {/* Date + Guests row */}
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-1">
-                  <label className="text-[10px] tracking-[0.2em] uppercase font-medium" style={{ color: "#B8986A" }}>
+                  <label className="text-[10px] tracking-[0.2em] uppercase font-medium" style={{ color: isDark ? "#B8986A" : "#8B6200" }}>
                     Date *
                   </label>
-                  <div className="flex items-center rounded-xl px-4 h-11" style={{ background: "rgba(212,175,55,0.07)", border: "1px solid rgba(212,175,55,0.3)" }}>
+                  <div className="flex items-center rounded-xl px-4 h-11" style={{ background: isDark ? "rgba(212,175,55,0.07)" : "#FFFFFF", border: isDark ? "1px solid rgba(212,175,55,0.3)" : "1px solid rgba(0,0,0,0.15)" }}>
                     <input
                       type="date"
                       value={date}
@@ -171,11 +171,11 @@ function ReservationModal({ onClose }: { onClose: () => void }) {
                   </div>
                 </div>
                 <div className="space-y-1">
-                  <label className="text-[10px] tracking-[0.2em] uppercase font-medium" style={{ color: "#B8986A" }}>
+                  <label className="text-[10px] tracking-[0.2em] uppercase font-medium" style={{ color: isDark ? "#B8986A" : "#8B6200" }}>
                     Guests *
                   </label>
-                  <div className="relative flex items-center rounded-xl px-4 h-11" style={{ background: "rgba(212,175,55,0.07)", border: "1px solid rgba(212,175,55,0.3)" }}>
-                    <Users className="w-3.5 h-3.5 mr-2 flex-shrink-0" style={{ color: "rgba(212,175,55,0.5)" }} />
+                  <div className="relative flex items-center rounded-xl px-4 h-11" style={{ background: isDark ? "rgba(212,175,55,0.07)" : "#FFFFFF", border: isDark ? "1px solid rgba(212,175,55,0.3)" : "1px solid rgba(0,0,0,0.15)" }}>
+                    <Users className="w-3.5 h-3.5 mr-2 flex-shrink-0" style={{ color: isDark ? "rgba(212,175,55,0.5)" : "#8B6200" }} />
                     <select
                       value={guests}
                       onChange={(e) => setGuests(e.target.value)}
@@ -187,23 +187,23 @@ function ReservationModal({ onClose }: { onClose: () => void }) {
                         <option key={n} value={String(n)} style={{ background: isDark ? "#1C1500" : "#FFFFFF", color: isDark ? "#E8D8B4" : "#1a1a1a" }}>{n} {n === 1 ? "Guest" : "Guests"}</option>
                       ))}
                     </select>
-                    <ChevronDown className="w-3.5 h-3.5 absolute right-3 pointer-events-none" style={{ color: "rgba(212,175,55,0.5)" }} />
+                    <ChevronDown className="w-3.5 h-3.5 absolute right-3 pointer-events-none" style={{ color: isDark ? "rgba(212,175,55,0.5)" : "#8B6200" }} />
                   </div>
                 </div>
               </div>
 
               {/* Time Slot */}
               <div className="space-y-1">
-                <label className="text-[10px] tracking-[0.2em] uppercase font-medium" style={{ color: "#B8986A" }}>
+                <label className="text-[10px] tracking-[0.2em] uppercase font-medium" style={{ color: isDark ? "#B8986A" : "#8B6200" }}>
                   Time Slot *
                 </label>
-                <div className="relative flex items-center rounded-xl px-4 h-11" style={{ background: "rgba(212,175,55,0.07)", border: "1px solid rgba(212,175,55,0.3)" }}>
+                <div className="relative flex items-center rounded-xl px-4 h-11" style={{ background: isDark ? "rgba(212,175,55,0.07)" : "#FFFFFF", border: isDark ? "1px solid rgba(212,175,55,0.3)" : "1px solid rgba(0,0,0,0.15)" }}>
                   <select
                     value={timeSlot}
                     onChange={(e) => setTimeSlot(e.target.value)}
                     required
                     className="w-full bg-transparent outline-none text-sm font-light appearance-none"
-                    style={{ color: timeSlot ? (isDark ? "#E8D8B4" : "#1a1a1a") : "rgba(232,216,180,0.35)" }}
+                    style={{ color: timeSlot ? (isDark ? "#E8D8B4" : "#1a1a1a") : (isDark ? "rgba(232,216,180,0.35)" : "rgba(0,0,0,0.35)") }}
                     data-testid="select-reservation-timeslot"
                   >
                     <option value="" disabled style={{ background: isDark ? "#1C1500" : "#FFFFFF", color: isDark ? "#E8D8B4" : "#1a1a1a" }}>Select a time slot</option>
@@ -211,21 +211,21 @@ function ReservationModal({ onClose }: { onClose: () => void }) {
                       <option key={slot} value={slot} style={{ background: isDark ? "#1C1500" : "#FFFFFF", color: isDark ? "#E8D8B4" : "#1a1a1a" }}>{slot}</option>
                     ))}
                   </select>
-                  <ChevronDown className="w-3.5 h-3.5 absolute right-3 pointer-events-none" style={{ color: "rgba(212,175,55,0.5)" }} />
+                  <ChevronDown className="w-3.5 h-3.5 absolute right-3 pointer-events-none" style={{ color: isDark ? "rgba(212,175,55,0.5)" : "#8B6200" }} />
                 </div>
               </div>
 
               {/* Occasion (optional) */}
               <div className="space-y-1">
-                <label className="text-[10px] tracking-[0.2em] uppercase font-medium" style={{ color: "#B8986A" }}>
-                  Occasion <span style={{ color: "rgba(180,160,100,0.5)" }}>(Optional)</span>
+                <label className="text-[10px] tracking-[0.2em] uppercase font-medium" style={{ color: isDark ? "#B8986A" : "#8B6200" }}>
+                  Occasion <span style={{ color: isDark ? "rgba(180,160,100,0.5)" : "rgba(0,0,0,0.35)" }}>(Optional)</span>
                 </label>
-                <div className="flex items-center rounded-xl px-4 h-11" style={{ background: "rgba(212,175,55,0.07)", border: "1px solid rgba(212,175,55,0.3)" }}>
+                <div className="flex items-center rounded-xl px-4 h-11" style={{ background: isDark ? "rgba(212,175,55,0.07)" : "#FFFFFF", border: isDark ? "1px solid rgba(212,175,55,0.3)" : "1px solid rgba(0,0,0,0.15)" }}>
                   <input
                     value={occasion}
                     onChange={(e) => setOccasion(e.target.value)}
                     placeholder="Birthday, Anniversary, Business..."
-                    className="w-full bg-transparent outline-none text-sm font-light placeholder:opacity-35"
+                    className="w-full bg-transparent outline-none text-sm font-light"
                     style={{ color: isDark ? "#E8D8B4" : "#1a1a1a", caretColor: "#D4AF37" }}
                     data-testid="input-reservation-occasion"
                   />
