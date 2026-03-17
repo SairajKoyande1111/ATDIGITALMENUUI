@@ -257,18 +257,18 @@
 }
 
 [data-theme="light"] {
-  --bb-bg:        #FFFFFF;
-  --bb-card:      #F8F3E8;
-  --bb-card-alt:  #F0E9D8;
+  --bb-bg:        #F5F5F5;
+  --bb-card:      #FFFFFF;
+  --bb-card-alt:  #F8F8F8;
   --bb-gold:      #8B6200;
   --bb-gold-2:    #A87800;
-  --bb-text:      #2C1F00;
-  --bb-text-dim:  rgba(44,31,0,0.55);
-  --bb-border:    rgba(139,98,0,0.3);
+  --bb-text:      #1a1a1a;
+  --bb-text-dim:  rgba(0,0,0,0.5);
+  --bb-border:    rgba(0,0,0,0.1);
   --bb-header:    #FFFFFF;
   --bb-search-bg: rgba(0,0,0,0.04);
-  --bb-search-br: rgba(139,98,0,0.3);
-  --bb-input-text:#2C1F00;
+  --bb-search-br: rgba(139,98,0,0.25);
+  --bb-input-text:#1a1a1a;
 }
 /* ── end theme variables ────────────────────────────────────── */
 
