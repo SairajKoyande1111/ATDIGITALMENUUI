@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { ChevronDown, Loader2, Search } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useTheme } from "@/contexts/ThemeContext";
 import { supportedLanguages } from "@/lib/translationService";
 import googleTranslateImg from "@assets/google_(1)_1773394431689.png";
 
@@ -10,6 +11,8 @@ interface LanguageDropdownProps {
 
 export default function LanguageDropdown({ className = "" }: LanguageDropdownProps) {
   const { language, setLanguage, isTranslating } = useLanguage();
+  const { isDark } = useTheme();
+  const textColor = isDark ? "#FFFFFF" : "#000000";
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
   const ref = useRef<HTMLDivElement>(null);
@@ -43,16 +46,16 @@ export default function LanguageDropdown({ className = "" }: LanguageDropdownPro
         aria-label="Select language"
       >
         {isTranslating ? (
-          <Loader2 className="w-7 h-7 animate-spin" style={{ color: "#FFFFFF" }} />
+          <Loader2 className="w-7 h-7 animate-spin" style={{ color: textColor }} />
         ) : (
           <img src={googleTranslateImg} alt="Translate" className="w-7 h-7 object-contain" />
         )}
-        <span className="text-base font-semibold tracking-wide" style={{ color: "#FFFFFF" }}>
+        <span className="text-base font-semibold tracking-wide" style={{ color: textColor }}>
           {current.native}
         </span>
         <ChevronDown
           className="w-5 h-5 transition-transform duration-200"
-          style={{ color: "#FFFFFF", transform: open ? "rotate(180deg)" : "rotate(0deg)" }}
+          style={{ color: textColor, transform: open ? "rotate(180deg)" : "rotate(0deg)" }}
         />
       </button>
 

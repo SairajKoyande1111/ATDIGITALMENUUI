@@ -25,8 +25,8 @@ function ThemeToggle() {
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       className="flex items-center rounded-full transition-all duration-300 active:scale-95 select-none"
       style={{
-        width: "108px",
-        height: "38px",
+        width: "88px",
+        height: "36px",
         padding: "3px",
         background: isDark ? "#1C1500" : "#E4E4E4",
         border: isDark
@@ -44,13 +44,13 @@ function ThemeToggle() {
           <div
             className="flex items-center justify-center rounded-full flex-shrink-0"
             style={{
-              width: 30,
-              height: 30,
+              width: 28,
+              height: 28,
               background: "#FFFFFF",
               boxShadow: "0 1px 4px rgba(0,0,0,0.25)",
             }}
           >
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
               <path
                 d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
                 fill="#2C2200"
@@ -64,40 +64,36 @@ function ThemeToggle() {
             </svg>
           </div>
           <span
-            className="flex-1 text-center leading-tight font-bold"
+            className="flex-1 text-center font-bold"
             style={{
               color: "#D4AF37",
-              fontSize: "8.5px",
-              letterSpacing: "0.08em",
+              fontSize: "9px",
+              letterSpacing: "0.06em",
               fontFamily: "'DM Sans', sans-serif",
             }}
           >
             DARK
-            <br />
-            MODE
           </span>
         </>
       ) : (
         /* Light mode — text on left, sun circle on right */
         <>
           <span
-            className="flex-1 text-center leading-tight font-bold"
+            className="flex-1 text-center font-bold"
             style={{
               color: "#555",
-              fontSize: "8.5px",
-              letterSpacing: "0.08em",
+              fontSize: "9px",
+              letterSpacing: "0.06em",
               fontFamily: "'DM Sans', sans-serif",
             }}
           >
             LIGHT
-            <br />
-            MODE
           </span>
           <div
             className="flex items-center justify-center rounded-full flex-shrink-0"
             style={{
-              width: 30,
-              height: 30,
+              width: 28,
+              height: 28,
               background: "#FFFFFF",
               boxShadow: "0 2px 6px rgba(0,0,0,0.18)",
             }}
@@ -182,7 +178,7 @@ export default function Welcome() {
             style={{
               width: "360px",
               objectFit: "contain",
-              filter: isDark ? "none" : "brightness(0.15) sepia(1) hue-rotate(25deg) saturate(3)",
+              filter: "none",
             }}
           />
         </div>

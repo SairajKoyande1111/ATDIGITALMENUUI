@@ -15,6 +15,7 @@ import { categoryTranslationMap } from "@/lib/translations";
 import HamburgerMenu from "@/components/hamburger-menu";
 import FloatingButtons from "@/components/floating-buttons";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useTheme } from "@/contexts/ThemeContext";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import {
@@ -382,6 +383,7 @@ export default function MenuLanding() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
   const { t } = useLanguage();
+  const { isDark } = useTheme();
   const [showCoupons, setShowCoupons] = useState(false);
   const [lightboxImage, setLightboxImage] = useState<
     (typeof promotionalImages)[0] | null
@@ -520,9 +522,9 @@ export default function MenuLanding() {
             <motion.div
               className="relative w-full max-w-sm rounded-3xl overflow-hidden"
               style={{
-                background: "linear-gradient(160deg, #1C1500 0%, #0F0C00 100%)",
-                border: "1.5px solid #D4AF37",
-                boxShadow: "0 0 60px rgba(212,175,55,0.18), 0 24px 64px rgba(0,0,0,0.7)",
+                background: isDark ? "linear-gradient(160deg, #1C1500 0%, #0F0C00 100%)" : "#FFFFFF",
+                border: isDark ? "1.5px solid #D4AF37" : "1.5px solid rgba(212,175,55,0.5)",
+                boxShadow: isDark ? "0 0 60px rgba(212,175,55,0.18), 0 24px 64px rgba(0,0,0,0.7)" : "0 0 40px rgba(212,175,55,0.12), 0 24px 64px rgba(0,0,0,0.15)",
               }}
               initial={{ scale: 0.88, y: 40, opacity: 0 }}
               animate={{ scale: 1, y: 0, opacity: 1 }}
@@ -539,7 +541,7 @@ export default function MenuLanding() {
               <button
                 onClick={handleSkip}
                 className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center transition-all hover:scale-110"
-                style={{ background: "rgba(212,175,55,0.12)", color: "var(--bb-gold)", border: "1px solid var(--bb-search-br)" }}
+                style={{ background: isDark ? "rgba(212,175,55,0.12)" : "rgba(212,175,55,0.1)", color: "var(--bb-gold)", border: "1px solid var(--bb-search-br)" }}
                 data-testid="button-close-popup"
               >
                 <X className="w-4 h-4" />
@@ -587,7 +589,7 @@ export default function MenuLanding() {
                         onChange={(e) => setCustomerName(e.target.value)}
                         placeholder="Enter your name"
                         className="w-full bg-transparent outline-none text-sm font-light placeholder:opacity-40"
-                        style={{ color: "var(--bb-input-text)", caretColor: "#D4AF37" }}
+                        style={{ color: isDark ? "var(--bb-input-text)" : "#1a1a1a", caretColor: "#D4AF37" }}
                         data-testid="input-customer-name"
                       />
                     </div>
@@ -614,9 +616,9 @@ export default function MenuLanding() {
                               index={i}
                               className="h-10 w-[27px] rounded-lg text-sm font-bold first:rounded-l-lg first:border-l last:rounded-r-lg transition-all"
                               style={{
-                                background: "rgba(212,175,55,0.14)",
+                                background: isDark ? "rgba(212,175,55,0.14)" : "rgba(212,175,55,0.08)",
                                 border: "1.5px solid rgba(212,175,55,0.6)",
-                                color: "#F0E080",
+                                color: isDark ? "#F0E080" : "#1a1a1a",
                                 borderRadius: "8px",
                               }}
                             />

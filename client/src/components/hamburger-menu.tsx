@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, QrCode, Copy, Check, ExternalLink, Utensils, Users, ChevronDown, ChevronRight } from "lucide-react";
 import { mainCategories } from "@/lib/menu-categories";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useTheme } from "@/contexts/ThemeContext";
 import { categoryTranslationMap } from "@/lib/translations";
 import { useState } from "react";
 import Lottie from "lottie-react";
@@ -303,6 +304,7 @@ export default function HamburgerMenu({
   onCategoryClick,
 }: HamburgerMenuProps) {
   const { t } = useLanguage();
+  const { isDark } = useTheme();
   const [copiedUpi, setCopiedUpi] = useState(false);
   const [showQr, setShowQr] = useState(false);
   const [showReservation, setShowReservation] = useState(false);
@@ -328,7 +330,7 @@ export default function HamburgerMenu({
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "spring", damping: 28, stiffness: 260 }}
             className="fixed top-0 left-0 right-0 bottom-0 z-50 overflow-y-auto"
-            style={{ background: "linear-gradient(160deg, #1C1500 0%, #0A0800 100%)" }}
+            style={{ background: isDark ? "linear-gradient(160deg, #1C1500 0%, #0A0800 100%)" : "#FFFFFF" }}
           >
             {/* Gold shimmer top bar */}
             <div className="h-[3px] w-full" style={{ background: "linear-gradient(90deg, transparent, #D4AF37, #F0CC60, #D4AF37, transparent)" }} />
@@ -336,7 +338,7 @@ export default function HamburgerMenu({
             {/* Header */}
             <div
               className="sticky top-0 z-10 flex items-center justify-between px-5 py-4"
-              style={{ background: "linear-gradient(180deg, #1C1500 80%, transparent)", borderBottom: "1px solid rgba(212,175,55,0.15)" }}
+              style={{ background: isDark ? "linear-gradient(180deg, #1C1500 80%, transparent)" : "#FFFFFF", borderBottom: "1px solid rgba(212,175,55,0.2)" }}
             >
               <div className="flex items-center gap-2">
                 <div className="w-1 h-6 rounded-full" style={{ background: "linear-gradient(180deg, #D4AF37, #E6C55A)" }} />
@@ -371,10 +373,10 @@ export default function HamburgerMenu({
                       data-testid={`button-category-${category.id}`}
                     >
                       <div className="absolute top-0 left-0 w-full h-[2px]" style={{ background: "linear-gradient(90deg, #D4AF37, #E6C55A)" }} />
-                      <p className="text-[10px] font-semibold tracking-widest uppercase mb-0.5" style={{ color: "rgba(212,175,55,0.5)", fontFamily: "'DM Sans', sans-serif" }}>
+                      <p className="text-[10px] font-semibold tracking-widest uppercase mb-0.5" style={{ color: "rgba(212,175,55,0.7)", fontFamily: "'DM Sans', sans-serif" }}>
                         {String(index + 1).padStart(2, "0")}
                       </p>
-                      <p className="text-[13px] font-bold tracking-wide leading-tight" style={{ color: "#E8D8B4", fontFamily: "'DM Sans', sans-serif" }}>
+                      <p className="text-[13px] font-bold tracking-wide leading-tight" style={{ color: isDark ? "#E8D8B4" : "#1a1a1a", fontFamily: "'DM Sans', sans-serif" }}>
                         {label}
                       </p>
                     </motion.button>
@@ -402,10 +404,10 @@ export default function HamburgerMenu({
                   <p className="text-[11px] font-semibold tracking-[0.2em] uppercase mb-0.5" style={{ color: "rgba(212,175,55,0.55)", fontFamily: "'DM Sans', sans-serif" }}>
                     Table Booking
                   </p>
-                  <p className="text-[15px] font-black tracking-wide" style={{ color: "#E8D8B4", fontFamily: "'DM Sans', sans-serif" }}>
+                  <p className="text-[15px] font-black tracking-wide" style={{ color: isDark ? "#E8D8B4" : "#1a1a1a", fontFamily: "'DM Sans', sans-serif" }}>
                     Make a Reservation
                   </p>
-                  <p className="text-[10px] mt-0.5" style={{ color: "rgba(220,212,200,0.4)", fontFamily: "'DM Sans', sans-serif" }}>
+                  <p className="text-[10px] mt-0.5" style={{ color: isDark ? "rgba(220,212,200,0.4)" : "rgba(0,0,0,0.35)", fontFamily: "'DM Sans', sans-serif" }}>
                     Reserve your table in seconds
                   </p>
                 </div>
@@ -499,30 +501,30 @@ export default function HamburgerMenu({
                   <div className="flex items-center gap-3">
                     <img src={mapsImg} alt="Location" className="w-10 h-10 object-contain flex-shrink-0" />
                     <div>
-                      <p className="text-sm font-bold" style={{ color: "#FFFFFF", fontFamily: "'DM Sans', sans-serif" }}>atdigitalmenu</p>
-                      <p className="text-xs mt-0.5" style={{ color: "#FFFFFF", fontFamily: "'DM Sans', sans-serif" }}>Thane, Maharashtra</p>
+                      <p className="text-sm font-bold" style={{ color: isDark ? "#FFFFFF" : "#1a1a1a", fontFamily: "'DM Sans', sans-serif" }}>atdigitalmenu</p>
+                      <p className="text-xs mt-0.5" style={{ color: isDark ? "#FFFFFF" : "#555555", fontFamily: "'DM Sans', sans-serif" }}>Thane, Maharashtra</p>
                     </div>
                   </div>
                   {/* Contact */}
                   <div className="flex items-center gap-3">
                     <img src={callImg} alt="Call" className="w-10 h-10 object-contain rounded-full flex-shrink-0" />
                     <div>
-                      <p className="text-xs font-semibold tracking-wide uppercase mb-0.5" style={{ color: "#FFFFFF", fontFamily: "'DM Sans', sans-serif" }}>
+                      <p className="text-xs font-semibold tracking-wide uppercase mb-0.5" style={{ color: isDark ? "#FFFFFF" : "#1a1a1a", fontFamily: "'DM Sans', sans-serif" }}>
                         {t.contactUs}
                       </p>
                       <button onClick={() => window.open(`tel:${PHONE.replace(/\s/g, "")}`, "_self")}
-                        className="text-sm font-bold transition-opacity hover:opacity-80" style={{ color: "#FFFFFF", fontFamily: "'DM Sans', sans-serif" }}>
+                        className="text-sm font-bold transition-opacity hover:opacity-80" style={{ color: isDark ? "#FFFFFF" : "#1a1a1a", fontFamily: "'DM Sans', sans-serif" }}>
                         {PHONE}
                       </button>
-                      <p className="text-[10px] mt-0.5" style={{ color: "#FFFFFF", fontFamily: "'DM Sans', sans-serif" }}>{t.forReservations}</p>
+                      <p className="text-[10px] mt-0.5" style={{ color: isDark ? "#FFFFFF" : "#555555", fontFamily: "'DM Sans', sans-serif" }}>{t.forReservations}</p>
                     </div>
                   </div>
                   {/* Hours */}
                   <div className="flex items-center gap-3">
                     <img src={clockImg} alt="Hours" className="w-10 h-10 object-contain flex-shrink-0" />
                     <div>
-                      <p className="text-sm font-bold" style={{ color: "#FFFFFF", fontFamily: "'DM Sans', sans-serif" }}>11:00 AM – 11:30 PM</p>
-                      <p className="text-[10px] mt-0.5" style={{ color: "#FFFFFF", fontFamily: "'DM Sans', sans-serif" }}>{t.openAllDays}</p>
+                      <p className="text-sm font-bold" style={{ color: isDark ? "#FFFFFF" : "#1a1a1a", fontFamily: "'DM Sans', sans-serif" }}>11:00 AM – 11:30 PM</p>
+                      <p className="text-[10px] mt-0.5" style={{ color: isDark ? "#FFFFFF" : "#555555", fontFamily: "'DM Sans', sans-serif" }}>{t.openAllDays}</p>
                     </div>
                   </div>
                   {/* Instagram */}
@@ -530,10 +532,10 @@ export default function HamburgerMenu({
                     <img src={instaImg} alt="Instagram" className="w-10 h-10 object-contain rounded-xl flex-shrink-0" />
                     <div>
                       <button onClick={() => window.open("https://www.instagram.com/atdigitalmenu", "_blank", "noopener,noreferrer")}
-                        className="text-sm font-bold flex items-center gap-1 transition-opacity hover:opacity-80" style={{ color: "#FFFFFF", fontFamily: "'DM Sans', sans-serif" }}>
-                        @atdigitalmenu <ExternalLink className="w-3 h-3" style={{ color: "rgba(255,255,255,0.5)" }} />
+                        className="text-sm font-bold flex items-center gap-1 transition-opacity hover:opacity-80" style={{ color: isDark ? "#FFFFFF" : "#1a1a1a", fontFamily: "'DM Sans', sans-serif" }}>
+                        @atdigitalmenu <ExternalLink className="w-3 h-3" style={{ color: isDark ? "rgba(255,255,255,0.5)" : "rgba(0,0,0,0.3)" }} />
                       </button>
-                      <p className="text-[10px] mt-0.5" style={{ color: "#FFFFFF", fontFamily: "'DM Sans', sans-serif" }}>{t.followForUpdates}</p>
+                      <p className="text-[10px] mt-0.5" style={{ color: isDark ? "#FFFFFF" : "#555555", fontFamily: "'DM Sans', sans-serif" }}>{t.followForUpdates}</p>
                     </div>
                   </div>
                   {/* Facebook */}
@@ -541,10 +543,10 @@ export default function HamburgerMenu({
                     <img src={fbImg} alt="Facebook" className="w-10 h-10 object-contain rounded-xl flex-shrink-0" />
                     <div>
                       <button onClick={() => window.open("https://facebook.com/atdigitalmenu", "_blank", "noopener,noreferrer")}
-                        className="text-sm font-bold flex items-center gap-1 transition-opacity hover:opacity-80" style={{ color: "#FFFFFF", fontFamily: "'DM Sans', sans-serif" }}>
-                        atdigitalmenu <ExternalLink className="w-3 h-3" style={{ color: "rgba(255,255,255,0.5)" }} />
+                        className="text-sm font-bold flex items-center gap-1 transition-opacity hover:opacity-80" style={{ color: isDark ? "#FFFFFF" : "#1a1a1a", fontFamily: "'DM Sans', sans-serif" }}>
+                        atdigitalmenu <ExternalLink className="w-3 h-3" style={{ color: isDark ? "rgba(255,255,255,0.5)" : "rgba(0,0,0,0.3)" }} />
                       </button>
-                      <p className="text-[10px] mt-0.5" style={{ color: "#FFFFFF", fontFamily: "'DM Sans', sans-serif" }}>Follow on Facebook</p>
+                      <p className="text-[10px] mt-0.5" style={{ color: isDark ? "#FFFFFF" : "#555555", fontFamily: "'DM Sans', sans-serif" }}>Follow on Facebook</p>
                     </div>
                   </div>
                   {/* YouTube */}
@@ -552,10 +554,10 @@ export default function HamburgerMenu({
                     <img src={ytImg} alt="YouTube" className="w-10 h-10 object-contain rounded-xl flex-shrink-0" />
                     <div>
                       <button onClick={() => window.open("https://youtube.com/@atdigitalmenu", "_blank", "noopener,noreferrer")}
-                        className="text-sm font-bold flex items-center gap-1 transition-opacity hover:opacity-80" style={{ color: "#FFFFFF", fontFamily: "'DM Sans', sans-serif" }}>
-                        atdigitalmenu <ExternalLink className="w-3 h-3" style={{ color: "rgba(255,255,255,0.5)" }} />
+                        className="text-sm font-bold flex items-center gap-1 transition-opacity hover:opacity-80" style={{ color: isDark ? "#FFFFFF" : "#1a1a1a", fontFamily: "'DM Sans', sans-serif" }}>
+                        atdigitalmenu <ExternalLink className="w-3 h-3" style={{ color: isDark ? "rgba(255,255,255,0.5)" : "rgba(0,0,0,0.3)" }} />
                       </button>
-                      <p className="text-[10px] mt-0.5" style={{ color: "#FFFFFF", fontFamily: "'DM Sans', sans-serif" }}>Watch on YouTube</p>
+                      <p className="text-[10px] mt-0.5" style={{ color: isDark ? "#FFFFFF" : "#555555", fontFamily: "'DM Sans', sans-serif" }}>Watch on YouTube</p>
                     </div>
                   </div>
                   {/* WhatsApp */}
@@ -563,10 +565,10 @@ export default function HamburgerMenu({
                     <img src={whatsappImg} alt="WhatsApp" className="w-10 h-10 object-contain rounded-xl flex-shrink-0" />
                     <div>
                       <button onClick={() => window.open("https://wa.me/919619523254", "_blank", "noopener,noreferrer")}
-                        className="text-sm font-bold flex items-center gap-1 transition-opacity hover:opacity-80" style={{ color: "#FFFFFF", fontFamily: "'DM Sans', sans-serif" }}>
-                        {PHONE} <ExternalLink className="w-3 h-3" style={{ color: "rgba(255,255,255,0.5)" }} />
+                        className="text-sm font-bold flex items-center gap-1 transition-opacity hover:opacity-80" style={{ color: isDark ? "#FFFFFF" : "#1a1a1a", fontFamily: "'DM Sans', sans-serif" }}>
+                        {PHONE} <ExternalLink className="w-3 h-3" style={{ color: isDark ? "rgba(255,255,255,0.5)" : "rgba(0,0,0,0.3)" }} />
                       </button>
-                      <p className="text-[10px] mt-0.5" style={{ color: "#FFFFFF", fontFamily: "'DM Sans', sans-serif" }}>Chat on WhatsApp</p>
+                      <p className="text-[10px] mt-0.5" style={{ color: isDark ? "#FFFFFF" : "#555555", fontFamily: "'DM Sans', sans-serif" }}>Chat on WhatsApp</p>
                     </div>
                   </div>
                 </div>
