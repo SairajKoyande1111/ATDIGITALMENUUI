@@ -353,7 +353,7 @@ export default function CategorySelection() {
               placeholder={t.searchItems}
               value={foodSearchQuery}
               onChange={(e) => setFoodSearchQuery(e.target.value)}
-              className="pl-10 pr-32 sm:pr-40 h-11 rounded-full border-2 text-white placeholder:text-white/60 focus-visible:ring-2 focus-visible:ring-[#C9A55C]/50"
+              className="pl-10 pr-32 sm:pr-40 h-11 rounded-full border-2 text-[var(--bb-input-text)] placeholder:text-[var(--bb-text-dim)] focus-visible:ring-2 focus-visible:ring-[#C9A55C]/50"
               style={{ 
                 borderColor: '#C9A55C', 
                 backgroundColor: 'transparent'
@@ -419,7 +419,7 @@ export default function CategorySelection() {
                   {isListening ? (
                     <MicOff className="h-4 w-4 text-red-500 animate-pulse" />
                   ) : (
-                    <Mic className="h-4 w-4 text-white" />
+                    <Mic className="h-4 w-4" style={{ color: "var(--bb-gold)" }} />
                   )}
                 </Button>
               )}

@@ -225,13 +225,13 @@ export default function SubcategoryProducts() {
 
       <div className="container mx-auto px-3 sm:px-4 py-2 sm:py-4 pb-24">
         <div className="relative mb-3 sm:mb-6">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-white" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4" style={{ color: "var(--bb-gold)" }} />
           <Input
             type="text"
             placeholder={t.searchItems}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 pr-32 sm:pr-40 h-11 rounded-full border-2 text-white placeholder:text-white/70 focus-visible:ring-2 focus-visible:ring-[#C9A55C]/50"
+            className="pl-10 pr-32 sm:pr-40 h-11 rounded-full border-2 text-[var(--bb-input-text)] placeholder:text-[var(--bb-text-dim)] focus-visible:ring-2 focus-visible:ring-[#C9A55C]/50"
             style={{ 
               borderColor: '#C9A55C', 
               backgroundColor: 'transparent'

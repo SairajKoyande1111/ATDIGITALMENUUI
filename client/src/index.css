@@ -257,9 +257,9 @@
 }
 
 [data-theme="light"] {
-  --bb-bg:        #F5F5F5;
+  --bb-bg:        #FFFFFF;
   --bb-card:      #FFFFFF;
-  --bb-card-alt:  #F8F8F8;
+  --bb-card-alt:  #FFFFFF;
   --bb-gold:      #8B6200;
   --bb-gold-2:    #A87800;
   --bb-text:      #1a1a1a;
