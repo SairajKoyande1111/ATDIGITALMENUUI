@@ -7,7 +7,9 @@ import { useState, useCallback } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
 import LanguageDropdown from "@/components/language-dropdown";
-import atDigitalMenuLogo from "@assets/ATDIGITALMENUNOBG_1773511851120.png";
+import { AnimatePresence } from "framer-motion";
+import ReservationModal from "@/components/reservation-modal";
+import atDigitalMenuLogo from "@assets/₹999-_(15)_1774207200972.png";
 import instaImg from "@assets/instagram_(2)_1773345405292.png";
 import fbImg from "@assets/facebook_(2)_1773345408410.png";
 import ytImg from "@assets/youtube_1773345412112.png";
@@ -15,6 +17,7 @@ import mapsImg from "@assets/logo_(1)_1773390711534.png";
 import callImg from "@assets/call_1773390891033.png";
 import mailImg from "@assets/communication_1773390476300.png";
 import whatsappImg from "@assets/apple_1773515172898.png";
+import bookingImg from "@assets/booking_1774207838605.png";
 
 function ThemeToggle() {
   const { isDark, toggleTheme } = useTheme();
@@ -39,7 +42,6 @@ function ThemeToggle() {
       data-testid="button-theme-toggle"
     >
       {isDark ? (
-        /* Dark mode — moon circle on left, text on right */
         <>
           <div
             className="flex items-center justify-center rounded-full flex-shrink-0"
@@ -76,7 +78,6 @@ function ThemeToggle() {
           </span>
         </>
       ) : (
-        /* Light mode — text on left, sun circle on right */
         <>
           <span
             className="flex-1 text-center font-bold"
@@ -131,6 +132,7 @@ export default function Welcome() {
   const [mediaReady, setMediaReady] = useState(false);
   const { t } = useLanguage();
   const { isDark } = useTheme();
+  const [showReservation, setShowReservation] = useState(false);
 
   const handleExploreMenu = () => {
     playWelcomeAudio();
@@ -157,17 +159,14 @@ export default function Welcome() {
     >
       <MediaPreloader onComplete={() => setMediaReady(true)} />
 
-      {/* Theme toggle — fixed top left */}
       <div className="fixed top-3 left-3 z-50">
         <ThemeToggle />
       </div>
 
-      {/* Language dropdown — fixed top right */}
       <div className="fixed top-3 right-3 z-50">
         <LanguageDropdown />
       </div>
 
-      {/* Main content */}
       <div className="flex flex-col items-center w-full flex-1 px-0 pt-0 pb-0 gap-3 justify-start">
 
         {/* Logo */}
@@ -178,7 +177,7 @@ export default function Welcome() {
             style={{
               width: "360px",
               objectFit: "contain",
-              filter: "none",
+              mixBlendMode: isDark ? "normal" : "multiply",
             }}
           />
         </div>
@@ -281,6 +280,14 @@ export default function Welcome() {
             <img src={mailImg} alt="Email" className="w-12 h-12 rounded-lg object-cover" />
             <span className="text-xs font-medium" style={{ color: labelColor }}>EMAIL</span>
           </button>
+          <button
+            className="flex flex-col items-center gap-0.5 transition-opacity hover:opacity-80"
+            onClick={() => setShowReservation(true)}
+            data-testid="button-welcome-reserve"
+          >
+            <img src={bookingImg} alt="Reserve" className="w-12 h-12 object-contain" />
+            <span className="text-xs font-medium" style={{ color: labelColor }}>RESERVE</span>
+          </button>
         </div>
 
         {/* Footer */}
@@ -293,6 +300,12 @@ export default function Welcome() {
         </p>
 
       </div>
+
+      <AnimatePresence>
+        {showReservation && (
+          <ReservationModal onClose={() => setShowReservation(false)} />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

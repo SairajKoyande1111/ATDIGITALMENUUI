@@ -31,7 +31,7 @@ import premiumDessertsImg from "@assets/image_1765866710467.png";
 import premiumMocktailsImg from "@assets/stock_images/premium_colorful_moc_1a15dee9.jpg";
 import cocktailsImg from "@assets/COCKTAILS_1766751289781.jpg";
 import craftedBeerImg from "@assets/CRAFTED_BEER_1766750491358.jpg";
-import logoImg from "@assets/₹999-_(13)_1773734174550.png";
+import logoImg from "@assets/₹999-_(15)_1774207200972.png";
 import fallbackImg from "@assets/coming_soon_imagev2_1766811809828.jpg";
 
 // @ts-ignore
@@ -473,6 +473,7 @@ export default function MenuLanding() {
                 src={logoImg}
                 alt="AT Digital Menu Logo"
                 className="h-40 sm:h-44 md:h-48 w-auto object-contain"
+                style={{ mixBlendMode: isDark ? "normal" : "multiply" }}
                 data-testid="img-logo"
               />
             </div>
@@ -553,7 +554,7 @@ export default function MenuLanding() {
                   src={logoImg}
                   alt="AT Digital Menu"
                   className="w-52 object-contain mb-1"
-                  style={{ filter: "drop-shadow(0 0 12px rgba(212,175,55,0.35))" }}
+                  style={{ filter: isDark ? "drop-shadow(0 0 12px rgba(212,175,55,0.35))" : "none", mixBlendMode: isDark ? "normal" : "multiply" }}
                 />
 
                 {/* Ornamental divider */}
@@ -582,7 +583,7 @@ export default function MenuLanding() {
                     </label>
                     <div
                       className="flex items-center rounded-xl px-4 py-0 h-12 transition-all"
-                      style={{ background: "rgba(212,175,55,0.06)", border: "1px solid rgba(212,175,55,0.35)" }}
+                      style={{ background: isDark ? "rgba(212,175,55,0.06)" : "#FFFFFF", border: "1px solid rgba(212,175,55,0.35)" }}
                     >
                       <input
                         value={customerName}
@@ -616,7 +617,7 @@ export default function MenuLanding() {
                               index={i}
                               className="h-10 w-[27px] rounded-lg text-sm font-bold first:rounded-l-lg first:border-l last:rounded-r-lg transition-all"
                               style={{
-                                background: isDark ? "rgba(212,175,55,0.14)" : "rgba(212,175,55,0.08)",
+                                background: isDark ? "rgba(212,175,55,0.14)" : "#FFFFFF",
                                 border: "1.5px solid rgba(212,175,55,0.6)",
                                 color: isDark ? "#F0E080" : "#1a1a1a",
                                 borderRadius: "8px",

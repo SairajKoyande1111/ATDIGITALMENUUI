@@ -36,6 +36,16 @@ export default function LanguageDropdown({ className = "" }: LanguageDropdownPro
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const dropdownBg = isDark ? "#1a1a1a" : "#FFFFFF";
+  const dropdownBorder = isDark ? "1px solid #B8986A" : "1px solid rgba(0,0,0,0.12)";
+  const itemColor = isDark ? "#dcd4c8" : "#1a1a1a";
+  const searchBg = isDark ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.04)";
+  const searchColor = isDark ? "#dcd4c8" : "#1a1a1a";
+  const activeColor = isDark ? "#B8986A" : "#8B6200";
+  const activeBg = isDark ? "rgba(184,152,106,0.2)" : "rgba(139,98,0,0.08)";
+  const hoverBg = isDark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.04)";
+  const footerColor = isDark ? "rgba(220,212,200,0.4)" : "rgba(0,0,0,0.35)";
+
   return (
     <div ref={ref} className={`relative ${className}`} data-testid="language-dropdown">
       <button
@@ -63,31 +73,29 @@ export default function LanguageDropdown({ className = "" }: LanguageDropdownPro
         <div
           className="absolute right-0 top-full mt-1 rounded-lg overflow-hidden z-50 shadow-xl"
           style={{
-            backgroundColor: "#1a1a1a",
-            border: "1px solid #B8986A",
+            backgroundColor: dropdownBg,
+            border: dropdownBorder,
             width: "180px",
           }}
         >
-          {/* Search box */}
-          <div className="p-2 border-b" style={{ borderColor: "rgba(184,152,106,0.3)" }}>
-            <div className="flex items-center gap-1.5 px-2 py-1 rounded-md" style={{ backgroundColor: "rgba(255,255,255,0.07)" }}>
-              <Search className="w-3 h-3 flex-shrink-0" style={{ color: "#B8986A" }} />
+          <div className="p-2 border-b" style={{ borderColor: isDark ? "rgba(184,152,106,0.3)" : "rgba(0,0,0,0.08)" }}>
+            <div className="flex items-center gap-1.5 px-2 py-1 rounded-md" style={{ backgroundColor: searchBg }}>
+              <Search className="w-3 h-3 flex-shrink-0" style={{ color: activeColor }} />
               <input
                 type="text"
                 placeholder="Search..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="bg-transparent text-xs outline-none w-full"
-                style={{ color: "#dcd4c8" }}
+                style={{ color: searchColor }}
                 autoFocus
               />
             </div>
           </div>
 
-          {/* Language list */}
           <div className="overflow-y-auto" style={{ maxHeight: "220px" }}>
             {filtered.length === 0 ? (
-              <div className="px-3 py-2 text-xs text-center" style={{ color: "rgba(220,212,200,0.5)" }}>
+              <div className="px-3 py-2 text-xs text-center" style={{ color: isDark ? "rgba(220,212,200,0.5)" : "rgba(0,0,0,0.35)" }}>
                 No language found
               </div>
             ) : (
@@ -101,13 +109,13 @@ export default function LanguageDropdown({ className = "" }: LanguageDropdownPro
                   }}
                   className="w-full flex items-center gap-2 px-3 py-2 text-left text-sm transition-colors"
                   style={{
-                    backgroundColor: language === lang.code ? "rgba(184,152,106,0.2)" : "transparent",
-                    color: language === lang.code ? "#B8986A" : "#dcd4c8",
+                    backgroundColor: language === lang.code ? activeBg : "transparent",
+                    color: language === lang.code ? activeColor : itemColor,
                     fontWeight: language === lang.code ? 600 : 400,
                   }}
                   onMouseEnter={(e) => {
                     if (language !== lang.code) {
-                      (e.currentTarget as HTMLElement).style.backgroundColor = "rgba(255,255,255,0.05)";
+                      (e.currentTarget as HTMLElement).style.backgroundColor = hoverBg;
                     }
                   }}
                   onMouseLeave={(e) => {
@@ -117,22 +125,21 @@ export default function LanguageDropdown({ className = "" }: LanguageDropdownPro
                   }}
                   data-testid={`button-lang-${lang.code}`}
                 >
-                  <span className="w-8 text-xs font-bold flex-shrink-0" style={{ color: "#B8986A" }}>
+                  <span className="w-8 text-xs font-bold flex-shrink-0" style={{ color: activeColor }}>
                     {lang.native}
                   </span>
                   <span className="text-xs truncate">{lang.name}</span>
                   {language === lang.code && (
-                    <span className="ml-auto text-xs" style={{ color: "#B8986A" }}>✓</span>
+                    <span className="ml-auto text-xs" style={{ color: activeColor }}>✓</span>
                   )}
                 </button>
               ))
             )}
           </div>
 
-          {/* Footer note */}
           <div
             className="px-3 py-1.5 text-center border-t"
-            style={{ borderColor: "rgba(184,152,106,0.3)", color: "rgba(220,212,200,0.4)", fontSize: "10px" }}
+            style={{ borderColor: isDark ? "rgba(184,152,106,0.3)" : "rgba(0,0,0,0.08)", color: footerColor, fontSize: "10px" }}
           >
             Powered by MyMemory
           </div>
