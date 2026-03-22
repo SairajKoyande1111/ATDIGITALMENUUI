@@ -167,7 +167,7 @@ export default function Welcome() {
         <LanguageDropdown />
       </div>
 
-      <div className="flex flex-col items-center w-full flex-1 px-0 pt-12 pb-3 gap-5 justify-start">
+      <div className="flex flex-col items-center w-full flex-1 px-0 pt-0 pb-0 justify-evenly">
 
         {/* Logo — cropped to remove whitespace above and below the text */}
         <div
