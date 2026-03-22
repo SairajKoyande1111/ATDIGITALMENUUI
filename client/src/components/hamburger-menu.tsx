@@ -29,10 +29,10 @@ const UPI_ID = "atdigitalmenu@upi";
 const PHONE = "+91 9619523254";
 
 const PAYMENT_APPS = [
-  { name: "GPay", img: gpayImg },
-  { name: "PhonePe", img: phonepeImg },
-  { name: "Paytm", img: paytmImg },
-  { name: "BHIM", img: bhimImg },
+  { name: "GPay", img: gpayImg, size: "w-16 h-16" },
+  { name: "PhonePe", img: phonepeImg, size: "w-20 h-20" },
+  { name: "Paytm", img: paytmImg, size: "w-16 h-16" },
+  { name: "BHIM", img: bhimImg, size: "w-12 h-12" },
 ];
 
 export default function HamburgerMenu({
@@ -225,7 +225,7 @@ export default function HamburgerMenu({
                   <div className="flex items-center justify-between gap-3 pt-1">
                     {PAYMENT_APPS.map((app) => (
                       <div key={app.name} className="flex-1 flex items-center justify-center">
-                        <img src={app.img} alt={app.name} className="w-16 h-16 object-contain" style={{ mixBlendMode: isDark ? "normal" : "multiply" }} />
+                        <img src={app.img} alt={app.name} className={`${app.size} object-contain`} style={{ mixBlendMode: isDark ? "normal" : "multiply" }} />
                       </div>
                     ))}
                   </div>
