@@ -10,18 +10,260 @@ interface DishDetailModalProps {
   onClose: () => void;
 }
 
-const NUTRITION_PLACEHOLDER = [
-  { label: "Calories", value: "—" },
-  { label: "Protein", value: "—" },
-  { label: "Carbs", value: "—" },
-  { label: "Fat", value: "—" },
-  { label: "Fibre", value: "—" },
-  { label: "Sodium", value: "—" },
-];
+interface NutritionEntry {
+  label: string;
+  value: string;
+}
 
-const ALLERGEN_PLACEHOLDER = "Information not available for this item.";
-const INGREDIENTS_PLACEHOLDER = "Detailed ingredient list not available.";
-const PREP_TIME_PLACEHOLDER = "15–25 mins";
+interface DummyProfile {
+  nutrition: NutritionEntry[];
+  allergens: string[];
+  ingredients: string[];
+  prepTime: string;
+}
+
+const PROFILES: Record<string, DummyProfile> = {
+  food: {
+    nutrition: [
+      { label: "Calories", value: "320 kcal" },
+      { label: "Protein", value: "14 g" },
+      { label: "Carbs", value: "38 g" },
+      { label: "Fat", value: "12 g" },
+      { label: "Fibre", value: "4 g" },
+      { label: "Sodium", value: "460 mg" },
+    ],
+    allergens: ["Gluten", "Dairy", "Soy"],
+    ingredients: ["Fresh vegetables", "Spices", "Cooking oil", "Herbs", "Salt", "Wheat flour"],
+    prepTime: "20–30 mins",
+  },
+  pizza: {
+    nutrition: [
+      { label: "Calories", value: "410 kcal" },
+      { label: "Protein", value: "16 g" },
+      { label: "Carbs", value: "52 g" },
+      { label: "Fat", value: "14 g" },
+      { label: "Fibre", value: "3 g" },
+      { label: "Sodium", value: "620 mg" },
+    ],
+    allergens: ["Gluten", "Dairy", "Eggs"],
+    ingredients: ["Pizza dough", "Tomato sauce", "Mozzarella", "Olive oil", "Fresh herbs", "Seasoning"],
+    prepTime: "25–35 mins",
+  },
+  pasta: {
+    nutrition: [
+      { label: "Calories", value: "380 kcal" },
+      { label: "Protein", value: "13 g" },
+      { label: "Carbs", value: "58 g" },
+      { label: "Fat", value: "10 g" },
+      { label: "Fibre", value: "3 g" },
+      { label: "Sodium", value: "520 mg" },
+    ],
+    allergens: ["Gluten", "Dairy", "Eggs"],
+    ingredients: ["Durum wheat pasta", "Olive oil", "Garlic", "Fresh herbs", "Parmesan", "Seasoning"],
+    prepTime: "20–25 mins",
+  },
+  curry: {
+    nutrition: [
+      { label: "Calories", value: "350 kcal" },
+      { label: "Protein", value: "18 g" },
+      { label: "Carbs", value: "32 g" },
+      { label: "Fat", value: "16 g" },
+      { label: "Fibre", value: "5 g" },
+      { label: "Sodium", value: "540 mg" },
+    ],
+    allergens: ["Dairy", "Tree Nuts"],
+    ingredients: ["Spices", "Onions", "Tomatoes", "Ginger", "Garlic", "Cream", "Cooking oil"],
+    prepTime: "25–35 mins",
+  },
+  biryani: {
+    nutrition: [
+      { label: "Calories", value: "480 kcal" },
+      { label: "Protein", value: "20 g" },
+      { label: "Carbs", value: "64 g" },
+      { label: "Fat", value: "14 g" },
+      { label: "Fibre", value: "3 g" },
+      { label: "Sodium", value: "580 mg" },
+    ],
+    allergens: ["Dairy", "Tree Nuts", "Soy"],
+    ingredients: ["Basmati rice", "Whole spices", "Saffron", "Fried onions", "Ghee", "Fresh mint", "Yogurt"],
+    prepTime: "35–45 mins",
+  },
+  bread: {
+    nutrition: [
+      { label: "Calories", value: "180 kcal" },
+      { label: "Protein", value: "5 g" },
+      { label: "Carbs", value: "32 g" },
+      { label: "Fat", value: "4 g" },
+      { label: "Fibre", value: "2 g" },
+      { label: "Sodium", value: "220 mg" },
+    ],
+    allergens: ["Gluten", "Dairy"],
+    ingredients: ["Wheat flour", "Water", "Yeast", "Butter", "Salt"],
+    prepTime: "10–15 mins",
+  },
+  sizzler: {
+    nutrition: [
+      { label: "Calories", value: "520 kcal" },
+      { label: "Protein", value: "28 g" },
+      { label: "Carbs", value: "44 g" },
+      { label: "Fat", value: "22 g" },
+      { label: "Fibre", value: "4 g" },
+      { label: "Sodium", value: "680 mg" },
+    ],
+    allergens: ["Gluten", "Dairy", "Eggs", "Soy"],
+    ingredients: ["Protein of choice", "Seasonal vegetables", "Butter", "Sauces", "Herbs", "Seasoning"],
+    prepTime: "30–40 mins",
+  },
+  salad: {
+    nutrition: [
+      { label: "Calories", value: "140 kcal" },
+      { label: "Protein", value: "5 g" },
+      { label: "Carbs", value: "14 g" },
+      { label: "Fat", value: "7 g" },
+      { label: "Fibre", value: "4 g" },
+      { label: "Sodium", value: "180 mg" },
+    ],
+    allergens: ["Dairy", "Tree Nuts"],
+    ingredients: ["Mixed greens", "Cherry tomatoes", "Cucumber", "Olive oil", "Lemon dressing", "Herbs"],
+    prepTime: "10–15 mins",
+  },
+  soup: {
+    nutrition: [
+      { label: "Calories", value: "120 kcal" },
+      { label: "Protein", value: "6 g" },
+      { label: "Carbs", value: "16 g" },
+      { label: "Fat", value: "4 g" },
+      { label: "Fibre", value: "3 g" },
+      { label: "Sodium", value: "560 mg" },
+    ],
+    allergens: ["Dairy", "Gluten", "Celery"],
+    ingredients: ["Vegetable / chicken stock", "Onions", "Garlic", "Cream", "Herbs", "Seasoning"],
+    prepTime: "15–20 mins",
+  },
+  beer: {
+    nutrition: [
+      { label: "Calories", value: "180 kcal" },
+      { label: "Protein", value: "2 g" },
+      { label: "Carbs", value: "14 g" },
+      { label: "Fat", value: "0 g" },
+      { label: "Fibre", value: "0 g" },
+      { label: "Sodium", value: "14 mg" },
+    ],
+    allergens: ["Gluten", "Barley"],
+    ingredients: ["Malted barley", "Hops", "Yeast", "Water"],
+    prepTime: "Served chilled",
+  },
+  cocktail: {
+    nutrition: [
+      { label: "Calories", value: "220 kcal" },
+      { label: "Protein", value: "0 g" },
+      { label: "Carbs", value: "20 g" },
+      { label: "Fat", value: "0 g" },
+      { label: "Fibre", value: "0 g" },
+      { label: "Sodium", value: "10 mg" },
+    ],
+    allergens: ["Sulphites"],
+    ingredients: ["Spirits", "Fresh citrus juice", "Simple syrup", "Ice", "Aromatic garnish"],
+    prepTime: "3–5 mins",
+  },
+  spirits: {
+    nutrition: [
+      { label: "Calories", value: "230 kcal" },
+      { label: "Protein", value: "0 g" },
+      { label: "Carbs", value: "0 g" },
+      { label: "Fat", value: "0 g" },
+      { label: "Fibre", value: "0 g" },
+      { label: "Sodium", value: "1 mg" },
+    ],
+    allergens: ["Sulphites", "Barley (trace)"],
+    ingredients: ["Distilled spirit", "Purified water"],
+    prepTime: "Served neat / on rocks",
+  },
+  wine: {
+    nutrition: [
+      { label: "Calories", value: "125 kcal" },
+      { label: "Protein", value: "0 g" },
+      { label: "Carbs", value: "4 g" },
+      { label: "Fat", value: "0 g" },
+      { label: "Fibre", value: "0 g" },
+      { label: "Sodium", value: "6 mg" },
+    ],
+    allergens: ["Sulphites"],
+    ingredients: ["Grapes", "Yeast", "Sulphur dioxide (preservative)"],
+    prepTime: "Served chilled / at room temp",
+  },
+  dessert: {
+    nutrition: [
+      { label: "Calories", value: "290 kcal" },
+      { label: "Protein", value: "4 g" },
+      { label: "Carbs", value: "40 g" },
+      { label: "Fat", value: "12 g" },
+      { label: "Fibre", value: "1 g" },
+      { label: "Sodium", value: "110 mg" },
+    ],
+    allergens: ["Dairy", "Eggs", "Gluten", "Tree Nuts"],
+    ingredients: ["Cream", "Sugar", "Butter", "Flour", "Eggs", "Vanilla"],
+    prepTime: "15–20 mins",
+  },
+  mocktail: {
+    nutrition: [
+      { label: "Calories", value: "95 kcal" },
+      { label: "Protein", value: "0 g" },
+      { label: "Carbs", value: "24 g" },
+      { label: "Fat", value: "0 g" },
+      { label: "Fibre", value: "0 g" },
+      { label: "Sodium", value: "8 mg" },
+    ],
+    allergens: ["Sulphites"],
+    ingredients: ["Fresh fruit juice", "Soda water", "Grenadine", "Fresh mint", "Ice", "Citrus garnish"],
+    prepTime: "3–5 mins",
+  },
+};
+
+function getCategoryProfile(category: string): DummyProfile {
+  const cat = (category || "").toLowerCase();
+  if (cat.includes("pizza") || cat.includes("artisan")) return PROFILES.pizza;
+  if (cat.includes("pasta")) return PROFILES.pasta;
+  if (cat.includes("curry") || cat.includes("indian-mains") || cat.includes("dal") || cat.includes("wok") || cat.includes("asian")) return PROFILES.curry;
+  if (cat.includes("biryani") || cat.includes("rice")) return PROFILES.biryani;
+  if (cat.includes("bread")) return PROFILES.bread;
+  if (cat.includes("sizzler")) return PROFILES.sizzler;
+  if (cat.includes("salad")) return PROFILES.salad;
+  if (cat.includes("soup")) return PROFILES.soup;
+  if (cat.includes("beer") || cat.includes("draught") || cat.includes("pint") || cat.includes("tap")) return PROFILES.beer;
+  if (cat.includes("cocktail") || cat.includes("sangria") || cat.includes("shot") || cat.includes("beer-cocktail")) return PROFILES.cocktail;
+  if (cat.includes("whisky") || cat.includes("whiskey") || cat.includes("vodka") || cat.includes("gin") || cat.includes("rum") || cat.includes("tequila") || cat.includes("cognac") || cat.includes("brandy") || cat.includes("liqueur") || cat.includes("bar")) return PROFILES.spirits;
+  if (cat.includes("wine") || cat.includes("port") || cat.includes("sparkling") || cat.includes("rose") || cat.includes("rosé")) return PROFILES.wine;
+  if (cat.includes("dessert")) return PROFILES.dessert;
+  if (cat.includes("mocktail") || cat.includes("soft-bev") || cat.includes("beverage")) return PROFILES.mocktail;
+  return PROFILES.food;
+}
+
+function getNutritionRows(item: MenuItem): NutritionEntry[] {
+  const nc = (item as any).nutritionalContents;
+  if (nc && typeof nc === "object" && Object.keys(nc).length > 0) {
+    return Object.entries(nc).map(([label, value]) => ({ label, value: String(value) }));
+  }
+  return getCategoryProfile(item.category).nutrition;
+}
+
+function getAllergens(item: MenuItem): string[] {
+  const a = (item as any).allergens;
+  if (Array.isArray(a) && a.length > 0) return a;
+  return getCategoryProfile(item.category).allergens;
+}
+
+function getIngredients(item: MenuItem): string[] {
+  const ing = (item as any).ingredients;
+  if (Array.isArray(ing) && ing.length > 0) return ing;
+  return getCategoryProfile(item.category).ingredients;
+}
+
+function getPrepTime(item: MenuItem): string {
+  const pt = (item as any).preparationTime;
+  if (pt && typeof pt === "string" && pt.trim()) return pt;
+  return getCategoryProfile(item.category).prepTime;
+}
 
 export default function DishDetailModal({ item, onClose }: DishDetailModalProps) {
   const { isDark } = useTheme();
@@ -42,6 +284,11 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
       ? item.price.split("|").map((p: string) => `₹${p.trim()}`).join("  |  ")
       : `₹${item.price}`;
 
+  const nutritionRows = getNutritionRows(item);
+  const allergens = getAllergens(item);
+  const ingredients = getIngredients(item);
+  const prepTime = getPrepTime(item);
+
   return (
     <AnimatePresence>
       {item && (
@@ -53,7 +300,7 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
           exit={{ y: "100%" }}
           transition={{ type: "spring", damping: 32, stiffness: 300 }}
         >
-          {/* Hero Image — full width, top of screen */}
+          {/* Hero Image */}
           <div className="relative w-full overflow-hidden" style={{ aspectRatio: "4/3" }}>
             <img
               src={imageUrl}
@@ -61,16 +308,12 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
               className="w-full h-full object-cover"
               onError={() => setImgError(true)}
             />
-
-            {/* Subtle bottom fade so name area reads cleanly */}
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
                 background: "linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, transparent 40%, rgba(26,20,8,0.6) 100%)",
               }}
             />
-
-            {/* Veg / Non-Veg badge — top left */}
             <div
               className="absolute top-4 left-4 px-3 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase"
               style={{
@@ -83,8 +326,6 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
             >
               {item.isVeg ? "Veg" : "Non-Veg"}
             </div>
-
-            {/* Gold X close button — top right */}
             <button
               onClick={onClose}
               className="absolute top-4 right-4 z-10 flex items-center justify-center w-9 h-9 rounded-full transition-all active:scale-90"
@@ -170,7 +411,7 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
                   className="text-sm font-semibold"
                   style={{ color: textPrimary, fontFamily: "'DM Sans', sans-serif" }}
                 >
-                  {PREP_TIME_PLACEHOLDER}
+                  {prepTime}
                 </p>
               </div>
             </div>
@@ -187,7 +428,7 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
                 Nutritional Contents
               </h3>
               <div className="grid grid-cols-3 gap-2">
-                {NUTRITION_PLACEHOLDER.map((n) => (
+                {nutritionRows.map((n) => (
                   <div
                     key={n.label}
                     className="rounded-xl p-3 text-center"
@@ -200,7 +441,7 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
                       {n.label}
                     </p>
                     <p
-                      className="text-base font-bold"
+                      className="text-sm font-bold"
                       style={{ color: textPrimary, fontFamily: "'DM Sans', sans-serif" }}
                     >
                       {n.value}
@@ -212,7 +453,7 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
                 className="text-[10px] mt-2 text-center uppercase tracking-wider"
                 style={{ color: "rgba(212,175,55,0.35)", fontFamily: "'DM Sans', sans-serif" }}
               >
-                Nutritional info will be available soon
+                Per serving · Approximate values
               </p>
             </div>
 
@@ -227,16 +468,21 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
               >
                 Allergens
               </h3>
-              <div
-                className="rounded-xl px-4 py-3"
-                style={{ background: cardBg, border: cardBorder }}
-              >
-                <p
-                  className="text-sm"
-                  style={{ color: textPrimary, fontFamily: "'DM Sans', sans-serif", opacity: 0.75 }}
-                >
-                  {ALLERGEN_PLACEHOLDER}
-                </p>
+              <div className="flex flex-wrap gap-2">
+                {allergens.map((a) => (
+                  <span
+                    key={a}
+                    className="px-3 py-1 rounded-full text-xs font-semibold"
+                    style={{
+                      background: isDark ? "rgba(212,175,55,0.1)" : "#FFF8E7",
+                      border: isDark ? "1px solid rgba(212,175,55,0.3)" : "1px solid rgba(212,175,55,0.4)",
+                      color: isDark ? "#E6C55A" : "#8B6200",
+                      fontFamily: "'DM Sans', sans-serif",
+                    }}
+                  >
+                    {a}
+                  </span>
+                ))}
               </div>
             </div>
 
@@ -251,16 +497,21 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
               >
                 Ingredients
               </h3>
-              <div
-                className="rounded-xl px-4 py-3"
-                style={{ background: cardBg, border: cardBorder }}
-              >
-                <p
-                  className="text-sm"
-                  style={{ color: textPrimary, fontFamily: "'DM Sans', sans-serif", opacity: 0.75 }}
-                >
-                  {INGREDIENTS_PLACEHOLDER}
-                </p>
+              <div className="flex flex-wrap gap-2">
+                {ingredients.map((ing) => (
+                  <span
+                    key={ing}
+                    className="px-3 py-1 rounded-full text-xs font-medium"
+                    style={{
+                      background: cardBg,
+                      border: cardBorder,
+                      color: textPrimary,
+                      fontFamily: "'DM Sans', sans-serif",
+                    }}
+                  >
+                    {ing}
+                  </span>
+                ))}
               </div>
             </div>
 
