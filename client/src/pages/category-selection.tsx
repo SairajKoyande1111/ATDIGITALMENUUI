@@ -40,7 +40,7 @@ declare global {
   }
 }
 
-import logoImg from "@assets/₹999-_(13)_1773734174550.png";
+import logoImg from "@assets/₹999-_(15)_1774207200972.png";
 import FloatingButtons from "@/components/floating-buttons";
 import sangriaImg from "@assets/image_1767545808245.png";
 import classicCocktailsImg from "@assets/image_1767545845465.png";
