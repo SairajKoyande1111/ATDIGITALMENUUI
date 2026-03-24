@@ -190,7 +190,7 @@ export default function Welcome() {
             background: "linear-gradient(90deg, #d4af37, #e6c55a)",
             border: "none",
             color: "#3D3100",
-            marginTop: "-50px",
+            marginTop: "-60px",
             boxShadow: isDark
               ? "inset 0 0 0 2px #3D3100, 0 0 0 2px #FFFFFF, 0 0 0 4px #d4af37"
               : "inset 0 0 0 2px rgba(0,0,0,0.1), 0 0 0 2px #FFFFFF, 0 0 0 4px #d4af37",
