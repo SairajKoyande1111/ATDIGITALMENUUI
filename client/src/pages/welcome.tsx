@@ -188,19 +188,19 @@ export default function Welcome() {
           onClick={handleExploreMenu}
           className="w-full max-w-xs py-4 font-semibold rounded-full transition-opacity hover:opacity-90 flex items-center justify-center gap-2"
           style={{
-            background: "linear-gradient(90deg, #d4af37, #e6c55a)",
+            background: "#CC7A00",
             border: "none",
-            color: "#3D3100",
-            marginTop: "-70px",
+            color: "#FFFFFF",
+            marginTop: "-50px",
             boxShadow: isDark
-              ? "inset 0 0 0 2px #3D3100, 0 0 0 2px #FFFFFF, 0 0 0 4px #d4af37"
-              : "inset 0 0 0 2px rgba(0,0,0,0.1), 0 0 0 2px #FFFFFF, 0 0 0 4px #d4af37",
+              ? "inset 0 0 0 2px #3D3100, 0 0 0 2px #FFFFFF, 0 0 0 4px #CC7A00"
+              : "inset 0 0 0 2px rgba(0,0,0,0.1), 0 0 0 2px #FFFFFF, 0 0 0 4px #CC7A00",
             fontSize: "17px",
           }}
           data-testid="button-explore-menu"
         >
-          <img src={spoonForkImg} alt="" className="w-7 h-7 object-contain" style={{ mixBlendMode: "multiply" }} />
-          <span style={{ color: "#3D3100" }}>{t.exploreMenu}</span>
+          <img src={spoonForkImg} alt="" className="w-7 h-7 object-contain" style={{ filter: "brightness(0) invert(1)" }} />
+          <span style={{ color: "#FFFFFF" }}>{t.exploreMenu}</span>
         </button>
 
         {/* Follow Our Socials label */}
