@@ -472,7 +472,7 @@ export default function MenuLanding() {
               <img
                 src={logoImg}
                 alt="AT Digital Menu Logo"
-                className="h-24 sm:h-28 w-auto object-contain"
+                className="w-44 sm:w-52 h-auto object-contain"
                 style={{ mixBlendMode: isDark ? "normal" : "multiply" }}
                 data-testid="img-logo"
               />
