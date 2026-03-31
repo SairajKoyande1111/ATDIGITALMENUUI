@@ -155,7 +155,7 @@ export default function Welcome() {
   return (
     <div
       className="h-screen w-full overflow-hidden relative flex flex-col"
-      style={{ backgroundColor: "var(--bb-bg)" }}
+      style={{ backgroundColor: isDark ? "#000000" : "var(--bb-bg)" }}
     >
       <MediaPreloader onComplete={() => setMediaReady(true)} />
 
@@ -191,7 +191,7 @@ export default function Welcome() {
             background: "#CC7A00",
             border: "none",
             color: "#FFFFFF",
-            marginTop: "-50px",
+            marginTop: "-28px",
             boxShadow: isDark
               ? "inset 0 0 0 2px #3D3100, 0 0 0 2px #FFFFFF, 0 0 0 4px #CC7A00"
               : "inset 0 0 0 2px rgba(0,0,0,0.1), 0 0 0 2px #FFFFFF, 0 0 0 4px #CC7A00",
