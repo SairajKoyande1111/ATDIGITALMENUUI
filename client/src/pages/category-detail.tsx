@@ -1,4 +1,5 @@
 import { useState, useMemo, useEffect, useRef } from "react";
+import { useTheme } from "@/contexts/ThemeContext";
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowLeft, Search, ChevronLeft, ChevronRight, Mic, MicOff } from "lucide-react";
@@ -13,7 +14,7 @@ import FloatingButtons from "@/components/floating-buttons";
 import { getMainCategory, getSubcategoryIds } from "@/lib/menu-categories";
 import type { MenuItem } from "@shared/schema";
 
-import atLogoImg from "@assets/₹999-_(15)_1774207200972.png";
+import atLogoImg from "@assets/Black_&_White_Letter_MD_Logo_Instagram_Post_(6)_1774948758476.png";
 import nibblesImg from "@assets/image_1765861653339.png";
 import titbitsImg from "@assets/image_1765861734899.png";
 import soupsImg from "@assets/image_1765861784186.png";
@@ -126,6 +127,7 @@ const subcategoryImages: Record<string, string> = {
 
 export default function CategoryDetail() {
   const [, setLocation] = useLocation();
+  const { isDark } = useTheme();
   const params = useParams<{ category: string }>();
   const categoryId = params.category || "food";
 
@@ -243,7 +245,7 @@ export default function CategoryDetail() {
                 src={atLogoImg}
                 alt="AT Digital Menu"
                 className="object-contain"
-                style={{ height: "72px", width: "auto" }}
+                style={{ height: "72px", width: "auto", mixBlendMode: isDark ? "normal" : "multiply" }}
               />
             </div>
 

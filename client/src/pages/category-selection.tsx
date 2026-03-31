@@ -40,7 +40,7 @@ declare global {
   }
 }
 
-import logoImg from "@assets/₹999-_(15)_1774207200972.png";
+import logoImg from "@assets/Black_&_White_Letter_MD_Logo_Instagram_Post_(6)_1774948758476.png";
 import FloatingButtons from "@/components/floating-buttons";
 import sangriaImg from "@assets/image_1767545808245.png";
 import classicCocktailsImg from "@assets/image_1767545845465.png";
@@ -306,6 +306,7 @@ export default function CategorySelection() {
                 src={logoImg} 
                 alt="Barrel Born Logo" 
                 className="h-32 sm:h-36 md:h-40 w-auto object-contain"
+                style={{ mixBlendMode: isDark ? "normal" : "multiply" }}
                 data-testid="img-logo"
               />
             </div>

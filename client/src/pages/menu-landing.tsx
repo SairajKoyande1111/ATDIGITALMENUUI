@@ -31,7 +31,7 @@ import premiumDessertsImg from "@assets/image_1765866710467.png";
 import premiumMocktailsImg from "@assets/stock_images/premium_colorful_moc_1a15dee9.jpg";
 import cocktailsImg from "@assets/COCKTAILS_1766751289781.jpg";
 import craftedBeerImg from "@assets/CRAFTED_BEER_1766750491358.jpg";
-import logoImg from "@assets/₹999-_(15)_1774207200972.png";
+import logoImg from "@assets/Black_&_White_Letter_MD_Logo_Instagram_Post_(6)_1774948758476.png";
 import fallbackImg from "@assets/coming_soon_imagev2_1766811809828.jpg";
 
 // @ts-ignore
