@@ -472,7 +472,7 @@ export default function MenuLanding() {
               <img
                 src={logoImg}
                 alt="AT Digital Menu Logo"
-                className="h-40 sm:h-44 md:h-48 w-auto object-contain"
+                className="h-10 sm:h-12 w-auto object-contain"
                 style={{ mixBlendMode: isDark ? "normal" : "multiply" }}
                 data-testid="img-logo"
               />
@@ -553,7 +553,7 @@ export default function MenuLanding() {
                 <img
                   src={logoImg}
                   alt="AT Digital Menu"
-                  className="w-64 object-contain mb-0"
+                  className="w-32 object-contain mb-0"
                   style={{ filter: isDark ? "drop-shadow(0 0 12px rgba(212,175,55,0.35))" : "none", mixBlendMode: isDark ? "normal" : "multiply" }}
                 />
 
