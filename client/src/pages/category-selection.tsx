@@ -305,8 +305,8 @@ export default function CategorySelection() {
               <img 
                 src={logoImg} 
                 alt="Barrel Born Logo" 
-                className="w-44 sm:w-52 h-auto object-contain"
-                style={{ mixBlendMode: isDark ? "normal" : "multiply" }}
+                className="h-auto object-contain"
+                style={{ width: "320px", mixBlendMode: isDark ? "normal" : "multiply" }}
                 data-testid="img-logo"
               />
             </div>

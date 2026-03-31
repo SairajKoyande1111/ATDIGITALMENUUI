@@ -245,7 +245,7 @@ export default function CategoryDetail() {
                 src={atLogoImg}
                 alt="AT Digital Menu"
                 className="object-contain"
-                style={{ width: "160px", height: "auto", mixBlendMode: isDark ? "normal" : "multiply" }}
+                style={{ width: "260px", height: "auto", mixBlendMode: isDark ? "normal" : "multiply" }}
               />
             </div>
 
