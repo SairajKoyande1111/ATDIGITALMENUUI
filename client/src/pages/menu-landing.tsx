@@ -31,7 +31,7 @@ import premiumDessertsImg from "@assets/image_1765866710467.png";
 import premiumMocktailsImg from "@assets/stock_images/premium_colorful_moc_1a15dee9.jpg";
 import cocktailsImg from "@assets/COCKTAILS_1766751289781.jpg";
 import craftedBeerImg from "@assets/CRAFTED_BEER_1766750491358.jpg";
-import logoImg from "@assets/Black_&_White_Letter_MD_Logo_Instagram_Post_(6)_1774948758476.png";
+import logoImg from "@assets/Black_&_White_Letter_MD_Logo_Instagram_Post_(7)_1774949506569.png";
 import fallbackImg from "@assets/coming_soon_imagev2_1766811809828.jpg";
 
 // @ts-ignore
@@ -553,7 +553,7 @@ export default function MenuLanding() {
                 <img
                   src={logoImg}
                   alt="AT Digital Menu"
-                  className="w-32 object-contain mb-0"
+                  className="w-48 object-contain mb-0"
                   style={{ filter: isDark ? "drop-shadow(0 0 12px rgba(212,175,55,0.35))" : "none", mixBlendMode: isDark ? "normal" : "multiply" }}
                 />
 

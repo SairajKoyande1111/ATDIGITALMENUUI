@@ -40,7 +40,7 @@ declare global {
   }
 }
 
-import logoImg from "@assets/Black_&_White_Letter_MD_Logo_Instagram_Post_(6)_1774948758476.png";
+import logoImg from "@assets/Black_&_White_Letter_MD_Logo_Instagram_Post_(7)_1774949506569.png";
 import FloatingButtons from "@/components/floating-buttons";
 import sangriaImg from "@assets/image_1767545808245.png";
 import classicCocktailsImg from "@assets/image_1767545845465.png";

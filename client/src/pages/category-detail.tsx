@@ -14,7 +14,7 @@ import FloatingButtons from "@/components/floating-buttons";
 import { getMainCategory, getSubcategoryIds } from "@/lib/menu-categories";
 import type { MenuItem } from "@shared/schema";
 
-import atLogoImg from "@assets/Black_&_White_Letter_MD_Logo_Instagram_Post_(6)_1774948758476.png";
+import atLogoImg from "@assets/Black_&_White_Letter_MD_Logo_Instagram_Post_(7)_1774949506569.png";
 import nibblesImg from "@assets/image_1765861653339.png";
 import titbitsImg from "@assets/image_1765861734899.png";
 import soupsImg from "@assets/image_1765861784186.png";
