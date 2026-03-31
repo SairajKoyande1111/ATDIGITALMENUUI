@@ -9,7 +9,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import LanguageDropdown from "@/components/language-dropdown";
 import { AnimatePresence } from "framer-motion";
 import ReservationModal from "@/components/reservation-modal";
-import atDigitalMenuLogo from "@assets/₹999-_(15)_1774207200972.png";
+import atDigitalMenuLogo from "@assets/Black_&_White_Letter_MD_Logo_Instagram_Post_(5)_1774947071520.png";
 import instaImg from "@assets/instagram_(2)_1773345405292.png";
 import fbImg from "@assets/facebook_(2)_1773345408410.png";
 import ytImg from "@assets/youtube_1773345412112.png";
@@ -175,9 +175,10 @@ export default function Welcome() {
             src={atDigitalMenuLogo}
             alt="AT Digital Menu"
             style={{
-              width: "360px",
+              width: "300px",
               objectFit: "contain",
               mixBlendMode: isDark ? "normal" : "multiply",
+              pointerEvents: "none",
             }}
           />
         </div>
