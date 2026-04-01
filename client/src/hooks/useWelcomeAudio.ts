@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import barrelbornWelcomeAudio from "@assets/Barrelbornwelcome_1766651854689.mp3";
+import barrelbornWelcomeAudio from "@assets/ElevenLabs_2026-04-01T07_08_37_Bella_-_Professional,_Bright,_W_1775027338108.mp3";
 
 // Global audio instance to prevent multiple setups
 let globalAudio: HTMLAudioElement | null = null;
