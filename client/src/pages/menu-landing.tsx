@@ -32,6 +32,7 @@ import premiumMocktailsImg from "@assets/stock_images/premium_colorful_moc_1a15d
 import cocktailsImg from "@assets/COCKTAILS_1766751289781.jpg";
 import craftedBeerImg from "@assets/CRAFTED_BEER_1766750491358.jpg";
 import logoImg from "@assets/Black_&_White_Letter_MD_Logo_Instagram_Post_(7)_1774949506569.png";
+import welcomeCardLogoImg from "@assets/Black_&_White_Letter_MD_Logo_Instagram_Post_(5)_1774947071520.png";
 import fallbackImg from "@assets/coming_soon_imagev2_1766811809828.jpg";
 
 // @ts-ignore
@@ -473,7 +474,7 @@ export default function MenuLanding() {
                 src={logoImg}
                 alt="AT Digital Menu Logo"
                 className="h-auto object-contain"
-                style={{ width: "450px", mixBlendMode: isDark ? "normal" : "multiply" }}
+                style={{ width: "520px", mixBlendMode: isDark ? "normal" : "multiply" }}
                 data-testid="img-logo"
               />
             </div>
@@ -548,17 +549,17 @@ export default function MenuLanding() {
                 <X className="w-4 h-4" />
               </button>
 
-              <div className="px-7 pt-2 pb-5 flex flex-col items-center">
+              <div className="px-7 pt-2 pb-4 flex flex-col items-center">
                 {/* Logo */}
                 <img
-                  src={logoImg}
+                  src={welcomeCardLogoImg}
                   alt="AT Digital Menu"
-                  className="w-48 object-contain mb-0"
-                  style={{ filter: isDark ? "drop-shadow(0 0 12px rgba(212,175,55,0.35))" : "none", mixBlendMode: isDark ? "normal" : "multiply" }}
+                  className="object-contain mb-0"
+                  style={{ width: "220px", filter: isDark ? "drop-shadow(0 0 12px rgba(212,175,55,0.35))" : "none", mixBlendMode: isDark ? "normal" : "multiply" }}
                 />
 
                 {/* Ornamental divider */}
-                <div className="flex items-center gap-3 w-full mb-4">
+                <div className="flex items-center gap-3 w-full mb-2">
                   <div className="flex-1 h-px" style={{ background: "linear-gradient(to right, transparent, #D4AF37)" }} />
                   <span className="text-[10px] tracking-[0.3em] font-light" style={{ color: "var(--bb-gold)" }}>WELCOME</span>
                   <div className="flex-1 h-px" style={{ background: "linear-gradient(to left, transparent, #D4AF37)" }} />
@@ -571,11 +572,11 @@ export default function MenuLanding() {
                 >
                   Please Enter Your Details
                 </h2>
-                <p className="text-center text-[11px] mb-5 font-light uppercase tracking-widest" style={{ color: "#6A5A3A", letterSpacing: "0.12em" }}>
+                <p className="text-center text-[11px] mb-3 font-light uppercase tracking-widest" style={{ color: "#6A5A3A", letterSpacing: "0.12em" }}>
                   To Proceed To Our Menu
                 </p>
 
-                <form onSubmit={handleSubmit} className="w-full space-y-4">
+                <form onSubmit={handleSubmit} className="w-full space-y-3">
                   {/* Name field */}
                   <div className="space-y-1.5">
                     <label className="text-[10px] tracking-[0.2em] font-medium uppercase" style={{ color: "#B8986A" }}>
