@@ -36,22 +36,25 @@ import welcomeCardLogoImg from "@assets/Black_&_White_Letter_MD_Logo_Instagram_P
 import fallbackImg from "@assets/coming_soon_imagev2_1766811809828.jpg";
 
 // @ts-ignore
-import promo1 from "@assets/1_1_11zon_1767593666240.jpg";
+import promo1 from "@assets/image_1775024369229.png";
 // @ts-ignore
-import promo2 from "@assets/2_2_11zon_1767593666237.jpg";
+import promo2 from "@assets/image_1775024090726.png";
 // @ts-ignore
-import promo3 from "@assets/3_3_11zon_1767593666238.jpg";
+import promo3 from "@assets/image_1775024252853.png";
 // @ts-ignore
-import promo4 from "@assets/4_4_11zon_1767593666239.jpg";
+import promo4 from "@assets/image_1775024016987.png";
 // @ts-ignore
-import promo5 from "@assets/5_5_11zon_1767593666239.jpg";
+import promo5 from "@assets/image_1775024236542.png";
+// @ts-ignore
+import promo6 from "@assets/image_1775024166136.png";
 
 const promotionalImages = [
-  { id: 1, src: promo1, alt: "Restaurant Interior" },
-  { id: 2, src: promo2, alt: "Bar & Dining Area" },
-  { id: 3, src: promo3, alt: "Modern Ambiance" },
-  { id: 4, src: promo4, alt: "Contemporary Dining" },
-  { id: 5, src: promo5, alt: "Elegant Seating" },
+  { id: 1, src: promo1, alt: "Restaurant Ambiance" },
+  { id: 2, src: promo2, alt: "Fine Dining Spread" },
+  { id: 3, src: promo3, alt: "Contemporary Dining Hall" },
+  { id: 4, src: promo4, alt: "Gourmet Dish" },
+  { id: 5, src: promo5, alt: "Elegant Restaurant Interior" },
+  { id: 6, src: promo6, alt: "Dessert Presentation" },
 ];
 
 const categoryImages: Record<string, string> = {
