@@ -37,14 +37,14 @@ export default function LanguageDropdown({ className = "" }: LanguageDropdownPro
   }, []);
 
   const dropdownBg = isDark ? "#000000" : "#FFFFFF";
-  const dropdownBorder = isDark ? "1px solid #FFFFFF" : "1px solid rgba(0,0,0,0.12)";
-  const itemColor = isDark ? "#FFFFFF" : "#1a1a1a";
-  const searchBg = isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.04)";
-  const searchColor = isDark ? "#FFFFFF" : "#1a1a1a";
-  const activeColor = isDark ? "#FFFFFF" : "#8B6200";
-  const activeBg = isDark ? "rgba(255,255,255,0.15)" : "rgba(139,98,0,0.08)";
-  const hoverBg = isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.04)";
-  const footerColor = isDark ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.35)";
+  const dropdownBorder = isDark ? "1px solid #FFFFFF" : "1px solid #CC7A00";
+  const itemColor = isDark ? "#FFFFFF" : "#000000";
+  const searchBg = isDark ? "rgba(255,255,255,0.1)" : "rgba(204,122,0,0.08)";
+  const searchColor = isDark ? "#FFFFFF" : "#000000";
+  const activeColor = isDark ? "#FFFFFF" : "#CC7A00";
+  const activeBg = isDark ? "rgba(255,255,255,0.15)" : "rgba(204,122,0,0.12)";
+  const hoverBg = isDark ? "rgba(255,255,255,0.08)" : "rgba(204,122,0,0.06)";
+  const footerColor = isDark ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.45)";
 
   return (
     <div ref={ref} className={`relative ${className}`} data-testid="language-dropdown">
@@ -78,7 +78,7 @@ export default function LanguageDropdown({ className = "" }: LanguageDropdownPro
             width: "180px",
           }}
         >
-          <div className="p-2 border-b" style={{ borderColor: isDark ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.08)" }}>
+          <div className="p-2 border-b" style={{ borderColor: isDark ? "rgba(255,255,255,0.3)" : "rgba(204,122,0,0.3)" }}>
             <div className="flex items-center gap-1.5 px-2 py-1 rounded-md" style={{ backgroundColor: searchBg }}>
               <Search className="w-3 h-3 flex-shrink-0" style={{ color: activeColor }} />
               <input
@@ -139,7 +139,7 @@ export default function LanguageDropdown({ className = "" }: LanguageDropdownPro
 
           <div
             className="px-3 py-1.5 text-center border-t"
-            style={{ borderColor: isDark ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.08)", color: footerColor, fontSize: "10px" }}
+            style={{ borderColor: isDark ? "rgba(255,255,255,0.3)" : "rgba(204,122,0,0.3)", color: footerColor, fontSize: "10px" }}
           >
             Powered by MyMemory
           </div>

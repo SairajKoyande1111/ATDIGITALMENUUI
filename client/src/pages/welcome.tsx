@@ -31,13 +31,13 @@ function ThemeToggle() {
         width: "88px",
         height: "36px",
         padding: "3px",
-        background: isDark ? "#1C1500" : "#E4E4E4",
+        background: isDark ? "#1C1500" : "#CC7A00",
         border: isDark
           ? "1.5px solid #FFFFFF"
           : "1.5px solid rgba(0,0,0,0.12)",
         boxShadow: isDark
           ? "inset 0 1px 3px rgba(0,0,0,0.6)"
-          : "inset 0 2px 4px rgba(0,0,0,0.12)",
+          : "none",
       }}
       data-testid="button-theme-toggle"
     >
@@ -82,7 +82,7 @@ function ThemeToggle() {
           <span
             className="flex-1 text-center font-bold"
             style={{
-              color: "#555",
+              color: "#FFFFFF",
               fontSize: "9px",
               letterSpacing: "0.06em",
               fontFamily: "'DM Sans', sans-serif",
@@ -194,7 +194,7 @@ export default function Welcome() {
             marginTop: "-28px",
             boxShadow: isDark
               ? "inset 0 0 0 2px #FFFFFF, 0 0 0 2px #000000, 0 0 0 4px #FFFFFF"
-              : "inset 0 0 0 2px rgba(0,0,0,0.1), 0 0 0 2px #FFFFFF, 0 0 0 4px #CC7A00",
+              : "none",
             fontSize: "17px",
           }}
           data-testid="button-explore-menu"
