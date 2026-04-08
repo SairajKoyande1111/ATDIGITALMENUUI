@@ -194,7 +194,7 @@ export default function Welcome() {
             marginTop: "-28px",
             boxShadow: isDark
               ? "inset 0 0 0 2px #FFFFFF, 0 0 0 2px #000000, 0 0 0 4px #FFFFFF"
-              : "none",
+              : "0 0 0 2px #FFFFFF, 0 0 0 4px #CC7A00",
             fontSize: "17px",
           }}
           data-testid="button-explore-menu"
