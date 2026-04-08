@@ -36,15 +36,15 @@ export default function LanguageDropdown({ className = "" }: LanguageDropdownPro
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const dropdownBg = isDark ? "#1a1a1a" : "#FFFFFF";
-  const dropdownBorder = isDark ? "1px solid #B8986A" : "1px solid rgba(0,0,0,0.12)";
-  const itemColor = isDark ? "#dcd4c8" : "#1a1a1a";
-  const searchBg = isDark ? "rgba(255,255,255,0.07)" : "rgba(0,0,0,0.04)";
-  const searchColor = isDark ? "#dcd4c8" : "#1a1a1a";
-  const activeColor = isDark ? "#B8986A" : "#8B6200";
-  const activeBg = isDark ? "rgba(184,152,106,0.2)" : "rgba(139,98,0,0.08)";
-  const hoverBg = isDark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.04)";
-  const footerColor = isDark ? "rgba(220,212,200,0.4)" : "rgba(0,0,0,0.35)";
+  const dropdownBg = isDark ? "#000000" : "#FFFFFF";
+  const dropdownBorder = isDark ? "1px solid #FFFFFF" : "1px solid rgba(0,0,0,0.12)";
+  const itemColor = isDark ? "#FFFFFF" : "#1a1a1a";
+  const searchBg = isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.04)";
+  const searchColor = isDark ? "#FFFFFF" : "#1a1a1a";
+  const activeColor = isDark ? "#FFFFFF" : "#8B6200";
+  const activeBg = isDark ? "rgba(255,255,255,0.15)" : "rgba(139,98,0,0.08)";
+  const hoverBg = isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.04)";
+  const footerColor = isDark ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.35)";
 
   return (
     <div ref={ref} className={`relative ${className}`} data-testid="language-dropdown">
@@ -78,7 +78,7 @@ export default function LanguageDropdown({ className = "" }: LanguageDropdownPro
             width: "180px",
           }}
         >
-          <div className="p-2 border-b" style={{ borderColor: isDark ? "rgba(184,152,106,0.3)" : "rgba(0,0,0,0.08)" }}>
+          <div className="p-2 border-b" style={{ borderColor: isDark ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.08)" }}>
             <div className="flex items-center gap-1.5 px-2 py-1 rounded-md" style={{ backgroundColor: searchBg }}>
               <Search className="w-3 h-3 flex-shrink-0" style={{ color: activeColor }} />
               <input
@@ -139,7 +139,7 @@ export default function LanguageDropdown({ className = "" }: LanguageDropdownPro
 
           <div
             className="px-3 py-1.5 text-center border-t"
-            style={{ borderColor: isDark ? "rgba(184,152,106,0.3)" : "rgba(0,0,0,0.08)", color: footerColor, fontSize: "10px" }}
+            style={{ borderColor: isDark ? "rgba(255,255,255,0.3)" : "rgba(0,0,0,0.08)", color: footerColor, fontSize: "10px" }}
           >
             Powered by MyMemory
           </div>

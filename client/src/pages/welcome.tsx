@@ -33,7 +33,7 @@ function ThemeToggle() {
         padding: "3px",
         background: isDark ? "#1C1500" : "#E4E4E4",
         border: isDark
-          ? "1.5px solid rgba(212,175,55,0.4)"
+          ? "1.5px solid #FFFFFF"
           : "1.5px solid rgba(0,0,0,0.12)",
         boxShadow: isDark
           ? "inset 0 1px 3px rgba(0,0,0,0.6)"
@@ -68,7 +68,7 @@ function ThemeToggle() {
           <span
             className="flex-1 text-center font-bold"
             style={{
-              color: "#D4AF37",
+              color: "#FFFFFF",
               fontSize: "9px",
               letterSpacing: "0.06em",
               fontFamily: "'DM Sans', sans-serif",
@@ -188,19 +188,19 @@ export default function Welcome() {
           onClick={handleExploreMenu}
           className="w-full max-w-xs py-4 font-semibold rounded-full transition-opacity hover:opacity-90 flex items-center justify-center gap-2"
           style={{
-            background: "#CC7A00",
+            background: isDark ? "#FFFFFF" : "#CC7A00",
             border: "none",
-            color: "#FFFFFF",
+            color: isDark ? "#000000" : "#FFFFFF",
             marginTop: "-28px",
             boxShadow: isDark
-              ? "inset 0 0 0 2px #3D3100, 0 0 0 2px #FFFFFF, 0 0 0 4px #CC7A00"
+              ? "inset 0 0 0 2px #FFFFFF, 0 0 0 2px #000000, 0 0 0 4px #FFFFFF"
               : "inset 0 0 0 2px rgba(0,0,0,0.1), 0 0 0 2px #FFFFFF, 0 0 0 4px #CC7A00",
             fontSize: "17px",
           }}
           data-testid="button-explore-menu"
         >
-          <img src={spoonForkImg} alt="" className="w-7 h-7 object-contain" style={{ filter: "brightness(0) invert(1)" }} />
-          <span style={{ color: "#FFFFFF" }}>{t.exploreMenu}</span>
+          <img src={spoonForkImg} alt="" className="w-7 h-7 object-contain" style={{ filter: isDark ? "brightness(0)" : "brightness(0) invert(1)" }} />
+          <span style={{ color: isDark ? "#000000" : "#FFFFFF" }}>{t.exploreMenu}</span>
         </button>
 
         {/* Follow Our Socials label */}
