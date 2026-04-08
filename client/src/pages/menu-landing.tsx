@@ -32,7 +32,7 @@ import premiumMocktailsImg from "@assets/stock_images/premium_colorful_moc_1a15d
 import cocktailsImg from "@assets/COCKTAILS_1766751289781.jpg";
 import craftedBeerImg from "@assets/CRAFTED_BEER_1766750491358.jpg";
 import logoImg from "@assets/Black_&_White_Letter_MD_Logo_Instagram_Post_(7)_1774949506569.png";
-import welcomeCardLogoImg from "@assets/Black_&_White_Letter_MD_Logo_Instagram_Post_(5)_1774947071520.png";
+import welcomeCardLogoImg from "@assets/ATDM_NOBG_1775669188418.png";
 import fallbackImg from "@assets/coming_soon_imagev2_1766811809828.jpg";
 
 // @ts-ignore
@@ -527,26 +527,26 @@ export default function MenuLanding() {
             <motion.div
               className="relative w-full max-w-sm rounded-3xl overflow-hidden"
               style={{
-                background: isDark ? "linear-gradient(160deg, #1C1500 0%, #0F0C00 100%)" : "#FFFFFF",
-                border: isDark ? "1.5px solid #D4AF37" : "1.5px solid rgba(212,175,55,0.5)",
-                boxShadow: isDark ? "0 0 60px rgba(212,175,55,0.18), 0 24px 64px rgba(0,0,0,0.7)" : "0 0 40px rgba(212,175,55,0.12), 0 24px 64px rgba(0,0,0,0.15)",
+                background: isDark ? "#000000" : "#FFFFFF",
+                border: isDark ? "1.5px solid #FFFFFF" : "1.5px solid #CC7A00",
+                boxShadow: isDark ? "0 0 60px rgba(255,255,255,0.08), 0 24px 64px rgba(0,0,0,0.7)" : "0 0 40px rgba(204,122,0,0.12), 0 24px 64px rgba(0,0,0,0.15)",
               }}
               initial={{ scale: 0.88, y: 40, opacity: 0 }}
               animate={{ scale: 1, y: 0, opacity: 1 }}
               exit={{ scale: 0.88, y: 40, opacity: 0 }}
               transition={{ type: "spring", damping: 24, stiffness: 280 }}
             >
-              {/* Gold shimmer top bar */}
+              {/* Shimmer top bar */}
               <div
                 className="h-[3px] w-full"
-                style={{ background: "linear-gradient(90deg, transparent, #D4AF37, #F0CC60, #D4AF37, transparent)" }}
+                style={{ background: isDark ? "linear-gradient(90deg, transparent, #FFFFFF, transparent)" : "linear-gradient(90deg, transparent, #CC7A00, #E8960A, #CC7A00, transparent)" }}
               />
 
               {/* Close button */}
               <button
                 onClick={handleSkip}
                 className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center transition-all hover:scale-110"
-                style={{ background: isDark ? "rgba(212,175,55,0.12)" : "rgba(212,175,55,0.1)", color: "var(--bb-gold)", border: "1px solid var(--bb-search-br)" }}
+                style={{ background: isDark ? "rgba(255,255,255,0.1)" : "rgba(204,122,0,0.1)", color: isDark ? "#FFFFFF" : "#CC7A00", border: isDark ? "1px solid #FFFFFF" : "1px solid #CC7A00" }}
                 data-testid="button-close-popup"
               >
                 <X className="w-4 h-4" />
@@ -558,43 +558,43 @@ export default function MenuLanding() {
                   src={welcomeCardLogoImg}
                   alt="AT Digital Menu"
                   className="object-contain mb-0"
-                  style={{ width: "220px", filter: isDark ? "drop-shadow(0 0 12px rgba(212,175,55,0.35))" : "none", mixBlendMode: isDark ? "normal" : "multiply" }}
+                  style={{ width: "220px", filter: isDark ? "brightness(0) invert(1)" : "none" }}
                 />
 
                 {/* Ornamental divider */}
                 <div className="flex items-center gap-3 w-full mb-2">
-                  <div className="flex-1 h-px" style={{ background: "linear-gradient(to right, transparent, #D4AF37)" }} />
-                  <span className="text-[10px] tracking-[0.3em] font-light" style={{ color: "var(--bb-gold)" }}>WELCOME</span>
-                  <div className="flex-1 h-px" style={{ background: "linear-gradient(to left, transparent, #D4AF37)" }} />
+                  <div className="flex-1 h-px" style={{ background: isDark ? "linear-gradient(to right, transparent, #FFFFFF)" : "linear-gradient(to right, transparent, #CC7A00)" }} />
+                  <span className="text-[10px] tracking-[0.3em] font-light" style={{ color: isDark ? "#FFFFFF" : "#CC7A00" }}>WELCOME</span>
+                  <div className="flex-1 h-px" style={{ background: isDark ? "linear-gradient(to left, transparent, #FFFFFF)" : "linear-gradient(to left, transparent, #CC7A00)" }} />
                 </div>
 
                 {/* Headline */}
                 <h2
                   className="text-center font-black mb-1 leading-tight uppercase tracking-widest whitespace-nowrap"
-                  style={{ color: "var(--bb-gold)", fontFamily: "'Cormorant Garamond', serif", fontSize: "15px", letterSpacing: "0.12em" }}
+                  style={{ color: isDark ? "#FFFFFF" : "#CC7A00", fontFamily: "'Cormorant Garamond', serif", fontSize: "15px", letterSpacing: "0.12em" }}
                 >
                   Please Enter Your Details
                 </h2>
-                <p className="text-center text-[11px] mb-3 font-light uppercase tracking-widest" style={{ color: "#6A5A3A", letterSpacing: "0.12em" }}>
+                <p className="text-center text-[11px] mb-3 font-light uppercase tracking-widest" style={{ color: isDark ? "rgba(255,255,255,0.65)" : "#000000", letterSpacing: "0.12em" }}>
                   To Proceed To Our Menu
                 </p>
 
                 <form onSubmit={handleSubmit} className="w-full space-y-3">
                   {/* Name field */}
                   <div className="space-y-1.5">
-                    <label className="text-[10px] tracking-[0.2em] font-medium uppercase" style={{ color: "#B8986A" }}>
+                    <label className="text-[10px] tracking-[0.2em] font-medium uppercase" style={{ color: isDark ? "#FFFFFF" : "#CC7A00" }}>
                       Your Name
                     </label>
                     <div
                       className="flex items-center rounded-xl px-4 py-0 h-12 transition-all"
-                      style={{ background: isDark ? "rgba(212,175,55,0.06)" : "#FFFFFF", border: "1px solid rgba(212,175,55,0.35)" }}
+                      style={{ background: isDark ? "rgba(255,255,255,0.06)" : "#FFFFFF", border: isDark ? "1px solid #FFFFFF" : "1px solid #CC7A00" }}
                     >
                       <input
                         value={customerName}
                         onChange={(e) => setCustomerName(e.target.value)}
                         placeholder="Enter your name"
                         className="w-full bg-transparent outline-none text-sm font-light placeholder:opacity-40"
-                        style={{ color: isDark ? "var(--bb-input-text)" : "#1a1a1a", caretColor: "#D4AF37" }}
+                        style={{ color: isDark ? "#FFFFFF" : "#000000", caretColor: isDark ? "#FFFFFF" : "#CC7A00" }}
                         data-testid="input-customer-name"
                       />
                     </div>
@@ -602,7 +602,7 @@ export default function MenuLanding() {
 
                   {/* Phone — 10 OTP digit boxes */}
                   <div className="space-y-2">
-                    <label className="text-[10px] tracking-[0.2em] font-medium uppercase" style={{ color: "#B8986A" }}>
+                    <label className="text-[10px] tracking-[0.2em] font-medium uppercase" style={{ color: isDark ? "#FFFFFF" : "#CC7A00" }}>
                       Contact Number
                     </label>
                     <div className="flex justify-center">
@@ -621,9 +621,9 @@ export default function MenuLanding() {
                               index={i}
                               className="h-10 w-[27px] rounded-lg text-sm font-bold first:rounded-l-lg first:border-l last:rounded-r-lg transition-all"
                               style={{
-                                background: isDark ? "rgba(212,175,55,0.14)" : "#FFFFFF",
-                                border: "1.5px solid rgba(212,175,55,0.6)",
-                                color: isDark ? "#F0E080" : "#1a1a1a",
+                                background: isDark ? "rgba(255,255,255,0.08)" : "#FFFFFF",
+                                border: isDark ? "1.5px solid #FFFFFF" : "1.5px solid #CC7A00",
+                                color: isDark ? "#FFFFFF" : "#000000",
                                 borderRadius: "8px",
                               }}
                             />
@@ -644,10 +644,10 @@ export default function MenuLanding() {
                     disabled={isSubmitting || customerName.length === 0 || customerPhone.length !== 10}
                     className="w-full h-12 rounded-full font-bold tracking-widest text-sm transition-all active:scale-95 disabled:opacity-40 mt-2"
                     style={{
-                      background: "linear-gradient(90deg, #D4AF37, #E6C55A)",
-                      color: "#1C1500",
+                      background: isDark ? "#FFFFFF" : "#CC7A00",
+                      color: isDark ? "#000000" : "#FFFFFF",
                       letterSpacing: "0.15em",
-                      boxShadow: "0 4px 20px rgba(212,175,55,0.35)",
+                      boxShadow: isDark ? "0 4px 20px rgba(255,255,255,0.15)" : "0 4px 20px rgba(204,122,0,0.35)",
                     }}
                     data-testid="button-submit-customer"
                   >
@@ -659,7 +659,7 @@ export default function MenuLanding() {
                     type="button"
                     onClick={handleSkip}
                     className="w-full text-center text-xs py-1 transition-opacity hover:opacity-70"
-                    style={{ color: "#6A5A3A", letterSpacing: "0.08em" }}
+                    style={{ color: isDark ? "rgba(255,255,255,0.55)" : "#000000", letterSpacing: "0.08em" }}
                     data-testid="button-skip-popup"
                   >
                     Continue without entering details →
@@ -667,10 +667,10 @@ export default function MenuLanding() {
                 </form>
               </div>
 
-              {/* Gold shimmer bottom bar */}
+              {/* Shimmer bottom bar */}
               <div
                 className="h-[2px] w-full"
-                style={{ background: "linear-gradient(90deg, transparent, #D4AF37, transparent)" }}
+                style={{ background: isDark ? "linear-gradient(90deg, transparent, #FFFFFF, transparent)" : "linear-gradient(90deg, transparent, #CC7A00, transparent)" }}
               />
             </motion.div>
           </motion.div>
