@@ -304,7 +304,7 @@ export default function CategorySelection() {
             <div className="absolute left-1/2 transform -translate-x-1/2">
               <img 
                 src={logoImg} 
-                alt="Barrel Born Logo" 
+                alt="AT Digital Menu Logo" 
                 className="object-cover"
                 style={{ height: "52px", width: "220px", objectFit: "cover", objectPosition: "center 52%", filter: isDark ? "brightness(0) invert(1)" : "none" }}
                 data-testid="img-logo"

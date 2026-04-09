@@ -2,7 +2,11 @@
 
 ## Overview
 
-"Mings Chinese Cuisine" is a luxurious, royal-themed restaurant menu web application designed to provide a premium dining experience. It features an elegant, interactive UI for sophisticated menu browsing and ordering. The project aims to offer a modern, authentic design with advanced animations and user-friendly features like a one-click rating system, while supporting both Replit and Vercel deployment strategies. Key capabilities include an integrated customer review system, robust media playback, and consistent menu item sorting.
+**AT Digital Menu** is an enterprise-grade QR-based digital menu platform for restaurants, cafes, bars, hotels, and cloud kitchens. Built with React + Vite frontend and Express + MongoDB backend. Features food/bar category browsing, subcategory tiles, product listings with veg/non-veg filtering, voice search, light/dark mode, and multi-language support. Serves as a QR-code-accessible menu with an orange, black, and white brand theme.
+
+**Branding**: AT Digital Menu (ATDM) — "Smart Menus for Smart Businesses"  
+**Favicon**: `/client/public/favicon.png` (ATDM_NOBG logo)  
+**SEO**: Comprehensive meta tags, Open Graph, Twitter Card, and JSON-LD structured data set in `client/index.html`
 
 ## User Preferences
 
