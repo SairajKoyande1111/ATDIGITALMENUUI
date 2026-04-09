@@ -268,13 +268,21 @@
   --bb-header:    #FFFFFF;
   --bb-search-bg: rgba(0,0,0,0.04);
   --bb-search-br: rgba(204,122,0,0.4);
-  --bb-input-text:#1a1a1a;
+  --bb-input-text:#000000;
 }
 
 [data-theme="light"],
+[data-theme="light"] html,
 [data-theme="light"] body,
 [data-theme="light"] #root {
-  background-color: #FFFFFF;
+  background-color: #FFFFFF !important;
+}
+
+[data-theme="light"] {
+  --background: hsl(0, 0%, 100%);
+  --muted: hsl(0, 0%, 100%);
+  --secondary: hsl(0, 0%, 100%);
+  --accent: hsl(0, 0%, 97%);
 }
 /* ── end theme variables ────────────────────────────────────── */
 

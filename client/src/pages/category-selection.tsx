@@ -356,7 +356,7 @@ export default function CategorySelection() {
               placeholder={t.searchItems}
               value={foodSearchQuery}
               onChange={(e) => setFoodSearchQuery(e.target.value)}
-              className="pl-10 pr-32 sm:pr-40 h-11 rounded-full border-2 text-[var(--bb-input-text)] placeholder:text-[var(--bb-text-dim)] focus-visible:ring-2"
+              className={`pl-10 pr-32 sm:pr-40 h-11 rounded-full border-2 focus-visible:ring-2 ${!isDark ? "text-black placeholder:text-black" : "text-[var(--bb-input-text)] placeholder:text-[var(--bb-text-dim)]"}`}
               style={{ 
                 borderColor: isDark ? '#FFFFFF' : '#CC7A00',
                 backgroundColor: 'transparent',
@@ -372,8 +372,8 @@ export default function CategorySelection() {
                   style={isDark ? {
                     backgroundColor: vegFilter === "all" ? "rgba(255,255,255,0.1)" : vegFilter === "veg" ? "rgba(34,197,94,0.1)" : "rgba(239,68,68,0.1)"
                   } : {
-                    backgroundColor: vegFilter === "all" ? "rgba(0,0,0,0.07)" : vegFilter === "veg" ? "rgba(34,197,94,0.12)" : "rgba(239,68,68,0.12)",
-                    border: "1px solid rgba(0,0,0,0.12)"
+                    backgroundColor: "transparent",
+                    border: "1px solid rgba(204,122,0,0.3)"
                   }}
                 >
                   <button
@@ -382,8 +382,8 @@ export default function CategorySelection() {
                     data-testid="filter-all"
                     style={
                       vegFilter === "all"
-                        ? { backgroundColor: isDark ? "white" : "#1C1500", color: isDark ? "black" : "white", lineHeight: "1.2" }
-                        : { color: isDark ? "#FFFFFF" : "#CC7A00", lineHeight: "1.2" }
+                        ? { backgroundColor: isDark ? "white" : "#CC7A00", color: isDark ? "black" : "white", lineHeight: "1.2" }
+                        : { backgroundColor: isDark ? "transparent" : "#FFFFFF", color: isDark ? "#FFFFFF" : "#000000", lineHeight: "1.2" }
                     }
                   >
                     {t.all}
@@ -395,7 +395,7 @@ export default function CategorySelection() {
                     style={
                       vegFilter === "veg"
                         ? { backgroundColor: "#22C55E", color: "white", lineHeight: "1.2" }
-                        : { color: isDark ? "#FFFFFF" : "#CC7A00", lineHeight: "1.2" }
+                        : { backgroundColor: isDark ? "transparent" : "#FFFFFF", color: isDark ? "#FFFFFF" : "#000000", lineHeight: "1.2" }
                     }
                   >
                     {t.veg}
@@ -407,7 +407,7 @@ export default function CategorySelection() {
                     style={
                       vegFilter === "non-veg"
                         ? { backgroundColor: "#EF4444", color: "white", lineHeight: "1.2" }
-                        : { color: isDark ? "#FFFFFF" : "#CC7A00", lineHeight: "1.2" }
+                        : { backgroundColor: isDark ? "transparent" : "#FFFFFF", color: isDark ? "#FFFFFF" : "#000000", lineHeight: "1.2" }
                     }
                   >
                     {t.nonVeg}

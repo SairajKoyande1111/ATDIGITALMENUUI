@@ -236,7 +236,7 @@ export default function SubcategoryProducts() {
             placeholder={t.searchItems}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 pr-32 sm:pr-40 h-11 rounded-full border-2 text-[var(--bb-input-text)] placeholder:text-[var(--bb-text-dim)] focus-visible:ring-2"
+            className={`pl-10 pr-32 sm:pr-40 h-11 rounded-full border-2 focus-visible:ring-2 ${!isDark ? "text-black placeholder:text-black" : "text-[var(--bb-input-text)] placeholder:text-[var(--bb-text-dim)]"}`}
             style={{ 
               borderColor: isDark ? '#FFFFFF' : '#CC7A00',
               backgroundColor: 'transparent',

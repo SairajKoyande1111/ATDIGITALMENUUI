@@ -262,7 +262,7 @@ export default function CategoryDetail() {
             placeholder={`Search ${mainCategory.displayLabel.toLowerCase()}...`}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 pr-12 h-11 rounded-full border-2 focus-visible:ring-2 bg-transparent"
+            className={`pl-10 pr-12 h-11 rounded-full border-2 focus-visible:ring-2 bg-transparent ${!isDark ? "placeholder:text-black" : "placeholder:text-white/60"}`}
             style={{
               borderColor: isDark ? "rgba(255,255,255,0.4)" : "#CC7A00",
               color: isDark ? "#FFFFFF" : "#000000",
@@ -316,11 +316,11 @@ export default function CategoryDetail() {
                 className="flex-shrink-0 flex flex-col items-center p-2 rounded-xl transition-all duration-200 min-w-[80px]"
                 style={{
                   backgroundColor: activeSubcategory === subcat.id
-                    ? isDark ? "rgba(255,255,255,0.12)" : "rgba(204,122,0,0.12)"
-                    : "rgba(255,255,255,0.04)",
+                    ? isDark ? "rgba(255,255,255,0.12)" : "#CC7A00"
+                    : isDark ? "rgba(255,255,255,0.04)" : "#FFFFFF",
                   border: activeSubcategory === subcat.id
                     ? isDark ? "2px solid #FFFFFF" : "2px solid #CC7A00"
-                    : isDark ? "2px solid rgba(255,255,255,0.15)" : "2px solid rgba(204,122,0,0.2)",
+                    : isDark ? "2px solid rgba(255,255,255,0.15)" : "2px solid rgba(204,122,0,0.25)",
                 }}
                 data-testid={`subcategory-${subcat.id}`}
               >
@@ -339,8 +339,8 @@ export default function CategoryDetail() {
                   style={{
                     fontFamily: "'DM Sans', sans-serif",
                     color: activeSubcategory === subcat.id
-                      ? isDark ? "#FFFFFF" : "#CC7A00"
-                      : isDark ? "rgba(255,255,255,0.65)" : "#555555",
+                      ? "#FFFFFF"
+                      : isDark ? "rgba(255,255,255,0.65)" : "#000000",
                   }}
                 >
                   {subcat.displayLabel}
