@@ -272,9 +272,9 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
   if (!item) return null;
 
   const textPrimary = isDark ? "#FFFFFF" : "#000000";
-  const textSecondary = isDark ? "rgba(220,212,200,0.5)" : "rgba(0,0,0,0.45)";
-  const cardBg = isDark ? "rgba(212,175,55,0.06)" : "#FFFFFF";
-  const cardBorder = isDark ? "1px solid rgba(212,175,55,0.15)" : "1px solid rgba(0,0,0,0.08)";
+  const textSecondary = isDark ? "rgba(255,255,255,0.5)" : "rgba(0,0,0,0.45)";
+  const cardBg = isDark ? "rgba(255,255,255,0.06)" : "#FFFFFF";
+  const cardBorder = isDark ? "1px solid rgba(255,255,255,0.2)" : "1px solid rgba(0,0,0,0.08)";
 
   const isBroken = imgError || !item.image || item.image.includes("placeholder.com") || item.image.includes("example.com");
   const imageUrl = isBroken ? fallbackImg : item.image;
@@ -330,20 +330,24 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
               onClick={onClose}
               className="absolute top-4 right-4 z-10 flex items-center justify-center w-9 h-9 rounded-full transition-all active:scale-90"
               style={{
-                background: "linear-gradient(135deg, #D4AF37, #E6C55A)",
-                border: "none",
-                boxShadow: "0 2px 12px rgba(212,175,55,0.4)",
+                background: isDark ? "rgba(255,255,255,0.15)" : "linear-gradient(135deg, #D4AF37, #E6C55A)",
+                border: isDark ? "1px solid rgba(255,255,255,0.4)" : "none",
+                boxShadow: isDark ? "0 2px 12px rgba(255,255,255,0.1)" : "0 2px 12px rgba(212,175,55,0.4)",
               }}
               data-testid="button-close-dish-modal"
             >
-              <X className="w-4 h-4" style={{ color: "#1A1408" }} strokeWidth={2.5} />
+              <X className="w-4 h-4" style={{ color: isDark ? "#FFFFFF" : "#1A1408" }} strokeWidth={2.5} />
             </button>
           </div>
 
           {/* Gold accent line */}
           <div
             className="w-full h-[2px]"
-            style={{ background: "linear-gradient(90deg, transparent, #D4AF37, #E6C55A, transparent)" }}
+            style={{
+              background: isDark
+                ? "linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent)"
+                : "linear-gradient(90deg, transparent, #D4AF37, #E6C55A, transparent)",
+            }}
           />
 
           {/* Name + Price row */}
@@ -364,9 +368,10 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
             <p
               className="text-lg font-black tracking-wider flex-shrink-0"
               style={{
-                background: "linear-gradient(90deg, #D4AF37, #E6C55A)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
+                color: isDark ? "#FFFFFF" : undefined,
+                background: isDark ? undefined : "linear-gradient(90deg, #D4AF37, #E6C55A)",
+                WebkitBackgroundClip: isDark ? undefined : "text",
+                WebkitTextFillColor: isDark ? undefined : "transparent",
                 fontFamily: "'DM Sans', sans-serif",
               }}
               data-testid="text-dish-price"
@@ -383,8 +388,8 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
               <div
                 className="rounded-2xl px-4 py-3"
                 style={{
-                  background: isDark ? "rgba(212,175,55,0.07)" : "#F5F5F5",
-                  borderLeft: "3px solid #D4AF37",
+                  background: isDark ? "rgba(255,255,255,0.06)" : "#F5F5F5",
+                  borderLeft: isDark ? "3px solid rgba(255,255,255,0.5)" : "3px solid #D4AF37",
                 }}
               >
                 <p
@@ -399,11 +404,11 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
 
             {/* Prep time */}
             <div className="flex items-center gap-3">
-              <Clock className="w-4 h-4 flex-shrink-0" style={{ color: "var(--bb-gold)" }} />
+              <Clock className="w-4 h-4 flex-shrink-0" style={{ color: isDark ? "#FFFFFF" : "var(--bb-gold)" }} />
               <div>
                 <p
                   className="text-[10px] uppercase tracking-widest font-semibold"
-                  style={{ color: "rgba(212,175,55,0.6)", fontFamily: "'DM Sans', sans-serif" }}
+                  style={{ color: isDark ? "rgba(255,255,255,0.55)" : "rgba(212,175,55,0.6)", fontFamily: "'DM Sans', sans-serif" }}
                 >
                   Preparation Time
                 </p>
@@ -417,13 +422,13 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
             </div>
 
             {/* Divider */}
-            <div className="h-px" style={{ background: isDark ? "rgba(212,175,55,0.15)" : "rgba(0,0,0,0.08)" }} />
+            <div className="h-px" style={{ background: isDark ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.08)" }} />
 
             {/* Nutritional Contents */}
             <div>
               <h3
                 className="text-xs font-bold uppercase tracking-widest mb-3"
-                style={{ color: "var(--bb-gold)", fontFamily: "'DM Sans', sans-serif" }}
+                style={{ color: isDark ? "#FFFFFF" : "var(--bb-gold)", fontFamily: "'DM Sans', sans-serif" }}
               >
                 Nutritional Contents
               </h3>
@@ -451,20 +456,20 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
               </div>
               <p
                 className="text-[10px] mt-2 text-center uppercase tracking-wider"
-                style={{ color: "rgba(212,175,55,0.35)", fontFamily: "'DM Sans', sans-serif" }}
+                style={{ color: isDark ? "rgba(255,255,255,0.35)" : "rgba(212,175,55,0.35)", fontFamily: "'DM Sans', sans-serif" }}
               >
                 Per serving · Approximate values
               </p>
             </div>
 
             {/* Divider */}
-            <div className="h-px" style={{ background: "rgba(212,175,55,0.15)" }} />
+            <div className="h-px" style={{ background: isDark ? "rgba(255,255,255,0.15)" : "rgba(212,175,55,0.15)" }} />
 
             {/* Allergens */}
             <div>
               <h3
                 className="text-xs font-bold uppercase tracking-widest mb-3"
-                style={{ color: "var(--bb-gold)", fontFamily: "'DM Sans', sans-serif" }}
+                style={{ color: isDark ? "#FFFFFF" : "var(--bb-gold)", fontFamily: "'DM Sans', sans-serif" }}
               >
                 Allergens
               </h3>
@@ -474,9 +479,9 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
                     key={a}
                     className="px-3 py-1 rounded-full text-xs font-semibold"
                     style={{
-                      background: isDark ? "rgba(212,175,55,0.1)" : "#FFF8E7",
-                      border: isDark ? "1px solid rgba(212,175,55,0.3)" : "1px solid rgba(212,175,55,0.4)",
-                      color: isDark ? "#E6C55A" : "#8B6200",
+                      background: isDark ? "rgba(255,255,255,0.08)" : "#FFF8E7",
+                      border: isDark ? "1px solid rgba(255,255,255,0.3)" : "1px solid rgba(212,175,55,0.4)",
+                      color: isDark ? "#FFFFFF" : "#8B6200",
                       fontFamily: "'DM Sans', sans-serif",
                     }}
                   >
@@ -487,13 +492,13 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
             </div>
 
             {/* Divider */}
-            <div className="h-px" style={{ background: isDark ? "rgba(212,175,55,0.15)" : "rgba(0,0,0,0.08)" }} />
+            <div className="h-px" style={{ background: isDark ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.08)" }} />
 
             {/* Ingredients */}
             <div>
               <h3
                 className="text-xs font-bold uppercase tracking-widest mb-3"
-                style={{ color: "var(--bb-gold)", fontFamily: "'DM Sans', sans-serif" }}
+                style={{ color: isDark ? "#FFFFFF" : "var(--bb-gold)", fontFamily: "'DM Sans', sans-serif" }}
               >
                 Ingredients
               </h3>

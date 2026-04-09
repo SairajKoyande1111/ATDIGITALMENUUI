@@ -681,7 +681,7 @@ export default function MenuLanding() {
         {/* Gold gradient border wrapper for carousel */}
         <div
           className="rounded-xl p-[2px] mb-3"
-          style={{ background: "linear-gradient(90deg, #D4AF37, #E6C55A)" }}
+          style={{ background: isDark ? "#FFFFFF" : "linear-gradient(90deg, #D4AF37, #E6C55A)" }}
         >
           <div
             className="relative rounded-[10px] overflow-hidden cursor-pointer group"
@@ -748,7 +748,7 @@ export default function MenuLanding() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   style={{
-                    background: "linear-gradient(90deg, #D4AF37, #E6C55A)",
+                    background: isDark ? "#FFFFFF" : "linear-gradient(90deg, #D4AF37, #E6C55A)",
                     padding: "2px",
                     borderRadius: "10px",
                   }}

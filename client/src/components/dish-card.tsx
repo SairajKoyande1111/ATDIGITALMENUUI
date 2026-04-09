@@ -2,12 +2,14 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import type { MenuItem } from "@shared/schema";
 import fallbackImg from "@assets/coming_soon_imagev2_1766811809828.jpg";
+import { useTheme } from "@/contexts/ThemeContext";
 
 interface DishCardProps {
   item: MenuItem;
 }
 
 export default function DishCard({ item }: DishCardProps) {
+  const { isDark } = useTheme();
   const [imgError, setImgError] = useState(false);
   const imageUrl = imgError || !item.image ||
     item.image.includes("example.com") ||
@@ -23,7 +25,7 @@ export default function DishCard({ item }: DishCardProps) {
       style={{
         borderRadius: "10px",
         backgroundColor: "var(--bb-card)",
-        border: "1px solid var(--bb-border)",
+        border: isDark ? "1px solid rgba(255,255,255,0.2)" : "1px solid var(--bb-border)",
       }}
     >
       <div className="flex flex-col h-full">
@@ -72,20 +74,26 @@ export default function DishCard({ item }: DishCardProps) {
           <p
             className="text-xs md:text-sm mt-1 truncate"
             style={{
-              color: "var(--bb-text)",
+              color: isDark ? "#FFFFFF" : "var(--bb-text)",
               fontFamily: "'DM Sans', sans-serif",
-              opacity: 0.8,
+              opacity: isDark ? 1 : 0.8,
             }}
           >
             {item.description}
           </p>
 
           {/* Price — pushed to bottom */}
-          <div className="mt-auto pt-2" style={{ borderTop: "1px solid var(--bb-border)" }}>
+          <div
+            className="mt-auto pt-2"
+            style={{ borderTop: isDark ? "1px solid rgba(255,255,255,0.2)" : "1px solid var(--bb-border)" }}
+          >
             <div className="flex justify-center">
               <span
                 className="font-bold text-sm md:text-base tracking-wide"
-                style={{ color: "var(--bb-gold-2)", fontFamily: "'DM Sans', sans-serif" }}
+                style={{
+                  color: isDark ? "#FFFFFF" : "var(--bb-gold-2)",
+                  fontFamily: "'DM Sans', sans-serif",
+                }}
               >
                 {typeof item.price === "string" && item.price.includes("|")
                   ? item.price.split("|").map(p => `₹${p.trim()}`).join(" | ")

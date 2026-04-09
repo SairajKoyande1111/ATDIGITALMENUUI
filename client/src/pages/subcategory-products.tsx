@@ -201,7 +201,7 @@ export default function SubcategoryProducts() {
               size="icon"
               onClick={() => setLocation(`/menu/${categoryId}`)}
               className="hover:bg-transparent flex-shrink-0"
-              style={{ color: "#C9A55C" }}
+              style={{ color: isDark ? "#FFFFFF" : "#C9A55C" }}
               data-testid="button-back"
             >
               <ArrowLeft className="h-5 w-5 sm:h-6 sm:w-6" />
@@ -236,11 +236,12 @@ export default function SubcategoryProducts() {
             placeholder={t.searchItems}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 pr-32 sm:pr-40 h-11 rounded-full border-2 text-[var(--bb-input-text)] placeholder:text-[var(--bb-text-dim)] focus-visible:ring-2 focus-visible:ring-[#C9A55C]/50"
+            className="pl-10 pr-32 sm:pr-40 h-11 rounded-full border-2 text-[var(--bb-input-text)] placeholder:text-[var(--bb-text-dim)] focus-visible:ring-2"
             style={{ 
-              borderColor: '#C9A55C', 
-              backgroundColor: 'transparent'
-            }}
+              borderColor: isDark ? '#FFFFFF' : '#C9A55C',
+              backgroundColor: 'transparent',
+              "--tw-ring-color": isDark ? "rgba(255,255,255,0.5)" : "rgba(201,165,92,0.5)",
+            } as React.CSSProperties}
             data-testid="input-search"
           />
             <div className="absolute right-1 top-1/2 transform -translate-y-1/2 flex items-center gap-0">
@@ -262,7 +263,7 @@ export default function SubcategoryProducts() {
                     style={
                       vegFilter === "all"
                         ? { backgroundColor: isDark ? "white" : "#1C1500", color: isDark ? "black" : "white", lineHeight: "1.2" }
-                        : { color: isDark ? "#C9A55C" : "#5A3E00", lineHeight: "1.2" }
+                        : { color: isDark ? "#FFFFFF" : "#5A3E00", lineHeight: "1.2" }
                     }
                   >
                     {t.all}
@@ -274,7 +275,7 @@ export default function SubcategoryProducts() {
                     style={
                       vegFilter === "veg"
                         ? { backgroundColor: "#22C55E", color: "white", lineHeight: "1.2" }
-                        : { color: isDark ? "#C9A55C" : "#5A3E00", lineHeight: "1.2" }
+                        : { color: isDark ? "#FFFFFF" : "#5A3E00", lineHeight: "1.2" }
                     }
                   >
                     {t.veg}
@@ -286,7 +287,7 @@ export default function SubcategoryProducts() {
                     style={
                       vegFilter === "non-veg"
                         ? { backgroundColor: "#EF4444", color: "white", lineHeight: "1.2" }
-                        : { color: isDark ? "#C9A55C" : "#5A3E00", lineHeight: "1.2" }
+                        : { color: isDark ? "#FFFFFF" : "#5A3E00", lineHeight: "1.2" }
                     }
                   >
                     {t.nonVeg}
@@ -305,7 +306,7 @@ export default function SubcategoryProducts() {
                 {isListening ? (
                   <MicOff className="h-4 w-4 text-red-500 animate-pulse" />
                 ) : (
-                  <Mic className="h-4 w-4" style={{ color: "#C9A55C" }} />
+                  <Mic className="h-4 w-4" style={{ color: isDark ? "#FFFFFF" : "#C9A55C" }} />
                 )}
               </Button>
             )}

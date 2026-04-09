@@ -356,11 +356,12 @@ export default function CategorySelection() {
               placeholder={t.searchItems}
               value={foodSearchQuery}
               onChange={(e) => setFoodSearchQuery(e.target.value)}
-              className="pl-10 pr-32 sm:pr-40 h-11 rounded-full border-2 text-[var(--bb-input-text)] placeholder:text-[var(--bb-text-dim)] focus-visible:ring-2 focus-visible:ring-[#C9A55C]/50"
+              className="pl-10 pr-32 sm:pr-40 h-11 rounded-full border-2 text-[var(--bb-input-text)] placeholder:text-[var(--bb-text-dim)] focus-visible:ring-2"
               style={{ 
-                borderColor: '#C9A55C', 
-                backgroundColor: 'transparent'
-              }}
+                borderColor: isDark ? '#FFFFFF' : '#C9A55C',
+                backgroundColor: 'transparent',
+                "--tw-ring-color": isDark ? "rgba(255,255,255,0.5)" : "rgba(201,165,92,0.5)",
+              } as React.CSSProperties}
               data-testid={`input-${categoryId}-search`}
             />
             
@@ -382,7 +383,7 @@ export default function CategorySelection() {
                     style={
                       vegFilter === "all"
                         ? { backgroundColor: isDark ? "white" : "#1C1500", color: isDark ? "black" : "white", lineHeight: "1.2" }
-                        : { color: isDark ? "#C9A55C" : "#5A3E00", lineHeight: "1.2" }
+                        : { color: isDark ? "#FFFFFF" : "#5A3E00", lineHeight: "1.2" }
                     }
                   >
                     {t.all}
@@ -394,7 +395,7 @@ export default function CategorySelection() {
                     style={
                       vegFilter === "veg"
                         ? { backgroundColor: "#22C55E", color: "white", lineHeight: "1.2" }
-                        : { color: isDark ? "#C9A55C" : "#5A3E00", lineHeight: "1.2" }
+                        : { color: isDark ? "#FFFFFF" : "#5A3E00", lineHeight: "1.2" }
                     }
                   >
                     {t.veg}
@@ -406,7 +407,7 @@ export default function CategorySelection() {
                     style={
                       vegFilter === "non-veg"
                         ? { backgroundColor: "#EF4444", color: "white", lineHeight: "1.2" }
-                        : { color: isDark ? "#C9A55C" : "#5A3E00", lineHeight: "1.2" }
+                        : { color: isDark ? "#FFFFFF" : "#5A3E00", lineHeight: "1.2" }
                     }
                   >
                     {t.nonVeg}
