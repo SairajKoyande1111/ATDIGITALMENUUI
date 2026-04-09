@@ -40,7 +40,7 @@ declare global {
   }
 }
 
-import logoImg from "@assets/Black_&_White_Letter_MD_Logo_Instagram_Post_(7)_1774949506569.png";
+import logoImg from "@assets/LOGO_FINAL_(2)_1775715574068.png";
 import FloatingButtons from "@/components/floating-buttons";
 import sangriaImg from "@assets/image_1767545808245.png";
 import classicCocktailsImg from "@assets/image_1767545845465.png";
@@ -305,8 +305,8 @@ export default function CategorySelection() {
               <img 
                 src={logoImg} 
                 alt="Barrel Born Logo" 
-                className="h-auto object-contain"
-                style={{ width: "450px", mixBlendMode: isDark ? "normal" : "multiply" }}
+                className="object-cover"
+                style={{ height: "52px", width: "220px", objectFit: "cover", objectPosition: "center 52%", filter: isDark ? "brightness(0) invert(1)" : "none" }}
                 data-testid="img-logo"
               />
             </div>

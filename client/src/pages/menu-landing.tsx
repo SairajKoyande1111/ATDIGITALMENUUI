@@ -31,7 +31,7 @@ import premiumDessertsImg from "@assets/image_1765866710467.png";
 import premiumMocktailsImg from "@assets/stock_images/premium_colorful_moc_1a15dee9.jpg";
 import cocktailsImg from "@assets/COCKTAILS_1766751289781.jpg";
 import craftedBeerImg from "@assets/CRAFTED_BEER_1766750491358.jpg";
-import logoImg from "@assets/Black_&_White_Letter_MD_Logo_Instagram_Post_(7)_1774949506569.png";
+import logoImg from "@assets/LOGO_FINAL_(2)_1775715574068.png";
 import welcomeCardLogoImg from "@assets/ATDM_NOBG_1775669188418.png";
 import fallbackImg from "@assets/coming_soon_imagev2_1766811809828.jpg";
 
@@ -482,8 +482,8 @@ export default function MenuLanding() {
               <img
                 src={logoImg}
                 alt="AT Digital Menu Logo"
-                className="h-auto object-contain"
-                style={{ width: "520px", mixBlendMode: isDark ? "normal" : "multiply" }}
+                className="object-cover"
+                style={{ height: "52px", width: "220px", objectFit: "cover", objectPosition: "center 52%", filter: isDark ? "brightness(0) invert(1)" : "none" }}
                 data-testid="img-logo"
               />
             </div>

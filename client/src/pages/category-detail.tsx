@@ -14,7 +14,7 @@ import FloatingButtons from "@/components/floating-buttons";
 import { getMainCategory, getSubcategoryIds } from "@/lib/menu-categories";
 import type { MenuItem } from "@shared/schema";
 
-import atLogoImg from "@assets/Black_&_White_Letter_MD_Logo_Instagram_Post_(7)_1774949506569.png";
+import atLogoImg from "@assets/LOGO_FINAL_(2)_1775715574068.png";
 import nibblesImg from "@assets/image_1765861653339.png";
 import titbitsImg from "@assets/image_1765861734899.png";
 import soupsImg from "@assets/image_1765861784186.png";
@@ -244,8 +244,8 @@ export default function CategoryDetail() {
               <img
                 src={atLogoImg}
                 alt="AT Digital Menu"
-                className="object-contain"
-                style={{ width: "380px", height: "auto", mixBlendMode: isDark ? "normal" : "multiply" }}
+                className="object-cover"
+                style={{ height: "52px", width: "220px", objectFit: "cover", objectPosition: "center 52%", filter: isDark ? "brightness(0) invert(1)" : "none" }}
               />
             </div>
 
