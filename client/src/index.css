@@ -240,20 +240,20 @@
 }
 
 /* ── Barrelborn theme variables ────────────────────────────── */
-/* Default = dark (current look). Light overrides applied below. */
+/* Default = dark (pure black/white). Light overrides applied below. */
 :root {
-  --bb-bg:        #3D3100;
-  --bb-card:      #1A1408;
-  --bb-card-alt:  #1C1500;
-  --bb-gold:      #D4AF37;
-  --bb-gold-2:    #E6C55A;
-  --bb-text:      #DCD4C8;
-  --bb-text-dim:  rgba(220,212,200,0.55);
-  --bb-border:    rgba(212,175,55,0.25);
-  --bb-header:    #3D3100;
+  --bb-bg:        #000000;
+  --bb-card:      #111111;
+  --bb-card-alt:  #111111;
+  --bb-gold:      #FFFFFF;
+  --bb-gold-2:    rgba(255,255,255,0.7);
+  --bb-text:      #FFFFFF;
+  --bb-text-dim:  rgba(255,255,255,0.55);
+  --bb-border:    rgba(255,255,255,0.15);
+  --bb-header:    #000000;
   --bb-search-bg: rgba(255,255,255,0.06);
-  --bb-search-br: rgba(212,175,55,0.3);
-  --bb-input-text:#E8D8B4;
+  --bb-search-br: rgba(255,255,255,0.3);
+  --bb-input-text:#FFFFFF;
 }
 
 [data-theme="light"] {

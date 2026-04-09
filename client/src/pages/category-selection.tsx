@@ -472,7 +472,7 @@ export default function CategorySelection() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   style={{
-                    background: "linear-gradient(90deg, #D4AF37, #E6C55A)",
+                    background: isDark ? "#FFFFFF" : "linear-gradient(90deg, #D4AF37, #E6C55A)",
                     padding: "2px",
                     borderRadius: "10px",
                   }}

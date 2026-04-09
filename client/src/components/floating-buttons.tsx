@@ -214,14 +214,14 @@ export default function FloatingButtons({ isMenuOpen = false }: FloatingButtonsP
           className="fixed bottom-6 left-4 z-40 flex items-center gap-2 pl-1 pr-4 py-1 rounded-full shadow-lg"
           style={{
             background: isDark
-              ? showSmartMenu ? "linear-gradient(135deg, #2a1a00, #1A1408)" : "linear-gradient(135deg, #3D3100, #1A1408)"
+              ? showSmartMenu ? "#111111" : "#000000"
               : "#FFFFFF",
             border: isDark
-              ? showSmartMenu ? "1.5px solid rgba(212,175,55,0.9)" : "1.5px solid rgba(212,175,55,0.6)"
-              : "1.5px solid rgba(212,175,55,0.5)",
+              ? showSmartMenu ? "1.5px solid rgba(255,255,255,0.9)" : "1.5px solid rgba(255,255,255,0.4)"
+              : "1.5px solid rgba(204,122,0,0.5)",
             backdropFilter: "blur(10px)",
             boxShadow: isDark
-              ? showSmartMenu ? "0 4px 24px rgba(212,175,55,0.35)" : "0 4px 24px rgba(212,175,55,0.15)"
+              ? showSmartMenu ? "0 4px 24px rgba(255,255,255,0.15)" : "0 4px 24px rgba(255,255,255,0.06)"
               : "0 4px 16px rgba(0,0,0,0.12)",
           }}
           whileHover={{ scale: 1.05 }}
@@ -231,20 +231,20 @@ export default function FloatingButtons({ isMenuOpen = false }: FloatingButtonsP
         >
           <div
             className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0"
-            style={{ border: "2px solid rgba(212,175,55,0.7)" }}
+            style={{ border: isDark ? "2px solid rgba(255,255,255,0.5)" : "2px solid rgba(204,122,0,0.7)" }}
           >
             <img src={chefsHatImg} alt="Smart Picks" className="w-full h-full object-cover" />
           </div>
           <div className="flex flex-col items-start">
             <span
               className="text-[10px] font-semibold tracking-widest uppercase leading-tight"
-              style={{ color: "var(--bb-gold)", fontFamily: "'DM Sans', sans-serif" }}
+              style={{ color: isDark ? "#FFFFFF" : "#CC7A00", fontFamily: "'DM Sans', sans-serif" }}
             >
               Smart Picks
             </span>
             <span
               className="text-[9px] tracking-wide"
-              style={{ color: "rgba(212,175,55,0.6)", fontFamily: "'DM Sans', sans-serif" }}
+              style={{ color: isDark ? "rgba(255,255,255,0.5)" : "rgba(204,122,0,0.7)", fontFamily: "'DM Sans', sans-serif" }}
             >
               What to order?
             </span>
@@ -262,14 +262,14 @@ export default function FloatingButtons({ isMenuOpen = false }: FloatingButtonsP
           className="flex items-center gap-2 pl-1 pr-4 py-1 rounded-full shadow-lg"
           style={{
             background: isDark
-              ? waiterCalled ? "linear-gradient(135deg, #1a3a1a, #0f2a0f)" : "linear-gradient(135deg, #3D3100, #1A1408)"
+              ? waiterCalled ? "#0f2a0f" : "#000000"
               : "#FFFFFF",
             border: isDark
-              ? waiterCalled ? "1.5px solid rgba(74,222,128,0.6)" : "1.5px solid rgba(212,175,55,0.7)"
-              : waiterCalled ? "1.5px solid rgba(74,222,128,0.6)" : "1.5px solid rgba(212,175,55,0.5)",
+              ? waiterCalled ? "1.5px solid rgba(74,222,128,0.6)" : "1.5px solid rgba(255,255,255,0.4)"
+              : waiterCalled ? "1.5px solid rgba(74,222,128,0.6)" : "1.5px solid rgba(204,122,0,0.5)",
             backdropFilter: "blur(10px)",
             boxShadow: isDark
-              ? waiterCalled ? "0 4px 24px rgba(74,222,128,0.25)" : "0 4px 24px rgba(212,175,55,0.2)"
+              ? waiterCalled ? "0 4px 24px rgba(74,222,128,0.25)" : "0 4px 24px rgba(255,255,255,0.06)"
               : "0 4px 16px rgba(0,0,0,0.12)",
           }}
           data-testid="button-call-waiter"
@@ -277,7 +277,7 @@ export default function FloatingButtons({ isMenuOpen = false }: FloatingButtonsP
           <div
             className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0"
             style={{
-              border: waiterCalled ? "2px solid rgba(74,222,128,0.7)" : "2px solid rgba(212,175,55,0.7)",
+              border: waiterCalled ? "2px solid rgba(74,222,128,0.7)" : isDark ? "2px solid rgba(255,255,255,0.5)" : "2px solid rgba(204,122,0,0.7)",
             }}
           >
             <img src={waiterImg} alt="Call Waiter" className="w-full h-full object-cover" />
@@ -322,7 +322,7 @@ export default function FloatingButtons({ isMenuOpen = false }: FloatingButtonsP
                 </span>
                 <span
                   className="text-[9px] tracking-wide"
-                  style={{ color: "rgba(212,175,55,0.6)", fontFamily: "'DM Sans', sans-serif" }}
+                  style={{ color: isDark ? "rgba(255,255,255,0.5)" : "rgba(204,122,0,0.7)", fontFamily: "'DM Sans', sans-serif" }}
                 >
                   Tap to request
                 </span>
