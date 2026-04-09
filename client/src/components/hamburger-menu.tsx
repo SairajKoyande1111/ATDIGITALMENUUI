@@ -57,11 +57,11 @@ export default function HamburgerMenu({
     setTimeout(() => setCopiedUpi(false), 2500);
   };
 
-  const sectionLabelColor = isDark ? "rgba(212,175,55,0.7)" : "#CC7A00";
-  const upiLabelColor = isDark ? "rgba(212,175,55,0.5)" : "#CC7A00";
-  const upiIdColor = isDark ? "#D4AF37" : "#000000";
-  const qrBtnColor = isDark ? "#D4AF37" : "#CC7A00";
-  const restaurantInfoColor = isDark ? "rgba(212,175,55,0.5)" : "#CC7A00";
+  const sectionLabelColor = isDark ? "#FFFFFF" : "#CC7A00";
+  const upiLabelColor = isDark ? "rgba(255,255,255,0.6)" : "#CC7A00";
+  const upiIdColor = isDark ? "#FFFFFF" : "#000000";
+  const qrBtnColor = isDark ? "#FFFFFF" : "#CC7A00";
+  const restaurantInfoColor = isDark ? "#FFFFFF" : "#CC7A00";
 
   return (
     <>
@@ -73,26 +73,26 @@ export default function HamburgerMenu({
             exit={{ opacity: 0, x: "100%" }}
             transition={{ type: "spring", damping: 28, stiffness: 260 }}
             className="fixed top-0 left-0 right-0 bottom-0 z-50 overflow-y-auto"
-            style={{ background: isDark ? "linear-gradient(160deg, #1C1500 0%, #0A0800 100%)" : "#FFFFFF" }}
+            style={{ background: isDark ? "#000000" : "#FFFFFF" }}
           >
             {/* Shimmer top bar */}
-            <div className="h-[3px] w-full" style={{ background: isDark ? "linear-gradient(90deg, transparent, #D4AF37, #F0CC60, #D4AF37, transparent)" : "linear-gradient(90deg, transparent, #CC7A00, #E8960A, #CC7A00, transparent)" }} />
+            <div className="h-[3px] w-full" style={{ background: "linear-gradient(90deg, transparent, #CC7A00, #E8960A, #CC7A00, transparent)" }} />
 
             {/* Header */}
             <div
               className="sticky top-0 z-10 flex items-center justify-between px-5 py-4"
-              style={{ background: isDark ? "linear-gradient(180deg, #1C1500 80%, transparent)" : "#FFFFFF", borderBottom: isDark ? "1px solid rgba(212,175,55,0.2)" : "1px solid rgba(204,122,0,0.25)" }}
+              style={{ background: isDark ? "#000000" : "#FFFFFF", borderBottom: isDark ? "1px solid rgba(255,255,255,0.15)" : "1px solid rgba(204,122,0,0.25)" }}
             >
               <div className="flex items-center gap-2">
-                <div className="w-1 h-6 rounded-full" style={{ background: isDark ? "linear-gradient(180deg, #D4AF37, #E6C55A)" : "linear-gradient(180deg, #CC7A00, #E8960A)" }} />
-                <h2 className="text-base font-black tracking-[0.25em] uppercase" style={{ color: isDark ? "#D4AF37" : "#CC7A00", fontFamily: "'DM Sans', sans-serif" }}>
+                <div className="w-1 h-6 rounded-full" style={{ background: isDark ? "#FFFFFF" : "linear-gradient(180deg, #CC7A00, #E8960A)" }} />
+                <h2 className="text-base font-black tracking-[0.25em] uppercase" style={{ color: isDark ? "#FFFFFF" : "#CC7A00", fontFamily: "'DM Sans', sans-serif" }}>
                   {t.menuCategories}
                 </h2>
               </div>
               <button
                 onClick={onClose}
                 className="w-9 h-9 rounded-full flex items-center justify-center transition-all active:scale-90"
-                style={{ background: isDark ? "rgba(212,175,55,0.1)" : "rgba(204,122,0,0.1)", border: isDark ? "1px solid rgba(212,175,55,0.3)" : "1px solid #CC7A00", color: isDark ? "#D4AF37" : "#CC7A00" }}
+                style={{ background: isDark ? "rgba(255,255,255,0.1)" : "rgba(204,122,0,0.1)", border: isDark ? "1px solid rgba(255,255,255,0.3)" : "1px solid #CC7A00", color: isDark ? "#FFFFFF" : "#CC7A00" }}
                 data-testid="button-close-menu"
               >
                 <X className="h-4 w-4" />
@@ -112,14 +112,14 @@ export default function HamburgerMenu({
                       whileTap={{ scale: 0.96 }}
                       onClick={() => handleCategoryClick(category.id)}
                       className="relative p-4 rounded-2xl text-left transition-all duration-200 overflow-hidden"
-                      style={{ background: isDark ? "rgba(212,175,55,0.06)" : "#FFFFFF", border: isDark ? "1px solid rgba(212,175,55,0.22)" : "1px solid rgba(204,122,0,0.35)" }}
+                      style={{ background: isDark ? "rgba(255,255,255,0.05)" : "#FFFFFF", border: isDark ? "1px solid rgba(255,255,255,0.15)" : "1px solid rgba(204,122,0,0.35)" }}
                       data-testid={`button-category-${category.id}`}
                     >
-                      <div className="absolute top-0 left-0 w-full h-[2px]" style={{ background: isDark ? "linear-gradient(90deg, #D4AF37, #E6C55A)" : "linear-gradient(90deg, #CC7A00, #E8960A)" }} />
-                      <p className="text-[10px] font-semibold tracking-widest uppercase mb-0.5" style={{ color: isDark ? "rgba(212,175,55,0.7)" : "#CC7A00", fontFamily: "'DM Sans', sans-serif" }}>
+                      <div className="absolute top-0 left-0 w-full h-[2px]" style={{ background: "linear-gradient(90deg, #CC7A00, #E8960A)" }} />
+                      <p className="text-[10px] font-semibold tracking-widest uppercase mb-0.5" style={{ color: isDark ? "rgba(255,255,255,0.6)" : "#CC7A00", fontFamily: "'DM Sans', sans-serif" }}>
                         {String(index + 1).padStart(2, "0")}
                       </p>
-                      <p className="text-[13px] font-bold tracking-wide leading-tight" style={{ color: isDark ? "#E8D8B4" : "#000000", fontFamily: "'DM Sans', sans-serif" }}>
+                      <p className="text-[13px] font-bold tracking-wide leading-tight" style={{ color: isDark ? "#FFFFFF" : "#000000", fontFamily: "'DM Sans', sans-serif" }}>
                         {label}
                       </p>
                     </motion.button>
@@ -139,38 +139,38 @@ export default function HamburgerMenu({
                 whileTap={{ scale: 0.97 }}
                 onClick={() => setShowReservation(true)}
                 className="w-full flex items-center gap-4 px-4 py-3.5 rounded-2xl transition-all"
-                style={{ background: isDark ? "rgba(212,175,55,0.06)" : "#FFFFFF", border: isDark ? "1px solid rgba(212,175,55,0.28)" : "1px solid rgba(204,122,0,0.35)" }}
+                style={{ background: isDark ? "rgba(255,255,255,0.05)" : "#FFFFFF", border: isDark ? "1px solid rgba(255,255,255,0.15)" : "1px solid rgba(204,122,0,0.35)" }}
                 data-testid="button-open-reservation"
               >
                 <img src={reservationImg} alt="Reservation" className="w-12 h-12 object-contain flex-shrink-0" />
                 <div className="text-left flex-1">
-                  <p className="text-[11px] font-semibold tracking-[0.2em] uppercase mb-0.5" style={{ color: isDark ? "rgba(212,175,55,0.55)" : "#CC7A00", fontFamily: "'DM Sans', sans-serif" }}>
+                  <p className="text-[11px] font-semibold tracking-[0.2em] uppercase mb-0.5" style={{ color: isDark ? "rgba(255,255,255,0.6)" : "#CC7A00", fontFamily: "'DM Sans', sans-serif" }}>
                     Table Booking
                   </p>
-                  <p className="text-[15px] font-black tracking-wide" style={{ color: isDark ? "#E8D8B4" : "#000000", fontFamily: "'DM Sans', sans-serif" }}>
+                  <p className="text-[15px] font-black tracking-wide" style={{ color: isDark ? "#FFFFFF" : "#000000", fontFamily: "'DM Sans', sans-serif" }}>
                     Make a Reservation
                   </p>
-                  <p className="text-[10px] mt-0.5" style={{ color: isDark ? "rgba(220,212,200,0.4)" : "rgba(0,0,0,0.4)", fontFamily: "'DM Sans', sans-serif" }}>
+                  <p className="text-[10px] mt-0.5" style={{ color: isDark ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)", fontFamily: "'DM Sans', sans-serif" }}>
                     Reserve your table in seconds
                   </p>
                 </div>
-                <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: isDark ? "linear-gradient(90deg, #D4AF37, #E6C55A)" : "#CC7A00" }}>
-                  <ChevronRight className="w-4 h-4" style={{ color: isDark ? "#1C1500" : "#FFFFFF", strokeWidth: 3 }} />
+                <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: isDark ? "#FFFFFF" : "#CC7A00" }}>
+                  <ChevronRight className="w-4 h-4" style={{ color: isDark ? "#000000" : "#FFFFFF", strokeWidth: 3 }} />
                 </div>
               </motion.button>
 
               {/* ── Pay & Order ── */}
-              <div className="rounded-2xl overflow-hidden" style={{ background: isDark ? "rgba(212,175,55,0.04)" : "#FFFFFF", border: isDark ? "1px solid rgba(212,175,55,0.22)" : "1px solid rgba(204,122,0,0.35)" }}>
-                <div className="px-4 py-3" style={{ borderBottom: isDark ? "1px solid rgba(212,175,55,0.12)" : "1px solid rgba(204,122,0,0.2)", background: isDark ? "rgba(212,175,55,0.05)" : "#FFFFFF" }}>
+              <div className="rounded-2xl overflow-hidden" style={{ background: isDark ? "rgba(255,255,255,0.04)" : "#FFFFFF", border: isDark ? "1px solid rgba(255,255,255,0.15)" : "1px solid rgba(204,122,0,0.35)" }}>
+                <div className="px-4 py-3" style={{ borderBottom: isDark ? "1px solid rgba(255,255,255,0.1)" : "1px solid rgba(204,122,0,0.2)", background: isDark ? "rgba(255,255,255,0.05)" : "#FFFFFF" }}>
                   <div className="flex items-center gap-2">
-                    <QrCode className="w-3.5 h-3.5" style={{ color: isDark ? "#D4AF37" : "#CC7A00" }} />
+                    <QrCode className="w-3.5 h-3.5" style={{ color: isDark ? "#FFFFFF" : "#CC7A00" }} />
                     <p className="text-[10px] tracking-[0.25em] font-semibold uppercase" style={{ color: sectionLabelColor, fontFamily: "'DM Sans', sans-serif" }}>
                       Pay &amp; Order
                     </p>
                   </div>
                 </div>
                 <div className="p-4 space-y-3">
-                  <div className="flex items-center justify-between rounded-xl px-4 py-3" style={{ background: isDark ? "rgba(212,175,55,0.07)" : "#FFFFFF", border: isDark ? "1px solid rgba(212,175,55,0.2)" : "1px solid rgba(204,122,0,0.3)" }}>
+                  <div className="flex items-center justify-between rounded-xl px-4 py-3" style={{ background: isDark ? "rgba(255,255,255,0.06)" : "#FFFFFF", border: isDark ? "1px solid rgba(255,255,255,0.12)" : "1px solid rgba(204,122,0,0.3)" }}>
                     <div>
                       <p className="text-[10px] tracking-widest uppercase mb-0.5" style={{ color: upiLabelColor, fontFamily: "'DM Sans', sans-serif" }}>UPI ID</p>
                       <p className="text-sm font-bold tracking-wide" style={{ color: upiIdColor, fontFamily: "monospace" }}>{UPI_ID}</p>
@@ -178,7 +178,7 @@ export default function HamburgerMenu({
                     <button
                       onClick={handleCopyUpi}
                       className="flex items-center gap-1.5 px-3 py-2 rounded-full text-[11px] font-bold transition-all active:scale-95"
-                      style={{ background: copiedUpi ? "#22c55e" : isDark ? "linear-gradient(90deg, #D4AF37, #E6C55A)" : "#CC7A00", color: isDark ? "#1C1500" : "#FFFFFF" }}
+                      style={{ background: copiedUpi ? "#22c55e" : "#CC7A00", color: "#FFFFFF" }}
                       data-testid="button-copy-upi"
                     >
                       {copiedUpi ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
@@ -189,7 +189,7 @@ export default function HamburgerMenu({
                   <button
                     onClick={() => setShowQr(!showQr)}
                     className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs font-semibold tracking-widest uppercase transition-all active:scale-95"
-                    style={{ border: isDark ? "1px solid rgba(212,175,55,0.3)" : "1px solid rgba(204,122,0,0.35)", color: qrBtnColor, background: isDark ? "rgba(212,175,55,0.05)" : "#FFFFFF" }}
+                    style={{ border: isDark ? "1px solid rgba(255,255,255,0.2)" : "1px solid rgba(204,122,0,0.35)", color: qrBtnColor, background: isDark ? "rgba(255,255,255,0.05)" : "#FFFFFF" }}
                     data-testid="button-show-qr"
                   >
                     <QrCode className="w-3.5 h-3.5" />
@@ -206,7 +206,7 @@ export default function HamburgerMenu({
                         className="overflow-hidden"
                       >
                         <div className="flex flex-col items-center gap-2 pt-1">
-                          <div className="w-44 h-44 rounded-xl flex items-center justify-center" style={{ background: "white", border: isDark ? "3px solid #D4AF37" : "3px solid #CC7A00" }}>
+                          <div className="w-44 h-44 rounded-xl flex items-center justify-center" style={{ background: "white", border: "3px solid #CC7A00" }}>
                             <img
                               src={`https://api.qrserver.com/v1/create-qr-code/?size=176x176&data=upi://pay?pa=${UPI_ID}&pn=BarrelBorn&cu=INR`}
                               alt="UPI QR Code"
@@ -233,8 +233,8 @@ export default function HamburgerMenu({
               </div>
 
               {/* ── Restaurant Info ── */}
-              <div className="rounded-2xl overflow-hidden" style={{ background: isDark ? "rgba(212,175,55,0.04)" : "#FFFFFF", border: isDark ? "1px solid rgba(212,175,55,0.18)" : "1px solid rgba(204,122,0,0.35)" }}>
-                <div className="px-4 py-3" style={{ borderBottom: isDark ? "1px solid rgba(212,175,55,0.12)" : "1px solid rgba(204,122,0,0.2)", background: isDark ? "transparent" : "#FFFFFF" }}>
+              <div className="rounded-2xl overflow-hidden" style={{ background: isDark ? "rgba(255,255,255,0.04)" : "#FFFFFF", border: isDark ? "1px solid rgba(255,255,255,0.15)" : "1px solid rgba(204,122,0,0.35)" }}>
+                <div className="px-4 py-3" style={{ borderBottom: isDark ? "1px solid rgba(255,255,255,0.1)" : "1px solid rgba(204,122,0,0.2)", background: isDark ? "transparent" : "#FFFFFF" }}>
                   <p className="text-[10px] tracking-[0.25em] font-semibold uppercase" style={{ color: restaurantInfoColor, fontFamily: "'DM Sans', sans-serif" }}>
                     Restaurant Info
                   </p>
