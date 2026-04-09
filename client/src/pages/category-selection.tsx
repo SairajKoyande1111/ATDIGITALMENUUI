@@ -358,7 +358,7 @@ export default function CategorySelection() {
               onChange={(e) => setFoodSearchQuery(e.target.value)}
               className="pl-10 pr-32 sm:pr-40 h-11 rounded-full border-2 text-[var(--bb-input-text)] placeholder:text-[var(--bb-text-dim)] focus-visible:ring-2"
               style={{ 
-                borderColor: isDark ? '#FFFFFF' : '#C9A55C',
+                borderColor: isDark ? '#FFFFFF' : '#CC7A00',
                 backgroundColor: 'transparent',
                 "--tw-ring-color": isDark ? "rgba(255,255,255,0.5)" : "rgba(201,165,92,0.5)",
               } as React.CSSProperties}
@@ -383,7 +383,7 @@ export default function CategorySelection() {
                     style={
                       vegFilter === "all"
                         ? { backgroundColor: isDark ? "white" : "#1C1500", color: isDark ? "black" : "white", lineHeight: "1.2" }
-                        : { color: isDark ? "#FFFFFF" : "#5A3E00", lineHeight: "1.2" }
+                        : { color: isDark ? "#FFFFFF" : "#CC7A00", lineHeight: "1.2" }
                     }
                   >
                     {t.all}
@@ -395,7 +395,7 @@ export default function CategorySelection() {
                     style={
                       vegFilter === "veg"
                         ? { backgroundColor: "#22C55E", color: "white", lineHeight: "1.2" }
-                        : { color: isDark ? "#FFFFFF" : "#5A3E00", lineHeight: "1.2" }
+                        : { color: isDark ? "#FFFFFF" : "#CC7A00", lineHeight: "1.2" }
                     }
                   >
                     {t.veg}
@@ -407,7 +407,7 @@ export default function CategorySelection() {
                     style={
                       vegFilter === "non-veg"
                         ? { backgroundColor: "#EF4444", color: "white", lineHeight: "1.2" }
-                        : { color: isDark ? "#FFFFFF" : "#5A3E00", lineHeight: "1.2" }
+                        : { color: isDark ? "#FFFFFF" : "#CC7A00", lineHeight: "1.2" }
                     }
                   >
                     {t.nonVeg}
@@ -473,7 +473,7 @@ export default function CategorySelection() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   style={{
-                    background: isDark ? "#FFFFFF" : "linear-gradient(90deg, #D4AF37, #E6C55A)",
+                    background: isDark ? "#FFFFFF" : "#CC7A00",
                     padding: "2px",
                     borderRadius: "10px",
                   }}

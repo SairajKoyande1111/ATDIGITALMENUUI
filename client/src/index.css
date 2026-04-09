@@ -260,14 +260,14 @@
   --bb-bg:        #FFFFFF;
   --bb-card:      #FFFFFF;
   --bb-card-alt:  #FFFFFF;
-  --bb-gold:      #8B6200;
-  --bb-gold-2:    #A87800;
+  --bb-gold:      #CC7A00;
+  --bb-gold-2:    #CC7A00;
   --bb-text:      #1a1a1a;
   --bb-text-dim:  rgba(0,0,0,0.5);
-  --bb-border:    rgba(0,0,0,0.1);
+  --bb-border:    rgba(204,122,0,0.3);
   --bb-header:    #FFFFFF;
   --bb-search-bg: rgba(0,0,0,0.04);
-  --bb-search-br: rgba(139,98,0,0.25);
+  --bb-search-br: rgba(204,122,0,0.4);
   --bb-input-text:#1a1a1a;
 }
 

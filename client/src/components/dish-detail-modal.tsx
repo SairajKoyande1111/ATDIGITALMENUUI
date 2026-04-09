@@ -274,7 +274,7 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
   const textPrimary = isDark ? "#FFFFFF" : "#000000";
   const textSecondary = isDark ? "rgba(255,255,255,0.5)" : "rgba(0,0,0,0.45)";
   const cardBg = isDark ? "rgba(255,255,255,0.06)" : "#FFFFFF";
-  const cardBorder = isDark ? "1px solid rgba(255,255,255,0.2)" : "1px solid rgba(0,0,0,0.08)";
+  const cardBorder = isDark ? "1px solid rgba(255,255,255,0.2)" : "1px solid rgba(204,122,0,0.25)";
 
   const isBroken = imgError || !item.image || item.image.includes("placeholder.com") || item.image.includes("example.com");
   const imageUrl = isBroken ? fallbackImg : item.image;
@@ -330,13 +330,13 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
               onClick={onClose}
               className="absolute top-4 right-4 z-10 flex items-center justify-center w-9 h-9 rounded-full transition-all active:scale-90"
               style={{
-                background: isDark ? "rgba(255,255,255,0.15)" : "linear-gradient(135deg, #D4AF37, #E6C55A)",
+                background: isDark ? "rgba(255,255,255,0.15)" : "#CC7A00",
                 border: isDark ? "1px solid rgba(255,255,255,0.4)" : "none",
-                boxShadow: isDark ? "0 2px 12px rgba(255,255,255,0.1)" : "0 2px 12px rgba(212,175,55,0.4)",
+                boxShadow: isDark ? "0 2px 12px rgba(255,255,255,0.1)" : "0 2px 12px rgba(204,122,0,0.4)",
               }}
               data-testid="button-close-dish-modal"
             >
-              <X className="w-4 h-4" style={{ color: isDark ? "#FFFFFF" : "#1A1408" }} strokeWidth={2.5} />
+              <X className="w-4 h-4" style={{ color: "#FFFFFF" }} strokeWidth={2.5} />
             </button>
           </div>
 
@@ -346,7 +346,7 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
             style={{
               background: isDark
                 ? "linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent)"
-                : "linear-gradient(90deg, transparent, #D4AF37, #E6C55A, transparent)",
+                : "linear-gradient(90deg, transparent, #CC7A00, transparent)",
             }}
           />
 
@@ -389,7 +389,7 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
                 className="rounded-2xl px-4 py-3"
                 style={{
                   background: isDark ? "rgba(255,255,255,0.06)" : "#F5F5F5",
-                  borderLeft: isDark ? "3px solid rgba(255,255,255,0.5)" : "3px solid #D4AF37",
+                  borderLeft: isDark ? "3px solid rgba(255,255,255,0.5)" : "3px solid #CC7A00",
                 }}
               >
                 <p
@@ -408,7 +408,7 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
               <div>
                 <p
                   className="text-[10px] uppercase tracking-widest font-semibold"
-                  style={{ color: isDark ? "rgba(255,255,255,0.55)" : "rgba(212,175,55,0.6)", fontFamily: "'DM Sans', sans-serif" }}
+                  style={{ color: isDark ? "rgba(255,255,255,0.55)" : "rgba(204,122,0,0.8)", fontFamily: "'DM Sans', sans-serif" }}
                 >
                   Preparation Time
                 </p>
@@ -456,14 +456,14 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
               </div>
               <p
                 className="text-[10px] mt-2 text-center uppercase tracking-wider"
-                style={{ color: isDark ? "rgba(255,255,255,0.35)" : "rgba(212,175,55,0.35)", fontFamily: "'DM Sans', sans-serif" }}
+                style={{ color: isDark ? "rgba(255,255,255,0.35)" : "rgba(204,122,0,0.5)", fontFamily: "'DM Sans', sans-serif" }}
               >
                 Per serving · Approximate values
               </p>
             </div>
 
             {/* Divider */}
-            <div className="h-px" style={{ background: isDark ? "rgba(255,255,255,0.15)" : "rgba(212,175,55,0.15)" }} />
+            <div className="h-px" style={{ background: isDark ? "rgba(255,255,255,0.15)" : "rgba(204,122,0,0.2)" }} />
 
             {/* Allergens */}
             <div>
@@ -479,9 +479,9 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
                     key={a}
                     className="px-3 py-1 rounded-full text-xs font-semibold"
                     style={{
-                      background: isDark ? "rgba(255,255,255,0.08)" : "#FFF8E7",
-                      border: isDark ? "1px solid rgba(255,255,255,0.3)" : "1px solid rgba(212,175,55,0.4)",
-                      color: isDark ? "#FFFFFF" : "#8B6200",
+                      background: isDark ? "rgba(255,255,255,0.08)" : "rgba(204,122,0,0.08)",
+                      border: isDark ? "1px solid rgba(255,255,255,0.3)" : "1px solid rgba(204,122,0,0.4)",
+                      color: isDark ? "#FFFFFF" : "#CC7A00",
                       fontFamily: "'DM Sans', sans-serif",
                     }}
                   >
