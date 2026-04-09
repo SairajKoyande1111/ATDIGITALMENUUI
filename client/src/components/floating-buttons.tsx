@@ -137,7 +137,10 @@ export default function FloatingButtons({ isMenuOpen = false }: FloatingButtonsP
               </p>
               <div
                 className="inline-flex rounded-full p-0.5 items-center gap-0 flex-shrink-0"
-                style={{ backgroundColor: "rgba(255,255,255,0.06)", border: isDark ? "1px solid rgba(212,175,55,0.2)" : "1px solid rgba(204,122,0,0.2)" }}
+                style={isDark
+                  ? { backgroundColor: "rgba(255,255,255,0.06)", border: "1px solid rgba(212,175,55,0.2)" }
+                  : { backgroundColor: "#FFFFFF", border: "1px solid rgba(0,0,0,0.12)" }
+                }
               >
                 {[
                   { key: "all", label: "All" },
@@ -154,8 +157,16 @@ export default function FloatingButtons({ isMenuOpen = false }: FloatingButtonsP
                           ? { backgroundColor: "#22C55E", color: "white" }
                           : f.key === "non-veg"
                           ? { backgroundColor: "#EF4444", color: "white" }
-                          : { backgroundColor: "white", color: "#1A1408" }
-                        : { color: isDark ? "#C9A55C" : "#CC7A00" }
+                          : isDark
+                          ? { backgroundColor: "white", color: "#1A1408" }
+                          : { backgroundColor: "#CC7A00", color: "white" }
+                        : isDark
+                        ? { color: "#C9A55C" }
+                        : f.key === "veg"
+                        ? { color: "#22C55E" }
+                        : f.key === "non-veg"
+                        ? { color: "#EF4444" }
+                        : { color: "#CC7A00" }
                     }
                     data-testid={`smart-filter-${f.key}`}
                   >

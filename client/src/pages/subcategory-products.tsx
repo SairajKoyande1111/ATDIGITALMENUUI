@@ -252,7 +252,7 @@ export default function SubcategoryProducts() {
                   style={isDark ? {
                     backgroundColor: vegFilter === "all" ? "rgba(255,255,255,0.1)" : vegFilter === "veg" ? "rgba(34,197,94,0.1)" : "rgba(239,68,68,0.1)"
                   } : {
-                    backgroundColor: vegFilter === "all" ? "rgba(0,0,0,0.07)" : vegFilter === "veg" ? "rgba(34,197,94,0.12)" : "rgba(239,68,68,0.12)",
+                    backgroundColor: "#FFFFFF",
                     border: "1px solid rgba(0,0,0,0.12)"
                   }}
                 >
@@ -262,7 +262,7 @@ export default function SubcategoryProducts() {
                     data-testid="filter-all"
                     style={
                       vegFilter === "all"
-                        ? { backgroundColor: isDark ? "white" : "#1C1500", color: isDark ? "black" : "white", lineHeight: "1.2" }
+                        ? { backgroundColor: isDark ? "white" : "#CC7A00", color: isDark ? "black" : "white", lineHeight: "1.2" }
                         : { color: isDark ? "#FFFFFF" : "#CC7A00", lineHeight: "1.2" }
                     }
                   >
@@ -275,7 +275,7 @@ export default function SubcategoryProducts() {
                     style={
                       vegFilter === "veg"
                         ? { backgroundColor: "#22C55E", color: "white", lineHeight: "1.2" }
-                        : { color: isDark ? "#FFFFFF" : "#CC7A00", lineHeight: "1.2" }
+                        : { color: isDark ? "#FFFFFF" : "#22C55E", lineHeight: "1.2" }
                     }
                   >
                     {t.veg}
@@ -287,7 +287,7 @@ export default function SubcategoryProducts() {
                     style={
                       vegFilter === "non-veg"
                         ? { backgroundColor: "#EF4444", color: "white", lineHeight: "1.2" }
-                        : { color: isDark ? "#FFFFFF" : "#CC7A00", lineHeight: "1.2" }
+                        : { color: isDark ? "#FFFFFF" : "#EF4444", lineHeight: "1.2" }
                     }
                   >
                     {t.nonVeg}
