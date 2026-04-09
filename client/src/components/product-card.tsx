@@ -37,7 +37,7 @@ export default function ProductCard({ item, onClick }: ProductCardProps) {
         />
         <div
           className={`absolute top-2 right-2 w-4 h-4 rounded-full border-2 shadow-sm ${
-            item.isVeg ? 'bg-green-500 border-green-300' : 'bg-red-500 border-red-300'
+            item.isVeg ? 'bg-green-500 border-white' : 'bg-red-500 border-white'
           }`}
         />
       </div>

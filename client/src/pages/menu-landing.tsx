@@ -209,6 +209,10 @@ function CouponsFullScreen({
   open: boolean;
   onClose: () => void;
 }) {
+  const { isDark } = useTheme();
+  const accentColor = isDark ? "#D4AF37" : "#CC7A00";
+  const accentColorRgb = isDark ? "212,175,55" : "204,122,0";
+
   return (
     <AnimatePresence>
       {open && (
@@ -220,31 +224,32 @@ function CouponsFullScreen({
           exit={{ opacity: 0, y: 40 }}
           transition={{ type: "spring", damping: 28, stiffness: 300 }}
         >
-          {/* Top gold shimmer bar */}
+          {/* Top shimmer bar */}
           <div
             className="h-[3px] w-full flex-shrink-0"
             style={{
-              background:
-                "linear-gradient(90deg, transparent, #D4AF37, #F0CC60, #D4AF37, transparent)",
+              background: isDark
+                ? "linear-gradient(90deg, transparent, #D4AF37, #F0CC60, #D4AF37, transparent)"
+                : "linear-gradient(90deg, transparent, #CC7A00, #E8930A, #CC7A00, transparent)",
             }}
           />
 
           {/* Header */}
           <div
             className="flex items-center justify-between px-5 py-4 flex-shrink-0"
-            style={{ borderBottom: "1px solid rgba(212,175,55,0.18)" }}
+            style={{ borderBottom: `1px solid rgba(${accentColorRgb},0.18)` }}
           >
             <div>
               <p
                 className="text-[10px] uppercase tracking-[0.3em] font-light mb-0.5"
-                style={{ color: "var(--bb-gold)" }}
+                style={{ color: accentColor }}
               >
                 Exclusive Offers
               </p>
               <h2
                 className="text-2xl font-black leading-none uppercase tracking-widest"
                 style={{
-                  color: "var(--bb-gold)",
+                  color: accentColor,
                   fontFamily: "'Cormorant Garamond', serif",
                   letterSpacing: "0.18em",
                 }}
@@ -253,14 +258,14 @@ function CouponsFullScreen({
               </h2>
             </div>
 
-            {/* Gold close button */}
+            {/* Close button */}
             <button
               onClick={onClose}
               className="w-9 h-9 rounded-full flex items-center justify-center transition-all active:scale-90"
               style={{
-                background: "rgba(212,175,55,0.12)",
-                border: "1.5px solid rgba(212,175,55,0.45)",
-                color: "var(--bb-gold)",
+                background: `rgba(${accentColorRgb},0.12)`,
+                border: `1.5px solid rgba(${accentColorRgb},0.45)`,
+                color: accentColor,
               }}
               data-testid="button-close-coupons-fullscreen"
             >
@@ -277,13 +282,13 @@ function CouponsFullScreen({
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.07 }}
               >
-                {/* Full-width coupon card — same design as CouponCard */}
+                {/* Full-width coupon card */}
                 <div
                   className="flex rounded-2xl overflow-hidden relative w-full"
                   style={{
-                    border: "1.5px solid #D4AF37",
+                    border: `1.5px solid ${accentColor}`,
                     minHeight: "104px",
-                    boxShadow: "0 4px 20px rgba(212,175,55,0.18)",
+                    boxShadow: `0 4px 20px rgba(${accentColorRgb},0.18)`,
                   }}
                 >
                   {/* LEFT — gold gradient panel */}
@@ -302,7 +307,7 @@ function CouponsFullScreen({
                     <p
                       className="text-xl font-black leading-none text-center"
                       style={{
-                        color: "#3D3100",
+                        color: "#FFFFFF",
                         fontFamily: "'DM Sans', sans-serif",
                         letterSpacing: "-0.5px",
                       }}
@@ -311,13 +316,13 @@ function CouponsFullScreen({
                     </p>
                     <p
                       className="text-[9px] uppercase tracking-widest mt-1.5 text-center font-semibold"
-                      style={{ color: "#3D3100", opacity: 0.75 }}
+                      style={{ color: "#FFFFFF", opacity: 0.85 }}
                     >
                       {coupon.tag}
                     </p>
                   </div>
 
-                  {/* RIGHT — details on dark background */}
+                  {/* RIGHT — details */}
                   <div
                     className="flex flex-col justify-center px-4 py-3 text-left flex-1 min-w-0"
                     style={{ background: "var(--bb-card)" }}
@@ -325,7 +330,7 @@ function CouponsFullScreen({
                     <p
                       className="text-sm font-black tracking-widest leading-none uppercase"
                       style={{
-                        color: "var(--bb-gold)",
+                        color: accentColor,
                         fontFamily: "'DM Sans', sans-serif",
                       }}
                     >
@@ -333,13 +338,13 @@ function CouponsFullScreen({
                     </p>
                     <p
                       className="text-[11px] mt-1.5 leading-snug tracking-wide"
-                      style={{ color: "var(--bb-gold-2)", opacity: 0.9 }}
+                      style={{ color: accentColor, opacity: 0.9 }}
                     >
                       {coupon.subtitle}
                     </p>
                     <p
                       className="text-[10px] mt-1 leading-snug tracking-wide"
-                      style={{ color: "var(--bb-text)", opacity: 0.55 }}
+                      style={{ color: isDark ? "rgba(255,255,255,0.55)" : "#000000", opacity: isDark ? 1 : 0.7 }}
                     >
                       {coupon.description}
                     </p>
@@ -347,11 +352,11 @@ function CouponsFullScreen({
                     <div className="flex items-center gap-1.5 mt-2">
                       <Calendar
                         className="w-3 h-3 flex-shrink-0"
-                        style={{ color: "var(--bb-gold)", opacity: 0.7 }}
+                        style={{ color: accentColor, opacity: 0.7 }}
                       />
                       <p
                         className="text-[9px] uppercase tracking-wider"
-                        style={{ color: "var(--bb-gold)", opacity: 0.7 }}
+                        style={{ color: accentColor, opacity: 0.7 }}
                       >
                         {coupon.validity}
                       </p>
@@ -362,12 +367,13 @@ function CouponsFullScreen({
             ))}
           </div>
 
-          {/* Bottom gold shimmer bar */}
+          {/* Bottom shimmer bar */}
           <div
             className="h-[2px] w-full flex-shrink-0"
             style={{
-              background:
-                "linear-gradient(90deg, transparent, #D4AF37, transparent)",
+              background: isDark
+                ? "linear-gradient(90deg, transparent, #D4AF37, transparent)"
+                : "linear-gradient(90deg, transparent, #CC7A00, transparent)",
             }}
           />
         </motion.div>

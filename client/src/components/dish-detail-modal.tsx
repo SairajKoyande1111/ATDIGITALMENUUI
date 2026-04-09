@@ -350,10 +350,10 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
             }}
           />
 
-          {/* Name + Price row */}
-          <div className="px-5 pt-5 pb-3 flex items-start justify-between gap-3">
+          {/* Name + Price */}
+          <div className="px-5 pt-5 pb-3">
             <h2
-              className="font-bold leading-tight uppercase flex-1"
+              className="font-bold leading-tight uppercase"
               style={{
                 color: textPrimary,
                 fontFamily: "'DM Sans', sans-serif",
@@ -366,12 +366,9 @@ export default function DishDetailModal({ item, onClose }: DishDetailModalProps)
               {item.name}
             </h2>
             <p
-              className="text-lg font-black tracking-wider flex-shrink-0"
+              className="text-base font-black tracking-wider mt-1"
               style={{
-                color: isDark ? "#FFFFFF" : undefined,
-                background: isDark ? undefined : "linear-gradient(90deg, #D4AF37, #E6C55A)",
-                WebkitBackgroundClip: isDark ? undefined : "text",
-                WebkitTextFillColor: isDark ? undefined : "transparent",
+                color: isDark ? "#FFFFFF" : "#CC7A00",
                 fontFamily: "'DM Sans', sans-serif",
               }}
               data-testid="text-dish-price"

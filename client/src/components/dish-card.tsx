@@ -39,8 +39,8 @@ export default function DishCard({ item }: DishCardProps) {
           />
           <div
             className={`absolute top-2 right-2 w-4 h-4 rounded-full border-2 shadow-sm ${
-              item.isVeg ? 'bg-green-500 border-green-300' : 'bg-red-500 border-red-300'
-            }`}
+              item.isVeg ? 'bg-green-500' : 'bg-red-500'
+            } border-white`}
           />
         </div>
 
@@ -74,9 +74,8 @@ export default function DishCard({ item }: DishCardProps) {
           <p
             className="text-xs md:text-sm mt-1 truncate"
             style={{
-              color: isDark ? "#FFFFFF" : "var(--bb-text)",
+              color: isDark ? "#FFFFFF" : "#000000",
               fontFamily: "'DM Sans', sans-serif",
-              opacity: isDark ? 1 : 0.8,
             }}
           >
             {item.description}

@@ -54,13 +54,13 @@ export default function FloatingButtons({ isMenuOpen = false }: FloatingButtonsP
             {/* Header */}
             <div
               className="flex items-center justify-between px-5 pt-5 pb-4 flex-shrink-0"
-              style={{ borderBottom: "1px solid rgba(212,175,55,0.15)" }}
+              style={{ borderBottom: isDark ? "1px solid rgba(212,175,55,0.15)" : "1px solid rgba(204,122,0,0.15)" }}
             >
               {/* Title */}
               <div className="flex items-center gap-3">
                 <div
                   className="w-11 h-11 rounded-full overflow-hidden flex-shrink-0"
-                  style={{ border: "2px solid rgba(212,175,55,0.6)" }}
+                  style={{ border: isDark ? "2px solid rgba(212,175,55,0.6)" : "2px solid rgba(204,122,0,0.6)" }}
                 >
                   <img src={chefsHatImg} alt="Smart Picks" className="w-full h-full object-cover" />
                 </div>
@@ -73,14 +73,14 @@ export default function FloatingButtons({ isMenuOpen = false }: FloatingButtonsP
                   </h2>
                   <p
                     className="text-xs"
-                    style={{ color: "rgba(212,175,55,0.6)", fontFamily: "'DM Sans', sans-serif" }}
+                    style={{ color: isDark ? "rgba(212,175,55,0.6)" : "#CC7A00", fontFamily: "'DM Sans', sans-serif" }}
                   >
                     Not sure what to order? We've got you!
                   </p>
                 </div>
               </div>
 
-              {/* Gold X close button — aligned with header */}
+              {/* Close button */}
               <button
                 onClick={() => setShowSmartMenu(false)}
                 className="flex items-center justify-center w-9 h-9 rounded-full transition-all active:scale-90 flex-shrink-0"
@@ -91,7 +91,7 @@ export default function FloatingButtons({ isMenuOpen = false }: FloatingButtonsP
                 }}
                 data-testid="button-close-smart-menu"
               >
-                <X className="w-4 h-4" style={{ color: "#1A1408" }} strokeWidth={2.5} />
+                <X className="w-4 h-4" style={{ color: "#FFFFFF" }} strokeWidth={2.5} />
               </button>
             </div>
 
@@ -109,12 +109,12 @@ export default function FloatingButtons({ isMenuOpen = false }: FloatingButtonsP
                     activeSmartSection === tab.key
                       ? {
                           background: "linear-gradient(90deg, #D4AF37, #E6C55A)",
-                          color: "#1A1408",
+                          color: "#FFFFFF",
                           fontFamily: "'DM Sans', sans-serif",
                         }
                       : {
-                          backgroundColor: "rgba(212,175,55,0.08)",
-                          border: "1px solid rgba(212,175,55,0.25)",
+                          backgroundColor: isDark ? "rgba(212,175,55,0.08)" : "rgba(204,122,0,0.08)",
+                          border: isDark ? "1px solid rgba(212,175,55,0.25)" : "1px solid rgba(204,122,0,0.25)",
                           color: "var(--bb-gold)",
                           fontFamily: "'DM Sans', sans-serif",
                         }
@@ -131,13 +131,13 @@ export default function FloatingButtons({ isMenuOpen = false }: FloatingButtonsP
             <div className="px-5 pb-3 flex items-center justify-between flex-shrink-0">
               <p
                 className="text-[11px] tracking-wide"
-                style={{ color: "rgba(212,175,55,0.6)", fontFamily: "'DM Sans', sans-serif" }}
+                style={{ color: isDark ? "rgba(212,175,55,0.6)" : "#CC7A00", fontFamily: "'DM Sans', sans-serif" }}
               >
                 {activeSmartSection === "today" ? "Tried and loved picks for today" : "Handpicked by our head chef"}
               </p>
               <div
                 className="inline-flex rounded-full p-0.5 items-center gap-0 flex-shrink-0"
-                style={{ backgroundColor: "rgba(255,255,255,0.06)", border: "1px solid rgba(212,175,55,0.2)" }}
+                style={{ backgroundColor: "rgba(255,255,255,0.06)", border: isDark ? "1px solid rgba(212,175,55,0.2)" : "1px solid rgba(204,122,0,0.2)" }}
               >
                 {[
                   { key: "all", label: "All" },
@@ -155,7 +155,7 @@ export default function FloatingButtons({ isMenuOpen = false }: FloatingButtonsP
                           : f.key === "non-veg"
                           ? { backgroundColor: "#EF4444", color: "white" }
                           : { backgroundColor: "white", color: "#1A1408" }
-                        : { color: "#C9A55C" }
+                        : { color: isDark ? "#C9A55C" : "#CC7A00" }
                     }
                     data-testid={`smart-filter-${f.key}`}
                   >
