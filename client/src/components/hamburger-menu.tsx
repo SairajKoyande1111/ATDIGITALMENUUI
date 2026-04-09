@@ -76,7 +76,7 @@ export default function HamburgerMenu({
             style={{ background: isDark ? "#000000" : "#FFFFFF" }}
           >
             {/* Shimmer top bar */}
-            <div className="h-[3px] w-full" style={{ background: "linear-gradient(90deg, transparent, #CC7A00, #E8960A, #CC7A00, transparent)" }} />
+            <div className="h-[3px] w-full" style={{ background: isDark ? "linear-gradient(90deg, transparent, #FFFFFF, transparent)" : "linear-gradient(90deg, transparent, #CC7A00, #E8960A, #CC7A00, transparent)" }} />
 
             {/* Header */}
             <div
@@ -115,7 +115,7 @@ export default function HamburgerMenu({
                       style={{ background: isDark ? "rgba(255,255,255,0.05)" : "#FFFFFF", border: isDark ? "1px solid rgba(255,255,255,0.15)" : "1px solid rgba(204,122,0,0.35)" }}
                       data-testid={`button-category-${category.id}`}
                     >
-                      <div className="absolute top-0 left-0 w-full h-[2px]" style={{ background: "linear-gradient(90deg, #CC7A00, #E8960A)" }} />
+                      <div className="absolute top-0 left-0 w-full h-[2px]" style={{ background: isDark ? "#FFFFFF" : "linear-gradient(90deg, #CC7A00, #E8960A)" }} />
                       <p className="text-[10px] font-semibold tracking-widest uppercase mb-0.5" style={{ color: isDark ? "rgba(255,255,255,0.6)" : "#CC7A00", fontFamily: "'DM Sans', sans-serif" }}>
                         {String(index + 1).padStart(2, "0")}
                       </p>
@@ -129,9 +129,9 @@ export default function HamburgerMenu({
 
               {/* ── Divider ── */}
               <div className="flex items-center gap-3">
-                <div className="flex-1 h-px" style={{ background: isDark ? "rgba(212,175,55,0.15)" : "rgba(204,122,0,0.2)" }} />
-                <Utensils className="w-3.5 h-3.5" style={{ color: isDark ? "rgba(212,175,55,0.4)" : "rgba(204,122,0,0.5)" }} />
-                <div className="flex-1 h-px" style={{ background: isDark ? "rgba(212,175,55,0.15)" : "rgba(204,122,0,0.2)" }} />
+                <div className="flex-1 h-px" style={{ background: isDark ? "rgba(255,255,255,0.15)" : "rgba(204,122,0,0.2)" }} />
+                <Utensils className="w-3.5 h-3.5" style={{ color: isDark ? "rgba(255,255,255,0.4)" : "rgba(204,122,0,0.5)" }} />
+                <div className="flex-1 h-px" style={{ background: isDark ? "rgba(255,255,255,0.15)" : "rgba(204,122,0,0.2)" }} />
               </div>
 
               {/* ── Reservation Section ── */}
@@ -178,7 +178,7 @@ export default function HamburgerMenu({
                     <button
                       onClick={handleCopyUpi}
                       className="flex items-center gap-1.5 px-3 py-2 rounded-full text-[11px] font-bold transition-all active:scale-95"
-                      style={{ background: copiedUpi ? "#22c55e" : "#CC7A00", color: "#FFFFFF" }}
+                      style={{ background: copiedUpi ? "#22c55e" : isDark ? "#FFFFFF" : "#CC7A00", color: isDark ? "#000000" : "#FFFFFF" }}
                       data-testid="button-copy-upi"
                     >
                       {copiedUpi ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
@@ -206,7 +206,7 @@ export default function HamburgerMenu({
                         className="overflow-hidden"
                       >
                         <div className="flex flex-col items-center gap-2 pt-1">
-                          <div className="w-44 h-44 rounded-xl flex items-center justify-center" style={{ background: "white", border: "3px solid #CC7A00" }}>
+                          <div className="w-44 h-44 rounded-xl flex items-center justify-center" style={{ background: "white", border: isDark ? "3px solid #FFFFFF" : "3px solid #CC7A00" }}>
                             <img
                               src={`https://api.qrserver.com/v1/create-qr-code/?size=176x176&data=upi://pay?pa=${UPI_ID}&pn=BarrelBorn&cu=INR`}
                               alt="UPI QR Code"
