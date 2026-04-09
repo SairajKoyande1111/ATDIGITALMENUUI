@@ -80,7 +80,7 @@ export default function CustomerList() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (username === "Barrelborn@admin" && password === "BarrelBorn@132231") {
+    if (username === "admin" && password === "password") {
       setIsLoggedIn(true);
       setError("");
     } else {
