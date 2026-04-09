@@ -552,7 +552,7 @@ export default function MenuLanding() {
                 <X className="w-4 h-4" />
               </button>
 
-              <div className="px-7 pt-2 pb-4 flex flex-col items-center">
+              <div className="px-7 pt-5 pb-4 flex flex-col items-center">
                 {/* Logo */}
                 <img
                   src={welcomeCardLogoImg}

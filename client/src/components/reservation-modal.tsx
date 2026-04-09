@@ -77,7 +77,7 @@ export default function ReservationModal({ onClose }: ReservationModalProps) {
         <div className="h-[3px] w-full" style={{ background: isDark ? "linear-gradient(90deg, transparent, #FFFFFF, transparent)" : "linear-gradient(90deg, transparent, #CC7A00, #E8960A, #CC7A00, transparent)" }} />
 
         {!confirmed ? (
-          <div className="p-5 pb-8">
+          <div className="p-5 pb-8" style={{ background: isDark ? "#000000" : "#FFFFFF" }}>
             <button
               onClick={onClose}
               className="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center"
